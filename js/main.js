@@ -1,21 +1,37 @@
 /**
- * جمعية أخوين الخيرية - Interactive Controller
- * Premium, Human-Crafted Micro-Interactions & JS Animations
- * Features:
- *  - 3D Dynamic Card Tilt with Specular Lighting
- *  - Magnetic Cursor-Aware Buttons
- *  - Smooth Click Ripple Waves
- *  - Real-time Interactive Donation Calculator with Live Impact
- *  - Interactive Program Category Filter Bar with Smooth Transitions
- *  - Dynamic Hero Parallax Mouse Reactivity
- *  - Confetti & Toast Feedback on Bank/Contact Copy
- *  - Circular Scroll Progress on Floating Back-To-Top
- *  - Fluid Ease-Out Statistics Counter
- *  - Active Section ScrollSpy for Nav Links
+ * جمعية أخوين الخيرية - Interactive Controller (Refactored & Optimized)
+ * Modern Micro-Interactions, Animation Performance, & Robust Form Controls
  */
 
+'use strict';
+
+/* -------------------------------------------------------------------------- */
+/* Centralized Site Configuration & Constants                                  */
+/* -------------------------------------------------------------------------- */
+const SITE_CONFIG = {
+  startYear: 2009,
+  phone: '01281769685',
+  phoneFormatted: '٠١٢٨١٧٦٩٦٨٥',
+  email: 'info@akhawein.org',
+  whatsappNumber: '201281769685',
+  mapsUrl: 'https://maps.app.goo.gl/sVMgkZ7viMpMoRkz5',
+  recipientEmail: 'info@akhawein.org'
+};
+
+/* -------------------------------------------------------------------------- */
+/* Global Utilities                                                           */
+/* -------------------------------------------------------------------------- */
+function toArabicDigits(value) {
+  if (value === null || value === undefined) return '';
+  const arabicDigits = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+  return value.toString().split('').map(d => arabicDigits[d] || d).join('');
+}
+
+/* -------------------------------------------------------------------------- */
+/* Application Bootstrap                                                      */
+/* -------------------------------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize AOS (Animate On Scroll)
+  // Initialize AOS (Animate On Scroll) if available
   if (typeof AOS !== 'undefined') {
     AOS.init({
       duration: 800,
@@ -25,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Initialize all modular controllers
   initScrollProgress();
   initNavbarSticky();
   initScrollSpy();
@@ -44,19 +61,22 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileDrawer();
   initBackToTopProgress();
   initSmartEmailLinks();
+  initCertificatesLightbox();
 });
 
 /* -------------------------------------------------------------------------- */
-/* 1. 3D Card Tilt with Cursor-Aware Specular Glare                          */
+/* 1. 3D Card Tilt with Specular Glare & requestAnimationFrame Performance   */
 /* -------------------------------------------------------------------------- */
 function initCard3DTilt() {
   const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
   if (isTouchDevice) return;
 
   const tiltCards = document.querySelectorAll('.program-card, .cause-card, .bank-card, .about-image-wrapper');
-  
+  if (!tiltCards.length) return;
+
   tiltCards.forEach(card => {
-    let bounds;
+    let bounds = null;
+    let rAF = null;
 
     function updateBounds() {
       bounds = card.getBoundingClientRect();
@@ -64,6 +84,7 @@ function initCard3DTilt() {
 
     function onMouseMove(e) {
       if (!bounds) updateBounds();
+
       const mouseX = e.clientX;
       const mouseY = e.clientY;
       const leftX = mouseX - bounds.x;
@@ -72,16 +93,18 @@ function initCard3DTilt() {
         x: leftX - bounds.width / 2,
         y: topY - bounds.height / 2
       };
-      const distance = Math.sqrt(center.x ** 2 + center.y ** 2);
 
-      // Subtle tilt: max 5.5 degrees
-      const maxTilt = 5.5;
-      const rotateX = (center.y / (bounds.height / 2)) * -maxTilt;
-      const rotateY = (center.x / (bounds.width / 2)) * maxTilt;
+      if (rAF) cancelAnimationFrame(rAF);
 
-      card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-6px)`;
-      card.style.setProperty('--mouse-x', `${leftX}px`);
-      card.style.setProperty('--mouse-y', `${topY}px`);
+      rAF = requestAnimationFrame(() => {
+        const maxTilt = 5.5;
+        const rotateX = (center.y / (bounds.height / 2)) * -maxTilt;
+        const rotateY = (center.x / (bounds.width / 2)) * maxTilt;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-6px)`;
+        card.style.setProperty('--mouse-x', `${leftX.toFixed(1)}px`);
+        card.style.setProperty('--mouse-y', `${topY.toFixed(1)}px`);
+      });
     }
 
     card.addEventListener('mouseenter', () => {
@@ -92,6 +115,7 @@ function initCard3DTilt() {
     card.addEventListener('mousemove', onMouseMove);
 
     card.addEventListener('mouseleave', () => {
+      if (rAF) cancelAnimationFrame(rAF);
       card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease';
       card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
       card.style.removeProperty('--mouse-x');
@@ -108,16 +132,15 @@ function initMagneticButtons() {
   if (isTouchDevice) return;
 
   const magneticBtns = document.querySelectorAll('.btn-primary, .btn-accent, .btn-more-programs, .floating-btn');
+  if (!magneticBtns.length) return;
 
   magneticBtns.forEach(btn => {
     btn.addEventListener('mousemove', (e) => {
       const rect = btn.getBoundingClientRect();
       const x = e.clientX - rect.left - rect.width / 2;
       const y = e.clientY - rect.top - rect.height / 2;
-
-      // Gentle magnetic pull: max 7px
       const pull = 0.22;
-      btn.style.transform = `translate(${x * pull}px, ${y * pull}px)`;
+      btn.style.transform = `translate(${(x * pull).toFixed(1)}px, ${(y * pull).toFixed(1)}px)`;
     });
 
     btn.addEventListener('mouseleave', () => {
@@ -131,6 +154,7 @@ function initMagneticButtons() {
 /* -------------------------------------------------------------------------- */
 function initRippleEffect() {
   const rippleTargets = document.querySelectorAll('.btn, .filter-btn');
+  if (!rippleTargets.length) return;
 
   rippleTargets.forEach(target => {
     target.style.position = target.style.position || 'relative';
@@ -175,7 +199,7 @@ function initHeroParallax() {
     const rect = hero.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
-    mouseX = x * 20; // 20px range
+    mouseX = x * 20;
     mouseY = y * 15;
   });
 
@@ -189,10 +213,7 @@ function initHeroParallax() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 5. Interactive Real-Time Donation Calculator with Impact                  */
-
-/* -------------------------------------------------------------------------- */
-/* 6. Programs Filter Bar with Animated Card Appearance                       */
+/* 5. Programs Filter Bar with Smooth Transitions                             */
 /* -------------------------------------------------------------------------- */
 function initProgramFilters() {
   const filterBtns = document.querySelectorAll('.filter-btn');
@@ -204,7 +225,7 @@ function initProgramFilters() {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      const filter = btn.getAttribute('data-filter'); // 'all', 'social', 'health-edu', 'dev'
+      const filter = btn.getAttribute('data-filter');
 
       cards.forEach((card, index) => {
         const category = card.getAttribute('data-category') || 'all';
@@ -213,7 +234,7 @@ function initProgramFilters() {
         if (matches) {
           card.classList.remove('filtered-out');
           card.classList.remove('filter-anim');
-          void card.offsetWidth; // trigger reflow
+          void card.offsetWidth; // Force reflow
           card.classList.add('filter-anim');
           card.style.animationDelay = `${(index % 8) * 0.06}s`;
         } else {
@@ -225,19 +246,20 @@ function initProgramFilters() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 7. Enhanced Copy-to-Clipboard with Celebratory Confetti Burst              */
+/* 6. Copy-to-Clipboard with Confetti Celebration                             */
 /* -------------------------------------------------------------------------- */
 function initCopyToClipboard() {
   const copyBtns = document.querySelectorAll('.copy-btn');
+  if (!copyBtns.length) return;
+
   copyBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener('click', () => {
       const accNumber = btn.getAttribute('data-copy');
       if (!accNumber) return;
 
       navigator.clipboard.writeText(accNumber).then(() => {
         showToast('تم نسخ رقم الحساب بنجاح: ' + accNumber);
-        
-        // Confetti burst from button position
+
         if (typeof confetti === 'function') {
           const rect = btn.getBoundingClientRect();
           const originX = (rect.left + rect.width / 2) / window.innerWidth;
@@ -257,13 +279,16 @@ function initCopyToClipboard() {
           btn.innerHTML = originalHTML;
           btn.style.color = '';
         }, 2500);
+      }).catch(err => {
+        console.error('Clipboard copy failed:', err);
+        showToast('تم النسخ: ' + accNumber);
       });
     });
   });
 }
 
 /* -------------------------------------------------------------------------- */
-/* 8. Circular Progress Ring on Floating Back-To-Top Button                  */
+/* 7. Circular Scroll Progress Ring on Floating Back-To-Top Button            */
 /* -------------------------------------------------------------------------- */
 function initBackToTopProgress() {
   const backToTopBtn = document.querySelector('.floating-btn.back-to-top');
@@ -291,15 +316,14 @@ function initBackToTopProgress() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 9. ScrollSpy for Active Navbar Link Highlight                              */
+/* 8. ScrollSpy for Active Navbar Links                                       */
 /* -------------------------------------------------------------------------- */
 function initScrollSpy() {
   const allNavLinks = document.querySelectorAll('.nav-menu .nav-link');
   if (!allNavLinks.length) return;
 
-  // Identify current page filename
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-  
+
   let pageLink = null;
   allNavLinks.forEach(link => {
     const href = link.getAttribute('href');
@@ -308,7 +332,6 @@ function initScrollSpy() {
     }
   });
 
-  // If there are anchor links on this page, spy on them
   const anchorLinks = document.querySelectorAll('.nav-menu .nav-link[href^="#"]');
   if (anchorLinks.length > 0) {
     const sections = document.querySelectorAll('section[id], footer[id]');
@@ -344,7 +367,7 @@ function initScrollSpy() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 10. Ease-Out Dynamic Statistics Counters                                   */
+/* 9. Ease-Out Dynamic Statistics Counters                                    */
 /* -------------------------------------------------------------------------- */
 function initStatsCounter() {
   const statNumbers = document.querySelectorAll('.stat-number');
@@ -387,7 +410,7 @@ function initStatsCounter() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 11. Animated Progress Bars                                                 */
+/* 10. Animated Progress Bars                                                 */
 /* -------------------------------------------------------------------------- */
 function initProgressBars() {
   const progressBars = document.querySelectorAll('.progress-bar-fill');
@@ -416,16 +439,18 @@ function initProgressBars() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 12. Smart Email Links (Gmail on Desktop, native mailto on mobile)          */
+/* 11. Smart Email Links (Gmail on Desktop, Native Mailto on Mobile)          */
 /* -------------------------------------------------------------------------- */
 function initSmartEmailLinks() {
   const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+  if (!emailLinks.length) return;
+
   emailLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       const isMobile = /Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
       if (!isMobile) {
         e.preventDefault();
-        const email = 'info@akhawein.org';
+        const email = SITE_CONFIG.email;
         const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent('استفسار لجمعية أخوين الخيرية')}`;
         window.open(gmailUrl, '_blank', 'noopener,noreferrer');
       }
@@ -434,7 +459,7 @@ function initSmartEmailLinks() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 13. Top Scroll Progress Indicator                                          */
+/* 12. Top Scroll Progress Indicator                                          */
 /* -------------------------------------------------------------------------- */
 function initScrollProgress() {
   const progressBar = document.getElementById('scrollProgress');
@@ -453,25 +478,35 @@ function initScrollProgress() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 14. Dynamic Years Calculation                                              */
+/* 13. Dynamic Experience & Copyright Years Calculation                       */
 /* -------------------------------------------------------------------------- */
 function initDynamicYears() {
-  const startYear = 2009;
   const currentYear = new Date().getFullYear();
-  const years = Math.max(1, currentYear - startYear);
-  const arabicDigits = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
-  const yearsArabic = years.toString().split('').map(d => arabicDigits[d] || d).join('');
-  const yearArabic = currentYear.toString().split('').map(d => arabicDigits[d] || d).join('');
+  const years = Math.max(1, currentYear - SITE_CONFIG.startYear);
+  const yearsArabic = toArabicDigits(years);
+  const yearArabic = toArabicDigits(currentYear);
 
-  const expYearsElem = document.getElementById('experienceYears') || document.querySelector('.experience-years');
-  if (expYearsElem) expYearsElem.textContent = `+${yearsArabic}`;
+  // Update experience badge (+17)
+  const expYearsElems = document.querySelectorAll('#experienceYears, .experience-years');
+  expYearsElems.forEach(elem => {
+    elem.textContent = `+${yearsArabic}`;
+  });
 
-  const currentYearElem = document.getElementById('currentYear');
-  if (currentYearElem) currentYearElem.textContent = yearArabic;
+  // Update inline dynamic experience years text (17)
+  const inlineYearsElems = document.querySelectorAll('.dynamic-experience-years, #dynamicExperienceYears');
+  inlineYearsElems.forEach(elem => {
+    elem.textContent = yearsArabic;
+  });
+
+  // Update current year (e.g. 2026 / ٢٠٢٦)
+  const currentYearElems = document.querySelectorAll('#currentYear, .current-year');
+  currentYearElems.forEach(elem => {
+    elem.textContent = yearArabic;
+  });
 }
 
 /* -------------------------------------------------------------------------- */
-/* 15. Navbar Sticky                                                          */
+/* 14. Navbar Sticky                                                          */
 /* -------------------------------------------------------------------------- */
 function initNavbarSticky() {
   const header = document.querySelector('.main-header');
@@ -487,7 +522,7 @@ function initNavbarSticky() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 16. Hero Slider                                                            */
+/* 15. Hero Slider                                                            */
 /* -------------------------------------------------------------------------- */
 function initHeroSlider() {
   const slides = document.querySelectorAll('.hero-slide');
@@ -558,7 +593,7 @@ function initHeroSlider() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 17. Video Player                                                           */
+/* 16. Video Player                                                           */
 /* -------------------------------------------------------------------------- */
 function initVideoPlayer() {
   const mainVideoBox = document.getElementById('mainVideoBox');
@@ -603,7 +638,7 @@ function initVideoPlayer() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 18. Toast Notifications                                                    */
+/* 17. Toast Notifications                                                    */
 /* -------------------------------------------------------------------------- */
 function showToast(message) {
   let toastContainer = document.querySelector('.toast-container');
@@ -615,7 +650,17 @@ function showToast(message) {
 
   const toast = document.createElement('div');
   toast.className = 'toast';
-  toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color: #10b981; font-size: 1.35rem;"></i> <span>${message}</span>`;
+
+  const icon = document.createElement('i');
+  icon.className = 'fa-solid fa-circle-check';
+  icon.style.color = '#10b981';
+  icon.style.fontSize = '1.35rem';
+
+  const textSpan = document.createElement('span');
+  textSpan.textContent = String(message || ''); // Safe textContent prevents any DOM XSS
+
+  toast.appendChild(icon);
+  toast.appendChild(textSpan);
   toastContainer.appendChild(toast);
 
   setTimeout(() => {
@@ -627,7 +672,7 @@ function showToast(message) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 19. Visitor Counter Simulation                                             */
+/* 18. Visitor Counter Simulation                                             */
 /* -------------------------------------------------------------------------- */
 function initVisitorCounter() {
   const digitsContainer = document.getElementById('visitorDigits');
@@ -663,135 +708,123 @@ function initVisitorCounter() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 20. Forms & Mobile Drawer                                                  */
+/* 19. Forms Submission & Validation Handler                                  */
 /* -------------------------------------------------------------------------- */
 function initForms() {
   const contactForm = document.getElementById('quickContactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
+  if (!contactForm) return;
 
-      const name = (document.getElementById('senderName')?.value || '').trim();
-      const phone = (document.getElementById('senderPhone')?.value || '').trim();
-      const email = (document.getElementById('senderEmail')?.value || '').trim() || 'غير محدد';
-      const typeSelect = document.getElementById('requestType');
-      const typeText = typeSelect ? typeSelect.options[typeSelect.selectedIndex].text : 'طلب عام';
-      const message = (document.getElementById('senderMessage')?.value || '').trim();
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-      const formStatus = document.getElementById('formStatus');
-      const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+    let name = (document.getElementById('senderName')?.value || '').trim();
+    let phone = (document.getElementById('senderPhone')?.value || '').trim();
+    let email = (document.getElementById('senderEmail')?.value || '').trim() || 'غير محدد';
+    const typeSelect = document.getElementById('requestType');
+    const typeText = typeSelect ? typeSelect.options[typeSelect.selectedIndex].text : 'طلب عام';
+    let message = (document.getElementById('senderMessage')?.value || '').trim();
 
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري إرسال الرسالة...';
-      }
+    // Security: Input length boundaries
+    if (name.length > 100) name = name.substring(0, 100);
+    if (phone.length > 25) phone = phone.substring(0, 25);
+    if (email.length > 100) email = email.substring(0, 100);
+    if (message.length > 3000) message = message.substring(0, 3000);
 
-      if (formStatus) {
-        formStatus.style.display = 'none';
-        formStatus.innerHTML = '';
-      }
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const formStatus = document.getElementById('formStatus');
+    const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
 
-      // البريد الإلكتروني المستلم
-      const RECIPIENT_EMAIL = 'info@akhawein.org';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري إرسال الرسالة...';
+    }
 
-      // رابط واتساب كخطة بديلة إذا تعذر الاتصال
-      const waNumber = '201281769685';
-      const waText = `السلام عليكم ورحمة الله،\nرسالة من موقع الجمعية:\n👤 الاسم: ${name}\n📞 الهاتف: ${phone}\n📧 البريد: ${email}\n📋 نوع الطلب: ${typeText}\n💬 الرسالة: ${message}`;
-      const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waText)}`;
+    if (formStatus) {
+      formStatus.style.display = 'none';
+      formStatus.innerHTML = '';
+    }
 
-      // حفظ نسخة محلياً في المتصفح للأرشيف
-      try {
-        const savedMsgs = JSON.parse(localStorage.getItem('akhwain_messages') || '[]');
-        savedMsgs.unshift({
-          id: Date.now(),
-          date: new Date().toLocaleString('ar-EG'),
-          name,
-          phone,
-          email,
-          type: typeText,
-          message
-        });
-        localStorage.setItem('akhwain_messages', JSON.stringify(savedMsgs.slice(0, 50)));
-      } catch (err) {
-        console.error('LocalStorage error:', err);
-      }
+    // Fallback WhatsApp message
+    const waText = `السلام عليكم ورحمة الله،\nرسالة من موقع جمعية أخوين:\n👤 الاسم: ${name}\n📞 الهاتف: ${phone}\n📧 البريد: ${email}\n📋 نوع الطلب: ${typeText}\n💬 الرسالة: ${message}`;
+    const waUrl = `https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(waText)}`;
 
-      // الإرسال الفعلي عبر خدمة FormSubmit المباشرة
-      try {
-        const response = await fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            'الاسم الكريم': name,
-            'رقم الهاتف / الواتساب': phone,
-            'البريد الإلكتروني': email,
-            'نوع الطلب': typeText,
-            'تفاصيل الرسالة أو الحالة': message,
-            '_subject': `طلب جديد من موقع الجمعية: [${typeText}] - ${name}`,
-            '_template': 'table',
-            '_captcha': 'false'
-          })
-        });
+    // Direct FormSubmit transmission
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${SITE_CONFIG.recipientEmail}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          'الاسم الكريم': name,
+          'رقم الهاتف / الواتساب': phone,
+          'البريد الإلكتروني': email,
+          'نوع الطلب': typeText,
+          'تفاصيل الرسالة أو الحالة': message,
+          '_subject': `طلب جديد من موقع الجمعية: [${typeText}] - ${name}`,
+          '_template': 'table',
+          '_captcha': 'false'
+        })
+      });
 
-        const data = await response.json();
+      const data = await response.json();
 
-        if (response.ok && data.success === 'true') {
-          showToast('تم إرسال رسالتك بنجاح إلى بريد الجمعية!');
-          contactForm.reset();
-          if (formStatus) {
-            formStatus.style.display = 'block';
-            formStatus.innerHTML = `
-              <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; color: #065f46; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.08);">
-                <i class="fa-solid fa-circle-check" style="font-size: 2.2rem; color: #10b981; margin-bottom: 0.5rem; display: inline-block;"></i>
-                <h4 style="margin: 0.5rem 0; font-size: 1.25rem; font-weight: 700; color: #065f46;">تم إرسال رسالتك بنجاح!</h4>
-                <p style="margin: 0; color: #047857; font-size: 0.95rem;">شكراً لتواصلك مع جمعية أخوين. تم إرسال كافة التفاصيل إلى إدارة الجمعية وسيتم مراجعتها والتواصل معكم قريباً.</p>
-              </div>
-            `;
-          }
-        } else if (data.message && (data.message.includes('Activation') || data.message.includes('activation') || data.message.includes('Activate'))) {
-          showToast('تم إرسال رابط التفعيل إلى بريد الجمعية.');
-          contactForm.reset();
-          if (formStatus) {
-            formStatus.style.display = 'block';
-            formStatus.innerHTML = `
-              <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; color: #1e40af; padding: 1.5rem; border-radius: 12px;">
-                <i class="fa-solid fa-envelope-circle-check" style="font-size: 2.2rem; color: #3b82f6; margin-bottom: 0.5rem; display: inline-block;"></i>
-                <h4 style="margin: 0.5rem 0; font-size: 1.2rem; font-weight: 700;">تأكيد وتفعيل البريد الإلكتروني</h4>
-                <p style="margin: 0 0 0.5rem; font-size: 0.95rem;">تم إرسال رابط تفعيل لمرة واحدة إلى البريد (<strong>${RECIPIENT_EMAIL}</strong>). يرجى فتح البريد والضغط على رابط التفعيل (Activate Form) لمرة واحدة فقط لتصل كافة الرسائل القادمة إلى بريدكم فوراً.</p>
-              </div>
-            `;
-          }
-        } else {
-          throw new Error(data.message || 'فشل في الإرسال');
-        }
-      } catch (error) {
-        console.error('Email send error:', error);
-        showToast('تعذر الإرسال عبر البريد. يمكنك التواصل عبر واتساب.');
+      if (response.ok && data.success === 'true') {
+        showToast('تم إرسال رسالتك بنجاح إلى بريد الجمعية!');
+        contactForm.reset();
         if (formStatus) {
           formStatus.style.display = 'block';
           formStatus.innerHTML = `
-            <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid #ef4444; color: #991b1b; padding: 1.25rem; border-radius: 12px;">
-              <p style="margin: 0 0 0.75rem; font-weight: 600;">تعذر الإرسال التلقائي عبر البريد حالياً. يمكنك إرسال نفس الرسالة مباشرة عبر واتساب:</p>
-              <a href="${waUrl}" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #25D366; border-color: #25D366; padding: 0.6rem 1.4rem; border-radius: 8px; color: #fff; text-decoration: none; font-weight: 600;">
-                <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> إرسال عبر واتساب الآن
-              </a>
+            <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; color: #065f46; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.08);">
+              <i class="fa-solid fa-circle-check" style="font-size: 2.2rem; color: #10b981; margin-bottom: 0.5rem; display: inline-block;"></i>
+              <h4 style="margin: 0.5rem 0; font-size: 1.25rem; font-weight: 700; color: #065f46;">تم إرسال رسالتك بنجاح!</h4>
+              <p style="margin: 0; color: #047857; font-size: 0.95rem;">شكراً لتواصلك مع جمعية أخوين. تم إرسال كافة التفاصيل إلى إدارة الجمعية وسيتم مراجعتها والتواصل معكم قريباً.</p>
             </div>
           `;
         }
-      } finally {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnHtml;
+      } else if (data.message && /Activation|activation|Activate/i.test(data.message)) {
+        showToast('تم إرسال رابط التفعيل إلى بريد الجمعية.');
+        contactForm.reset();
+        if (formStatus) {
+          formStatus.style.display = 'block';
+          formStatus.innerHTML = `
+            <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; color: #1e40af; padding: 1.5rem; border-radius: 12px;">
+              <i class="fa-solid fa-envelope-circle-check" style="font-size: 2.2rem; color: #3b82f6; margin-bottom: 0.5rem; display: inline-block;"></i>
+              <h4 style="margin: 0.5rem 0; font-size: 1.2rem; font-weight: 700;">تأكيد وتفعيل البريد الإلكتروني</h4>
+              <p style="margin: 0 0 0.5rem; font-size: 0.95rem;">تم إرسال رابط تفعيل لمرة واحدة إلى البريد (<strong>${SITE_CONFIG.recipientEmail}</strong>). يرجى فتح البريد والضغط على رابط التفعيل (Activate Form) لمرة واحدة فقط لتصل كافة الرسائل القادمة إلى بريدكم فوراً.</p>
+            </div>
+          `;
         }
+      } else {
+        throw new Error(data.message || 'فشل في الإرسال');
       }
-    });
-  }
+    } catch (error) {
+      console.error('Email send error:', error);
+      showToast('تعذر الإرسال عبر البريد. يمكنك التواصل عبر واتساب.');
+      if (formStatus) {
+        formStatus.style.display = 'block';
+        formStatus.innerHTML = `
+          <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid #ef4444; color: #991b1b; padding: 1.25rem; border-radius: 12px;">
+            <p style="margin: 0 0 0.75rem; font-weight: 600;">تعذر الإرسال التلقائي عبر البريد حالياً. يمكنك إرسال نفس الرسالة مباشرة عبر واتساب:</p>
+            <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #25D366; border-color: #25D366; padding: 0.6rem 1.4rem; border-radius: 8px; color: #fff; text-decoration: none; font-weight: 600;">
+              <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> إرسال عبر واتساب الآن
+            </a>
+          </div>
+        `;
+      }
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHtml;
+      }
+    }
+  });
 }
 
+/* -------------------------------------------------------------------------- */
+/* 20. Mobile Navigation Drawer with Auto-Active Highlight                    */
+/* -------------------------------------------------------------------------- */
 function initMobileDrawer() {
   const toggleBtn = document.querySelector('.mobile-toggle-btn');
   const drawer = document.getElementById('mobileDrawer');
@@ -814,8 +847,146 @@ function initMobileDrawer() {
   if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
   if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
 
+  // Mark current active link in drawer automatically
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
   const drawerLinks = document.querySelectorAll('.mobile-nav-links a');
   drawerLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+      link.classList.add('active');
+      link.style.fontWeight = '700';
+      link.style.color = 'var(--primary)';
+    }
     link.addEventListener('click', closeDrawer);
   });
 }
+
+/* -------------------------------------------------------------------------- */
+/* 21. Certificates Interactive Lightbox Modal Controller                     */
+/* -------------------------------------------------------------------------- */
+function initCertificatesLightbox() {
+  const modal = document.getElementById('certLightboxModal');
+  if (!modal) return;
+
+  const modalImg = document.getElementById('certLightboxImg');
+  const counterEl = document.getElementById('certLightboxCounter');
+  const downloadBtn = document.getElementById('certLightboxDownload');
+  const closeBtn = modal.querySelector('.close-btn');
+  const prevBtn = modal.querySelector('.prev-btn');
+  const nextBtn = modal.querySelector('.next-btn');
+
+  // Collect all certificate trigger elements on the page
+  const triggerCards = Array.from(document.querySelectorAll('[data-cert-src]'));
+  if (triggerCards.length === 0) return;
+
+  const certData = triggerCards.map((el, idx) => ({
+    src: el.getAttribute('data-cert-src'),
+    title: el.getAttribute('data-cert-title') || `شهادة تقدير #${idx + 1}`,
+    index: idx
+  }));
+
+  let currentIndex = 0;
+
+  function updateModal(index) {
+    if (index < 0) index = certData.length - 1;
+    if (index >= certData.length) index = 0;
+    currentIndex = index;
+
+    const item = certData[currentIndex];
+    
+    // Quick fade transition
+    if (modalImg) {
+      modalImg.style.opacity = '0';
+      modalImg.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        modalImg.src = item.src;
+        modalImg.alt = item.title;
+        modalImg.onload = () => {
+          modalImg.style.opacity = '1';
+          modalImg.style.transform = 'scale(1)';
+        };
+      }, 150);
+    }
+
+    if (counterEl) {
+      const currentAr = toArabicDigits(currentIndex + 1);
+      const totalAr = toArabicDigits(certData.length);
+      counterEl.innerHTML = `<i class="fa-solid fa-award" style="color: var(--accent);"></i> شهادة ${currentAr} من ${totalAr}`;
+    }
+
+    if (downloadBtn) {
+      downloadBtn.href = item.src;
+      downloadBtn.setAttribute('download', `شهادة-تقدير-جمعية-أخوين-${currentIndex + 1}.jpg`);
+    }
+  }
+
+  function openModal(index) {
+    updateModal(index);
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function nextCert() {
+    updateModal(currentIndex + 1);
+  }
+
+  function prevCert() {
+    updateModal(currentIndex - 1);
+  }
+
+  // Attach click listeners to cards and trigger buttons
+  triggerCards.forEach((el, idx) => {
+    el.addEventListener('click', (e) => {
+      // If clicked on download link inside card, don't open modal
+      if (e.target.closest('.cert-download-direct')) return;
+      e.preventDefault();
+      openModal(idx);
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (prevBtn) prevBtn.addEventListener('click', prevCert);
+  if (nextBtn) nextBtn.addEventListener('click', nextCert);
+
+  // Close when clicking outside image
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal || e.target.classList.contains('cert-lightbox-body')) {
+      closeModal();
+    }
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('active')) return;
+    if (e.key === 'Escape') closeModal();
+    // In RTL, ArrowRight naturally points to next or prev; support both intuitive directions
+    if (e.key === 'ArrowRight') prevCert();
+    if (e.key === 'ArrowLeft') nextCert();
+  });
+
+  // Touch swipe support for mobile devices
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  modal.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  modal.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchEndX - touchStartX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        prevCert(); // Swiped right
+      } else {
+        nextCert(); // Swiped left
+      }
+    }
+  }, { passive: true });
+}
+

@@ -11,7 +11,7 @@
   <link rel="icon" href="https://www.akhawein.org/wp-content/uploads/2023/10/cropped-logo-32x32.png" sizes="32x32">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=1788696730">
+  <link rel="stylesheet" href="css/style.css?v=2.0.2">
 </head>
 <body>
 
@@ -37,10 +37,10 @@
         </div>
       </div>
       <div class="top-socials">
-        <a href="https://www.facebook.com/profile.php?id=100066869127004" target="_blank" class="social-icon" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/akhawein6/" target="_blank" class="social-icon" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://x.com/AAkhawein" target="_blank" class="social-icon" title="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-        <a href="https://www.youtube.com/@akhaweinakhawein" target="_blank" class="social-icon" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=100066869127004" target="_blank" rel="noopener noreferrer" class="social-icon" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/akhawein6/" target="_blank" rel="noopener noreferrer" class="social-icon" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://x.com/AAkhawein" target="_blank" rel="noopener noreferrer" class="social-icon" title="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://www.youtube.com/@akhaweinakhawein" target="_blank" rel="noopener noreferrer" class="social-icon" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
       </div>
     </div>
   </div>
@@ -67,7 +67,7 @@
           <div class="nav-item"><a href="javascript:void(0)" onclick="event.preventDefault();" class="nav-link">وسائل التبرع</a></div>
           <div class="nav-item"><a href="javascript:void(0)" onclick="event.preventDefault();" class="nav-link">المركز الإعلامي</a></div>
           <div class="nav-item"><a href="javascript:void(0)" onclick="event.preventDefault();" class="nav-link">البروتوكولات</a></div>
-          <div class="nav-item"><a href="javascript:void(0)" onclick="event.preventDefault();" class="nav-link">شهادات التقدير</a></div>
+          <div class="nav-item"><a href="certificates.html" class="nav-link">شهادات التقدير</a></div>
           <div class="nav-item"><a href="contact.html" class="nav-link active">تواصل معنا</a></div>
         </nav>
 
@@ -104,6 +104,9 @@
             </div>
           </div>
           <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">٢٤ عمارات العبور - طريق صلاح سالم، الدور الأرضي، القاهرة.</p>
+          <a href="https://maps.app.goo.gl/sVMgkZ7viMpMoRkz5" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 700; color: var(--primary); margin-top: 0.5rem; text-decoration: none;">
+            <i class="fa-solid fa-location-crosshairs"></i> عرض الاتجاهات على الخريطة
+          </a>
         </div>
 
         <div class="bank-card" style="background: #f8fafc; border-color: var(--border-color); color: var(--text-main);" data-aos="fade-up" data-aos-delay="200">
@@ -152,15 +155,15 @@
           <div class="form-grid">
             <div class="form-group">
               <label class="form-label" for="senderName">الاسم بالكامل *</label>
-              <input type="text" id="senderName" name="name" class="form-control" placeholder="أدخل اسمك بالكامل" required>
+              <input type="text" id="senderName" name="name" class="form-control" placeholder="أدخل اسمك بالكامل" maxlength="100" autocomplete="name" required>
             </div>
             <div class="form-group">
               <label class="form-label" for="senderPhone">رقم الهاتف / الواتساب *</label>
-              <input type="tel" id="senderPhone" name="phone" class="form-control" placeholder="أدخل رقم الهاتف أو الواتساب" required>
+              <input type="tel" id="senderPhone" name="phone" class="form-control" placeholder="أدخل رقم الهاتف أو الواتساب" maxlength="20" autocomplete="tel" required>
             </div>
             <div class="form-group">
               <label class="form-label" for="senderEmail">البريد الإلكتروني</label>
-              <input type="email" id="senderEmail" name="email" class="form-control" placeholder="أدخل البريد الإلكتروني">
+              <input type="email" id="senderEmail" name="email" class="form-control" placeholder="أدخل البريد الإلكتروني" maxlength="100" autocomplete="email">
             </div>
             <div class="form-group">
               <label class="form-label" for="requestType">نوع الطلب</label>
@@ -173,7 +176,7 @@
             </div>
             <div class="form-group full-width">
               <label class="form-label" for="senderMessage">رسالتك أو تفاصيل الحالة *</label>
-              <textarea id="senderMessage" name="message" class="form-control" placeholder="أدخل تفاصيل رسالتك أو استفسارك هنا..." required></textarea>
+              <textarea id="senderMessage" name="message" class="form-control" placeholder="أدخل تفاصيل رسالتك أو استفسارك هنا..." maxlength="3000" required></textarea>
             </div>
             <div class="form-group full-width" style="text-align: center; margin-top: 1rem;">
               <button type="submit" id="submitBtn" class="btn btn-primary btn-lg">
@@ -188,54 +191,127 @@
       <!-- Map -->
       <div style="margin-top: 4rem; border-radius: var(--radius-lg); overflow: hidden; height: 380px; box-shadow: var(--shadow-lg); border: 1px solid var(--border-color);" data-aos="zoom-in">
         <iframe 
-          src="https://maps.google.com/maps?q=24%D8%B9%D9%85%D8%A7%D8%B1%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B9%D8%A8%D9%88%D8%B1%20%D8%B4%D8%A7%D8%B1%D8%B9%20%D8%B5%D9%84%D8%A7%D8%AD%20%D8%B3%D8%A7%D9%84%D9%85&t=m&z=14&output=embed&iwloc=near" 
-          title="24عمارات العبور شارع صلاح سالم" 
-          aria-label="24عمارات العبور شارع صلاح سالم"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.8878!2d31.30212!3d30.0759688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583fc91ca56f9b%3A0x1055e3cafb17981f!2sMTI%20%D9%A2%D9%A4%20%D8%B9%D9%85%D8%A7%D8%B1%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B9%D8%A8%D9%88%D8%B1!5e0!3m2!1sar!2seg!4v1710000000000" 
+          title="٢٤ عمارات العبور - شارع صلاح سالم" 
+          aria-label="٢٤ عمارات العبور - شارع صلاح سالم"
           style="width: 100%; height: 100%; border: none;"
-          loading="lazy">
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
         </iframe>
+      </div>
+      <div style="text-align: center; margin-top: 1rem;">
+        <a href="https://maps.app.goo.gl/sVMgkZ7viMpMoRkz5" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.95rem;">
+          <i class="fa-solid fa-map-location-dot" style="color: var(--primary);"></i> فتح الموقع مباشرة في تطبيق خرائط Google
+        </a>
       </div>
 
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="main-footer" id="footer">
+  <!-- Main Footer -->
+  <footer class="main-footer" id="contact">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-col footer-about">
-          <h4>عن جمعية أخوين</h4>
-          <p>جمعية أهلية مشهرة برقم <strong>٧٧٠٢ لسنة ٢٠٠٩</strong> ونفع عام بالقرار الوزاري رقم <strong>١٦٠ لسنة ٢٠١٣</strong>.</p>
+        <!-- Col 1: هوية الجمعية والشعار -->
+        <div class="footer-col brand-col" data-aos="fade-up" data-aos-delay="100">
+          <div class="footer-brand">
+            <img src="images/logo.png" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2023/11/logo.png'" alt="شعار جمعية أخوين" class="footer-logo">
+            <div class="footer-brand-text">
+              <span class="footer-title">جمعية أخـــوين الخـــيرية</span>
+              <span class="footer-sub">مشهرة برقم ٧٧٠٢ لسنة ٢٠٠٩</span>
+            </div>
+          </div>
+          <p class="footer-desc">
+            جمعية خيرية مصرية رائدة تهدف إلى تقديم الرعاية المتكاملة للأسر الأكثر احتياجاً وكفالة الأيتام وتقديم المساعدات الطبية والتعليمية في شتى ربوع مصر.
+          </p>
+          <div class="footer-socials">
+            <a href="https://www.facebook.com/profile.php?id=100066869127004" target="_blank" rel="noopener noreferrer" class="social-box" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/akhawein6/" target="_blank" rel="noopener noreferrer" class="social-box" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://x.com/AAkhawein" target="_blank" rel="noopener noreferrer" class="social-box" title="X / Twitter" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/@akhaweinakhawein" target="_blank" rel="noopener noreferrer" class="social-box" title="YouTube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
         </div>
-        <div class="footer-col">
-          <h4>أقسام الموقع</h4>
+
+        <!-- Col 2: أقسام الموقع -->
+        <div class="footer-col links-col" data-aos="fade-up" data-aos-delay="200">
+          <h4 class="footer-heading">أقسام الموقع</h4>
           <ul class="footer-links">
             <li><a href="index.html"><i class="fa-solid fa-chevron-left"></i> الرئيسية</a></li>
             <li><a href="about.html"><i class="fa-solid fa-chevron-left"></i> عن الجمعية</a></li>
             <li><a href="activities.html"><i class="fa-solid fa-chevron-left"></i> ميادين العمل والأنشطة</a></li>
-            <li><a href="causes.html"><i class="fa-solid fa-chevron-left"></i> حالات التبرع</a></li>
+            <li><a href="causes.html"><i class="fa-solid fa-chevron-left"></i> حالات التبرع والمشاريع</a></li>
+            <li><a href="certificates.html"><i class="fa-solid fa-chevron-left"></i> شهادات التقدير والأوسمة</a></li>
             <li><a href="contact.html"><i class="fa-solid fa-chevron-left"></i> تواصل معنا</a></li>
           </ul>
         </div>
-        <div class="footer-col">
-          <h4>تواصل معنا</h4>
-          <div class="footer-contact-item"><i class="fa-solid fa-location-dot"></i> <span>٢٤ عمارات العبور - طريق صلاح سالم، القاهرة</span></div>
-          <div class="footer-contact-item"><a href="tel:01281769685" class="footer-link-contact"><i class="fa-solid fa-phone"></i> <span>٠١٢٨١٧٦٩٦٨٥</span></a></div>
-          <div class="footer-contact-item"><a href="mailto:info@akhawein.org" class="footer-link-contact"><i class="fa-solid fa-envelope"></i> <span>info@akhawein.org</span></a></div>
+
+        <!-- Col 3: مجالات الخير والتبرع -->
+        <div class="footer-col links-col" data-aos="fade-up" data-aos-delay="300">
+          <h4 class="footer-heading">مجالات الخير والتبرع</h4>
+          <ul class="footer-links">
+            <li><a href="causes.html"><i class="fa-solid fa-chevron-left"></i> كفالة الأيتام والأسر</a></li>
+            <li><a href="causes.html"><i class="fa-solid fa-chevron-left"></i> تجهيز الفتيات العرائس</a></li>
+            <li><a href="causes.html"><i class="fa-solid fa-chevron-left"></i> الغسيل الكلوي والرعاية الصحية</a></li>
+            <li><a href="causes.html"><i class="fa-solid fa-chevron-left"></i> إطعام الطعام والوجبات الساخنة</a></li>
+            <li><a href="causes.html"><i class="fa-solid fa-chevron-left"></i> فك كرب الحالات الإنسانية العاجلة</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-chevron-left"></i> طلب مساعدة أو دعم أهلي</a></li>
+          </ul>
         </div>
-        <div class="footer-col">
-          <h4>مقر الجمعية</h4>
-          <div class="footer-map-box"><iframe src="https://maps.google.com/maps?q=24%D8%B9%D9%85%D8%A7%D8%B1%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B9%D8%A8%D9%88%D8%B1%20%D8%B4%D8%A7%D8%B1%D8%B9%20%D8%B5%D9%84%D8%A7%D8%AD%20%D8%B3%D8%A7%D9%84%D9%85&t=m&z=14&output=embed&iwloc=near" title="24عمارات العبور شارع صلاح سالم" aria-label="24عمارات العبور شارع صلاح سالم" loading="lazy"></iframe></div>
+
+        <!-- Col 4: بيانات التواصل والمقر -->
+        <div class="footer-col contact-col" data-aos="fade-up" data-aos-delay="400">
+          <h4 class="footer-heading">تواصل معنا</h4>
+          <div class="footer-contact-list">
+            <div class="footer-contact-item">
+              <span class="contact-icon-badge"><i class="fa-solid fa-location-dot"></i></span>
+              <div class="contact-item-details">
+                <span class="contact-item-label">المقر الرئيسي:</span>
+                <span class="contact-item-val">٢٤ عمارات العبور - طريق صلاح سالم، القاهرة</span>
+              </div>
+            </div>
+
+            <div class="footer-contact-item">
+              <span class="contact-icon-badge"><i class="fa-solid fa-phone"></i></span>
+              <div class="contact-item-details">
+                <span class="contact-item-label">الهاتف والتبرعات:</span>
+                <a href="tel:01281769685" class="contact-item-val">٠١٢٨١٧٦٩٦٨٥</a>
+              </div>
+            </div>
+
+            <div class="footer-contact-item">
+              <span class="contact-icon-badge"><i class="fa-solid fa-envelope"></i></span>
+              <div class="contact-item-details">
+                <span class="contact-item-label">البريد الرسمي:</span>
+                <a href="mailto:info@akhawein.org" class="contact-item-val">info@akhawein.org</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-decree-badge">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>نفع عام بالقرار الوزاري رقم ١٦٠ لسنة ٢٠١٣</span>
+          </div>
         </div>
       </div>
-      <div class="footer-bottom"><div>© 2026 جميع الحقوق محفوظة لـ <strong>جمعية أخوين الخيرية</strong></div></div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p class="footer-bottom-copy">
+          جميع الحقوق محفوظة &copy; <span id="currentYear">٢٠٢٦</span> لـ <strong>جمعية أخـــوين الخـــيرية (Akhawein Charity)</strong>
+        </p>
+        <div class="footer-bottom-badge">
+          <i class="fa-solid fa-certificate" style="color: var(--accent);"></i>
+          <span>جمعية مشهرة برقم ٧٧٠٢ لسنة ٢٠٠٩</span>
+        </div>
+      </div>
     </div>
   </footer>
 
   <!-- Floating Buttons -->
   <div class="floating-actions">
     <a href="#" class="floating-btn back-to-top" aria-label="العودة للأعلى"><i class="fa-solid fa-arrow-up"></i></a>
-    <a href="https://wa.me/201281769685?text=السلام%20عليكم،%20أود%20التواصل%20مع%20جمعية%20أخوين" target="_blank" class="floating-btn whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://wa.me/201281769685?text=السلام%20عليكم،%20أود%20التواصل%20مع%20جمعية%20أخوين" target="_blank" rel="noopener noreferrer" class="floating-btn whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
     
   </div>
 
@@ -249,7 +325,7 @@
   <div class="drawer-overlay" id="drawerOverlay"></div>
   <aside class="mobile-nav-drawer" id="mobileDrawer">
     <div class="drawer-header">
-      <img src="https://www.akhawein.org/wp-content/uploads/2023/11/logo.png" alt="جمعية أخوين" style="height: 38px;">
+      <img src="images/logo.png" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2023/11/logo.png'" alt="جمعية أخوين" style="height: 38px;">
       <button class="modal-close-btn drawer-close-btn" style="color: var(--secondary);" aria-label="إغلاق"><i class="fa-solid fa-xmark"></i></button>
     </div>
     <div class="drawer-body">
@@ -261,7 +337,7 @@
         <li><a href="javascript:void(0)" onclick="event.preventDefault();"><i class="fa-solid fa-building-columns" style="color: var(--primary);"></i> وسائل التبرع</a></li>
         <li><a href="javascript:void(0)" onclick="event.preventDefault();"><i class="fa-solid fa-newspaper" style="color: var(--primary);"></i> المركز الإعلامي</a></li>
         <li><a href="javascript:void(0)" onclick="event.preventDefault();"><i class="fa-solid fa-handshake" style="color: var(--primary);"></i> البروتوكولات</a></li>
-        <li><a href="javascript:void(0)" onclick="event.preventDefault();"><i class="fa-solid fa-award" style="color: var(--primary);"></i> شهادات التقدير</a></li>
+        <li><a href="certificates.html"><i class="fa-solid fa-award" style="color: var(--primary);"></i> شهادات التقدير</a></li>
         <li><a href="contact.html"><i class="fa-solid fa-phone" style="color: var(--primary);"></i> تواصل معنا</a></li>
       </ul>
       <div style="margin-top: 2rem;"><a href="contact.html" class="btn btn-primary" style="width: 100%;"><i class="fa-solid fa-phone"></i> تواصل معنا</a></div>
@@ -270,6 +346,6 @@
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-  <script src="js/main.js?v=1788696730"></script>
+  <script src="js/main.js?v=1788800000"></script>
 </body>
 </html>
