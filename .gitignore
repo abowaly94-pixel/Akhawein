@@ -1,6 +1,7 @@
 # Dependencies
 node_modules/
 package-lock.json
+package.json.local
 
 # Environment & Sensitive Files
 .env
