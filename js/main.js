@@ -34,10 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize AOS (Animate On Scroll) if available
   if (typeof AOS !== 'undefined') {
     AOS.init({
-      duration: 800,
+      duration: 700,
       easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
       once: true,
-      offset: 50
+      offset: 40,
+      disable: window.innerWidth < 768
     });
   }
 

@@ -80,7 +80,9 @@ const handler = (req, res) => {
 
     res.writeHead(200, {
       'Content-Type': contentType,
-      'Cache-Control': isHtml ? 'public, max-age=0, must-revalidate' : 'public, max-age=31536000, immutable'
+      'Cache-Control': isHtml || ext === '.css' || ext === '.js'
+        ? 'public, max-age=0, must-revalidate'
+        : 'public, max-age=86400'
     });
     res.end(data);
   } catch (err) {
