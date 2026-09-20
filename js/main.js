@@ -323,12 +323,13 @@ function initScrollSpy() {
   const allNavLinks = document.querySelectorAll('.nav-menu .nav-link');
   if (!allNavLinks.length) return;
 
-  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  const rawPath = window.location.pathname.split('/').filter(Boolean).pop() || 'index';
+  const currentNormalized = rawPath.replace(/\.html$/, '').toLowerCase();
 
   let pageLink = null;
   allNavLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+    const href = (link.getAttribute('href') || '').replace(/\.html$/, '').replace(/^\.\//, '').toLowerCase();
+    if (href === currentNormalized || ((currentNormalized === 'index' || currentNormalized === '') && (href === 'index' || href === ''))) {
       pageLink = link;
     }
   });
@@ -843,11 +844,12 @@ function initMobileDrawer() {
   if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
 
   // Mark current active link in drawer automatically
-  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  const rawDrawerPath = window.location.pathname.split('/').filter(Boolean).pop() || 'index';
+  const currentDrawerNormalized = rawDrawerPath.replace(/\.html$/, '').toLowerCase();
   const drawerLinks = document.querySelectorAll('.mobile-nav-links a');
   drawerLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+    const href = (link.getAttribute('href') || '').replace(/\.html$/, '').replace(/^\.\//, '').toLowerCase();
+    if (href === currentDrawerNormalized || ((currentDrawerNormalized === 'index' || currentDrawerNormalized === '') && (href === 'index' || href === ''))) {
       link.classList.add('active');
       link.style.fontWeight = '700';
       link.style.color = 'var(--primary)';

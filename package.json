@@ -4,6 +4,7 @@
   "description": "جمعية اخوين الخيريه - الموقع الإلكتروني",
   "main": "server.js",
   "scripts": {
+    "build": "echo 'Static site ready for Vercel deployment'",
     "start": "node server.js"
   },
   "keywords": [],
