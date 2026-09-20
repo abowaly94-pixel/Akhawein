@@ -1,5 +1,4 @@
 # Vercel Deployment Ignore List
-server.js
 *.psd
 .git
 .vscode/

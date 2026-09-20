@@ -28,7 +28,7 @@ const MIME_TYPES = {
   '.pdf': 'application/pdf'
 };
 
-const server = http.createServer((req, res) => {
+const requestHandler = (req, res) => {
   let decodedPath = '/';
   try {
     decodedPath = decodeURIComponent(new URL(req.url, `http://localhost:${PORT}`).pathname);
@@ -45,6 +45,14 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // Handle clean URLs (e.g. /about -> /about.html)
+  if (!path.extname(filePath)) {
+    const htmlCandidate = filePath + '.html';
+    if (fs.existsSync(htmlCandidate)) {
+      filePath = htmlCandidate;
+    }
+  }
+
   fs.stat(filePath, (err, stats) => {
     if (!err && stats.isDirectory()) {
       filePath = path.join(filePath, 'index.html');
@@ -53,6 +61,12 @@ const server = http.createServer((req, res) => {
     fs.readFile(filePath, (err, data) => {
       if (err) {
         if (err.code === 'ENOENT') {
+          const notFoundPath = path.join(BASE_DIR, '404.html');
+          if (fs.existsSync(notFoundPath)) {
+            res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+            res.end(fs.readFileSync(notFoundPath));
+            return;
+          }
           res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
           res.end('404 Not Found');
         } else {
@@ -64,17 +78,20 @@ const server = http.createServer((req, res) => {
 
       const ext = path.extname(filePath).toLowerCase();
       const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+      const isHtml = ext === '.html';
       res.writeHead(200, {
         'Content-Type': contentType,
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': '0'
+        'Cache-Control': isHtml ? 'public, max-age=0, must-revalidate' : 'public, max-age=31536000, immutable'
       });
       res.end(data);
     });
   });
-});
+};
+
+const server = http.createServer(requestHandler);
 
 server.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}/`);
 });
+
+module.exports = server;
