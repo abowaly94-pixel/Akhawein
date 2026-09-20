@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackToTopProgress();
   initSmartEmailLinks();
   initCertificatesLightbox();
+  initGalleryMedia();
 });
 
 /* -------------------------------------------------------------------------- */
@@ -71,7 +72,7 @@ function initCard3DTilt() {
   const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
   if (isTouchDevice) return;
 
-  const tiltCards = document.querySelectorAll('.program-card, .cause-card, .bank-card, .about-image-wrapper');
+  const tiltCards = document.querySelectorAll('.program-card, .cause-card, .bank-card, .about-image-wrapper, .media-card');
   if (!tiltCards.length) return;
 
   tiltCards.forEach(card => {
@@ -771,17 +772,11 @@ function initForms() {
       const data = await response.json();
 
       if (response.ok && data.success === 'true') {
-        showToast('تم إرسال رسالتك بنجاح إلى بريد الجمعية!');
+        showToast('تم إرسال رسالتك بنجاح!');
         contactForm.reset();
         if (formStatus) {
-          formStatus.style.display = 'block';
-          formStatus.innerHTML = `
-            <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; color: #065f46; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.08);">
-              <i class="fa-solid fa-circle-check" style="font-size: 2.2rem; color: #10b981; margin-bottom: 0.5rem; display: inline-block;"></i>
-              <h4 style="margin: 0.5rem 0; font-size: 1.25rem; font-weight: 700; color: #065f46;">تم إرسال رسالتك بنجاح!</h4>
-              <p style="margin: 0; color: #047857; font-size: 0.95rem;">شكراً لتواصلك مع جمعية أخوين. تم إرسال كافة التفاصيل إلى إدارة الجمعية وسيتم مراجعتها والتواصل معكم قريباً.</p>
-            </div>
-          `;
+          formStatus.style.display = 'none';
+          formStatus.innerHTML = '';
         }
       } else if (data.message && /Activation|activation|Activate/i.test(data.message)) {
         showToast('تم إرسال رابط التفعيل إلى بريد الجمعية.');
@@ -862,68 +857,202 @@ function initMobileDrawer() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 21. Certificates Interactive Lightbox Modal Controller                     */
+/* 21. Certificates Interactive Lightbox Modal & Filtering Controller         */
 /* -------------------------------------------------------------------------- */
 function initCertificatesLightbox() {
   const modal = document.getElementById('certLightboxModal');
-  if (!modal) return;
+  const cardsGrid = document.getElementById('certificatesGrid');
+  if (!modal || !cardsGrid) return;
 
   const modalImg = document.getElementById('certLightboxImg');
   const counterEl = document.getElementById('certLightboxCounter');
   const downloadBtn = document.getElementById('certLightboxDownload');
+  const captionTitleEl = document.getElementById('certLightboxCaptionTitle');
+  const captionYearEl = document.getElementById('certLightboxCaptionYear');
   const closeBtn = modal.querySelector('.close-btn');
   const prevBtn = modal.querySelector('.prev-btn');
   const nextBtn = modal.querySelector('.next-btn');
 
-  // Collect all certificate trigger elements on the page
-  const triggerCards = Array.from(document.querySelectorAll('[data-cert-src]'));
-  if (triggerCards.length === 0) return;
+  // Filter and Search elements
+  const filterPills = Array.from(document.querySelectorAll('.cert-filter-pill'));
+  const searchInput = document.getElementById('certSearchInput');
+  const searchClearBtn = document.getElementById('certSearchClear');
+  const searchWrapper = document.querySelector('.cert-search-wrapper');
+  const emptyState = document.getElementById('certEmptyState');
+  const resetFiltersBtn = document.getElementById('certResetFiltersBtn');
+  const summaryPill = document.getElementById('certSummaryPill');
 
-  const certData = triggerCards.map((el, idx) => ({
-    src: el.getAttribute('data-cert-src'),
-    title: el.getAttribute('data-cert-title') || `شهادة تقدير #${idx + 1}`,
-    index: idx
-  }));
+  const allCards = Array.from(cardsGrid.querySelectorAll('.certificate-card'));
+  if (allCards.length === 0) return;
 
+  let activeFilter = 'all';
+  let searchQuery = '';
+  let activeVisibleCards = [...allCards];
   let currentIndex = 0;
 
+  // Arabic text normalizer for accurate search
+  function normalizeArabic(str) {
+    if (!str) return '';
+    return str
+      .toString()
+      .trim()
+      .toLowerCase()
+      .replace(/[أإآ]/g, 'ا')
+      .replace(/ة/g, 'ه')
+      .replace(/ى/g, 'ي')
+      .replace(/[\u064B-\u065F]/g, '') // Remove harakat (tashkeel)
+      .replace(/\s+/g, ' ');
+  }
+
+  // Filter cards based on active year pill and search query
+  function filterCertificates() {
+    const normQuery = normalizeArabic(searchQuery);
+    let visibleCount = 0;
+    activeVisibleCards = [];
+
+    allCards.forEach(card => {
+      const cardYear = card.getAttribute('data-year') || '';
+      const cardRecipient = card.getAttribute('data-recipient') || '';
+      const cardTitle = card.getAttribute('data-title') || '';
+      const combinedText = normalizeArabic(`${cardRecipient} ${cardTitle} ${cardYear}`);
+
+      const matchesFilter = (activeFilter === 'all' || cardYear === activeFilter);
+      const matchesSearch = !normQuery || combinedText.includes(normQuery);
+
+      if (matchesFilter && matchesSearch) {
+        card.style.display = '';
+        activeVisibleCards.push(card);
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    // Toggle Empty State
+    if (emptyState) {
+      if (visibleCount === 0) {
+        emptyState.classList.add('active');
+        cardsGrid.style.display = 'none';
+      } else {
+        emptyState.classList.remove('active');
+        cardsGrid.style.display = 'grid';
+      }
+    }
+
+    // Update Summary Counter Pill
+    if (summaryPill) {
+      const countSpan = summaryPill.querySelector('span');
+      if (countSpan) {
+        const arCount = toArabicDigits(visibleCount);
+        countSpan.textContent = `${arCount} شهادة تقدير معروضة`;
+      }
+    }
+  }
+
+  // Bind filter pill clicks
+  filterPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      filterPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      activeFilter = pill.getAttribute('data-filter') || 'all';
+      filterCertificates();
+    });
+  });
+
+  // Bind search input
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.trim();
+      if (searchWrapper) {
+        if (searchQuery.length > 0) {
+          searchWrapper.classList.add('has-text');
+        } else {
+          searchWrapper.classList.remove('has-text');
+        }
+      }
+      filterCertificates();
+    });
+  }
+
+  if (searchClearBtn) {
+    searchClearBtn.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
+      searchQuery = '';
+      if (searchWrapper) searchWrapper.classList.remove('has-text');
+      filterCertificates();
+      if (searchInput) searchInput.focus();
+    });
+  }
+
+  if (resetFiltersBtn) {
+    resetFiltersBtn.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
+      searchQuery = '';
+      if (searchWrapper) searchWrapper.classList.remove('has-text');
+      activeFilter = 'all';
+      filterPills.forEach(p => {
+        if (p.getAttribute('data-filter') === 'all') p.classList.add('active');
+        else p.classList.remove('active');
+      });
+      filterCertificates();
+    });
+  }
+
+  // Update Lightbox Modal content for index in activeVisibleCards
   function updateModal(index) {
-    if (index < 0) index = certData.length - 1;
-    if (index >= certData.length) index = 0;
+    if (activeVisibleCards.length === 0) return;
+    if (index < 0) index = activeVisibleCards.length - 1;
+    if (index >= activeVisibleCards.length) index = 0;
     currentIndex = index;
 
-    const item = certData[currentIndex];
-    
-    // Quick fade transition
+    const currentCard = activeVisibleCards[currentIndex];
+    const frame = currentCard.querySelector('.cert-image-frame');
+    const src = frame ? frame.getAttribute('data-cert-src') : '';
+    const title = (frame ? frame.getAttribute('data-cert-title') : '') || 'شهادة تقدير';
+    const yearAr = (frame ? frame.getAttribute('data-cert-year') : '') || '';
+    const recipient = currentCard.getAttribute('data-recipient') || title;
+
     if (modalImg) {
       modalImg.style.opacity = '0';
-      modalImg.style.transform = 'scale(0.95)';
+      modalImg.style.transform = 'scale(0.96)';
       setTimeout(() => {
-        modalImg.src = item.src;
-        modalImg.alt = item.title;
+        modalImg.src = src;
+        modalImg.alt = title;
         modalImg.onload = () => {
           modalImg.style.opacity = '1';
           modalImg.style.transform = 'scale(1)';
         };
-      }, 150);
+      }, 120);
     }
 
     if (counterEl) {
       const currentAr = toArabicDigits(currentIndex + 1);
-      const totalAr = toArabicDigits(certData.length);
+      const totalAr = toArabicDigits(activeVisibleCards.length);
       counterEl.innerHTML = `<i class="fa-solid fa-award" style="color: var(--accent);"></i> شهادة ${currentAr} من ${totalAr}`;
     }
 
+    if (captionTitleEl) {
+      captionTitleEl.textContent = recipient;
+    }
+    if (captionYearEl) {
+      captionYearEl.textContent = yearAr;
+      captionYearEl.style.display = yearAr ? 'inline-block' : 'none';
+    }
+
     if (downloadBtn) {
-      downloadBtn.href = item.src;
-      downloadBtn.setAttribute('download', `شهادة-تقدير-جمعية-أخوين-${currentIndex + 1}.jpg`);
+      downloadBtn.href = src;
+      const cleanName = recipient.replace(/[/\\?%*:|"<>]/g, '').replace(/\s+/g, '-');
+      downloadBtn.setAttribute('download', `شهادة-تقدير-${cleanName}.jpg`);
     }
   }
 
-  function openModal(index) {
-    updateModal(index);
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+  function openModal(cardEl) {
+    const cardIndex = activeVisibleCards.indexOf(cardEl);
+    if (cardIndex !== -1) {
+      updateModal(cardIndex);
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
   }
 
   function closeModal() {
@@ -939,14 +1068,16 @@ function initCertificatesLightbox() {
     updateModal(currentIndex - 1);
   }
 
-  // Attach click listeners to cards and trigger buttons
-  triggerCards.forEach((el, idx) => {
-    el.addEventListener('click', (e) => {
-      // If clicked on download link inside card, don't open modal
-      if (e.target.closest('.cert-download-direct')) return;
-      e.preventDefault();
-      openModal(idx);
-    });
+  // Attach card click handlers
+  allCards.forEach(card => {
+    const frame = card.querySelector('.cert-image-frame');
+    if (frame) {
+      frame.addEventListener('click', (e) => {
+        if (e.target.closest('.cert-download-direct')) return;
+        e.preventDefault();
+        openModal(card);
+      });
+    }
   });
 
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
@@ -964,12 +1095,11 @@ function initCertificatesLightbox() {
   document.addEventListener('keydown', (e) => {
     if (!modal.classList.contains('active')) return;
     if (e.key === 'Escape') closeModal();
-    // In RTL, ArrowRight naturally points to next or prev; support both intuitive directions
     if (e.key === 'ArrowRight') prevCert();
     if (e.key === 'ArrowLeft') nextCert();
   });
 
-  // Touch swipe support for mobile devices
+  // Touch swipe support for mobile
   let touchStartX = 0;
   let touchEndX = 0;
 
@@ -980,13 +1110,366 @@ function initCertificatesLightbox() {
   modal.addEventListener('touchend', (e) => {
     touchEndX = e.changedTouches[0].screenX;
     const diff = touchEndX - touchStartX;
-    if (Math.abs(diff) > 50) {
+    if (Math.abs(diff) > 45) {
       if (diff > 0) {
-        prevCert(); // Swiped right
+        prevCert();
       } else {
-        nextCert(); // Swiped left
+        nextCert();
       }
     }
   }, { passive: true });
 }
+
+/* -------------------------------------------------------------------------- */
+/* 22. Media Gallery & In-Page Video Player Controller                         */
+/* -------------------------------------------------------------------------- */
+function initGalleryMedia() {
+  const modal = document.getElementById('mediaLightboxModal');
+  const cardsGrid = document.getElementById('galleryGrid') || document.getElementById('homeGalleryGrid');
+  if (!modal || !cardsGrid) return;
+
+  const modalImg = document.getElementById('mediaLightboxImg');
+  const videoContainer = document.getElementById('mediaLightboxVideoContainer');
+  const videoIframe = document.getElementById('mediaLightboxIframe');
+  const videoLocal = document.getElementById('mediaLightboxLocalVideo');
+  const counterEl = document.getElementById('mediaLightboxCounter');
+  const captionTitleEl = document.getElementById('mediaLightboxCaptionTitle');
+  const captionBadgeEl = document.getElementById('mediaLightboxCaptionBadge');
+  const downloadBtn = document.getElementById('mediaLightboxDownload');
+  const closeBtn = modal.querySelector('.close-btn');
+  const prevBtn = modal.querySelector('.prev-btn');
+  const nextBtn = modal.querySelector('.next-btn');
+
+  // Filter and Search Elements
+  const filterPills = Array.from(document.querySelectorAll('.gallery-filter-pill'));
+  const searchInput = document.getElementById('gallerySearchInput');
+  const searchClearBtn = document.getElementById('gallerySearchClear');
+  const searchWrapper = document.querySelector('.gallery-search-wrapper');
+  const emptyState = document.getElementById('galleryEmptyState');
+  const resetFiltersBtn = document.getElementById('galleryResetFiltersBtn');
+  const summaryPill = document.getElementById('gallerySummaryPill');
+
+  const allCards = Array.from(cardsGrid.querySelectorAll('.media-card'));
+  if (allCards.length === 0) return;
+
+  let activeFilter = 'all';
+  let searchQuery = '';
+  let activeVisibleCards = [...allCards];
+  let currentIndex = 0;
+
+  // Arabic text normalizer
+  function normalizeArabic(str) {
+    if (!str) return '';
+    return str
+      .toString()
+      .trim()
+      .toLowerCase()
+      .replace(/[أإآ]/g, 'ا')
+      .replace(/ة/g, 'ه')
+      .replace(/ى/g, 'ي')
+      .replace(/[\u064B-\u065F]/g, '') // Remove harakat
+      .replace(/\s+/g, ' ');
+  }
+
+  // Filter cards based on category and search query
+  function filterMedia() {
+    const normQuery = normalizeArabic(searchQuery);
+    let visibleCount = 0;
+    activeVisibleCards = [];
+
+    allCards.forEach(card => {
+      const cardCategory = card.getAttribute('data-category') || '';
+      const cardType = card.getAttribute('data-type') || '';
+      const cardTitle = card.getAttribute('data-title') || '';
+      const cardBadge = card.getAttribute('data-badge') || '';
+      const cardDate = card.getAttribute('data-date') || '';
+      const combinedText = normalizeArabic(`${cardTitle} ${cardCategory} ${cardType} ${cardBadge} ${cardDate}`);
+
+      let matchesFilter = false;
+      if (activeFilter === 'all') {
+        matchesFilter = true;
+      } else if (activeFilter === 'videos') {
+        matchesFilter = (cardType === 'youtube' || cardType === 'video-local');
+      } else if (activeFilter === 'photos') {
+        matchesFilter = (cardType === 'image');
+      } else {
+        matchesFilter = cardCategory.includes(activeFilter);
+      }
+
+      const matchesSearch = !normQuery || combinedText.includes(normQuery);
+
+      if (matchesFilter && matchesSearch) {
+        card.style.display = '';
+        activeVisibleCards.push(card);
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    // Toggle Empty State
+    if (emptyState) {
+      if (visibleCount === 0) {
+        emptyState.classList.add('active');
+        cardsGrid.style.display = 'none';
+      } else {
+        emptyState.classList.remove('active');
+        cardsGrid.style.display = 'grid';
+      }
+    }
+
+    // Update Summary Counter Pill
+    if (summaryPill) {
+      const countSpan = summaryPill.querySelector('span');
+      if (countSpan) {
+        const arCount = toArabicDigits(visibleCount);
+        countSpan.textContent = `${arCount} مادة إعلامية معروضة`;
+      }
+    }
+  }
+
+  // Bind filter pills
+  filterPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      filterPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      activeFilter = pill.getAttribute('data-filter') || 'all';
+      filterMedia();
+    });
+  });
+
+  // Bind search input
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.trim();
+      if (searchWrapper) {
+        if (searchQuery.length > 0) {
+          searchWrapper.classList.add('has-text');
+        } else {
+          searchWrapper.classList.remove('has-text');
+        }
+      }
+      filterMedia();
+    });
+  }
+
+  if (searchClearBtn) {
+    searchClearBtn.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
+      searchQuery = '';
+      if (searchWrapper) searchWrapper.classList.remove('has-text');
+      filterMedia();
+      if (searchInput) searchInput.focus();
+    });
+  }
+
+  if (resetFiltersBtn) {
+    resetFiltersBtn.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
+      searchQuery = '';
+      if (searchWrapper) searchWrapper.classList.remove('has-text');
+      activeFilter = 'all';
+      filterPills.forEach(p => {
+        if (p.getAttribute('data-filter') === 'all') p.classList.add('active');
+        else p.classList.remove('active');
+      });
+      filterMedia();
+    });
+  }
+
+  // Clean and stop any active video playback
+  function stopActiveVideo() {
+    if (videoIframe) {
+      videoIframe.src = '';
+      videoIframe.style.display = 'none';
+    }
+    if (videoLocal) {
+      try {
+        videoLocal.pause();
+        videoLocal.currentTime = 0;
+      } catch (e) {}
+      videoLocal.src = '';
+      videoLocal.style.display = 'none';
+    }
+    if (videoContainer) {
+      videoContainer.style.display = 'none';
+    }
+  }
+
+  // Update Lightbox Modal content for index in activeVisibleCards
+  function updateModal(index) {
+    if (activeVisibleCards.length === 0) return;
+    if (index < 0) index = activeVisibleCards.length - 1;
+    if (index >= activeVisibleCards.length) index = 0;
+    currentIndex = index;
+
+    // Stop current video if playing
+    stopActiveVideo();
+
+    const currentCard = activeVisibleCards[currentIndex];
+    const mediaType = currentCard.getAttribute('data-type') || 'image';
+    const mediaSrc = currentCard.getAttribute('data-src') || '';
+    const mediaTitle = currentCard.getAttribute('data-title') || 'مادة إعلامية';
+    const mediaBadge = currentCard.getAttribute('data-badge') || '';
+
+    // Update Counter & Captions
+    if (counterEl) {
+      const currentAr = toArabicDigits(currentIndex + 1);
+      const totalAr = toArabicDigits(activeVisibleCards.length);
+      counterEl.innerHTML = `<i class="fa-solid fa-photo-film" style="color: var(--accent);"></i> مادة ${currentAr} من ${totalAr}`;
+    }
+
+    if (captionTitleEl) {
+      captionTitleEl.textContent = mediaTitle;
+    }
+    if (captionBadgeEl) {
+      captionBadgeEl.textContent = mediaBadge;
+      captionBadgeEl.style.display = mediaBadge ? 'inline-block' : 'none';
+    }
+
+    // Render by type
+    if (mediaType === 'image') {
+      if (videoContainer) videoContainer.style.display = 'none';
+      if (modalImg) {
+        modalImg.style.display = 'block';
+        modalImg.style.opacity = '0';
+        modalImg.style.transform = 'scale(0.96)';
+        setTimeout(() => {
+          modalImg.src = mediaSrc;
+          modalImg.alt = mediaTitle;
+          modalImg.onload = () => {
+            modalImg.style.opacity = '1';
+            modalImg.style.transform = 'scale(1)';
+          };
+        }, 120);
+      }
+
+      if (downloadBtn) {
+        downloadBtn.style.display = 'inline-flex';
+        downloadBtn.href = mediaSrc;
+        const cleanName = mediaTitle.replace(/[/\\?%*:|"<>]/g, '').replace(/\s+/g, '-');
+        downloadBtn.setAttribute('download', `${cleanName}.jpg`);
+        downloadBtn.setAttribute('title', 'تحميل الصورة بدقة عالية');
+      }
+    } else if (mediaType === 'youtube') {
+      if (modalImg) modalImg.style.display = 'none';
+      if (videoContainer) videoContainer.style.display = 'block';
+      if (videoLocal) videoLocal.style.display = 'none';
+      if (videoIframe) {
+        videoIframe.style.display = 'block';
+        videoIframe.src = `https://www.youtube-nocookie.com/embed/${mediaSrc}?autoplay=1&rel=0&modestbranding=1`;
+      }
+
+      if (downloadBtn) {
+        downloadBtn.style.display = 'inline-flex';
+        downloadBtn.href = `https://www.youtube.com/watch?v=${mediaSrc}`;
+        downloadBtn.removeAttribute('download');
+        downloadBtn.setAttribute('target', '_blank');
+        downloadBtn.setAttribute('title', 'مشاهدة على يوتيوب في نافذة جديدة');
+      }
+    } else if (mediaType === 'video-local') {
+      if (modalImg) modalImg.style.display = 'none';
+      if (videoContainer) videoContainer.style.display = 'block';
+      if (videoIframe) videoIframe.style.display = 'none';
+      if (videoLocal) {
+        videoLocal.style.display = 'block';
+        videoLocal.src = mediaSrc;
+        try {
+          videoLocal.play().catch(() => {});
+        } catch (e) {}
+      }
+
+      if (downloadBtn) {
+        downloadBtn.style.display = 'inline-flex';
+        downloadBtn.href = mediaSrc;
+        const cleanName = mediaTitle.replace(/[/\\?%*:|"<>]/g, '').replace(/\s+/g, '-');
+        downloadBtn.setAttribute('download', `${cleanName}.mp4`);
+        downloadBtn.setAttribute('title', 'تحميل الفيديو الميداني بدقة عالية');
+      }
+    }
+  }
+
+  function openModal(cardEl) {
+    const cardIndex = activeVisibleCards.indexOf(cardEl);
+    if (cardIndex !== -1) {
+      updateModal(cardIndex);
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeModal() {
+    stopActiveVideo();
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function nextMedia() {
+    updateModal(currentIndex + 1);
+  }
+
+  function prevMedia() {
+    updateModal(currentIndex - 1);
+  }
+
+  // Attach card click handlers
+  allCards.forEach(card => {
+    const frame = card.querySelector('.media-thumb-frame');
+    if (frame) {
+      frame.addEventListener('click', (e) => {
+        if (e.target.closest('.media-action-dl-btn')) return;
+        e.preventDefault();
+        openModal(card);
+      });
+    }
+
+    const previewBtn = card.querySelector('.media-action-preview-btn');
+    if (previewBtn) {
+      previewBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal(card);
+      });
+    }
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (prevBtn) prevBtn.addEventListener('click', prevMedia);
+  if (nextBtn) nextBtn.addEventListener('click', nextMedia);
+
+  // Close when clicking outside content
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal || e.target.classList.contains('media-lightbox-body')) {
+      closeModal();
+    }
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('active')) return;
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowRight') prevMedia();
+    if (e.key === 'ArrowLeft') nextMedia();
+  });
+
+  // Touch swipe support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  modal.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  modal.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchEndX - touchStartX;
+    if (Math.abs(diff) > 45) {
+      if (diff > 0) {
+        prevMedia();
+      } else {
+        nextMedia();
+      }
+    }
+  }, { passive: true });
+}
+
 

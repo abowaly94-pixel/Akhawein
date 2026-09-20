@@ -75,7 +75,7 @@
           <div class="nav-item"><a href="activities.html" class="nav-link">ميادين العمل والأنشطة</a></div>
           <div class="nav-item"><a href="causes.html" class="nav-link">حالات التبرع</a></div>
           <div class="nav-item"><a href="javascript:void(0)" onclick="event.preventDefault();" class="nav-link">وسائل التبرع</a></div>
-          <div class="nav-item"><a href="javascript:void(0)" onclick="event.preventDefault();" class="nav-link">المركز الإعلامي</a></div>
+          <div class="nav-item"><a href="gallery.html" class="nav-link">المركز الإعلامي</a></div>
           <div class="nav-item"><a href="javascript:void(0)" onclick="event.preventDefault();" class="nav-link">البروتوكولات</a></div>
           <div class="nav-item"><a href="certificates.html" class="nav-link active">شهادات التقدير</a></div>
           <div class="nav-item"><a href="contact.html" class="nav-link">تواصل معنا</a></div>
@@ -93,9 +93,9 @@
   <section class="page-intro-header" style="padding: 4.5rem 0 2.5rem; background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%); text-align: center; border-bottom: 1px solid var(--border-color);">
     <div class="container">
       <div class="text-center programs-header" data-aos="fade-up" style="margin-bottom: 0;">
-        <span class="section-tag"><i class="fa-solid fa-award"></i> وسام التكريم والتقدير</span>
-        <h1 class="section-title">شهادات التقدير والأوسمة</h1>
-        <p class="section-desc">سجل فخر واعتزاز يوثق مسيرة العطاء المتبادل والتعاون المثمر والبناء بين جمعية أخوين الخيرية وشركاء النجاح لخدمة المجتمع والإنسان.</p>
+        <span class="section-tag"><i class="fa-solid fa-medal"></i> سجل الشرف والتكريم</span>
+        <h1 class="section-title">شهادات التقدير والأوسمة الرسمية</h1>
+        <p class="section-desc">توثيق واعتزاز بشركاء المسيرة وداعمي العمل الأهلي وأصحاب الأيادي البيضاء في مسيرة جمعية أخوين الخيرية على مدار السنوات.</p>
       </div>
     </div>
   </section>
@@ -106,364 +106,1328 @@
       
       <!-- Top Meta / Info Bar -->
       <div class="certificates-intro-bar" data-aos="fade-up">
-        <div class="cert-count-pill">
+        <div class="cert-count-pill" id="certSummaryPill">
           <i class="fa-solid fa-medal"></i>
-          <span>٢٣ شهادة تقدير رسمية معتمدة</span>
+          <span>٨٤ شهادة ووسام معتمد</span>
         </div>
         <div class="cert-note-text">
-          <i class="fa-solid fa-circle-info" style="color: var(--primary);"></i>
-          <span>انقر فوق أي شهادة لتكبيرها والتنقل بين الشهادات أو تحميلها مباشرة</span>
+          <i class="fa-solid fa-shield-halved" style="color: var(--primary);"></i>
+          <span>أرشيف رسمي موثق صادر عن إدارة جمعية أخوين الخيرية (مشهرة برقم ٧٧٠٢ لسنة ٢٠٠٩)</span>
         </div>
       </div>
 
-      <!-- Grid -->
-      <div class="certificates-grid">
+      <!-- Filter Toolbar & Search Box -->
+      <div class="cert-toolbar-container" data-aos="fade-up">
+        <div class="cert-filter-nav" role="tablist">
+          <button type="button" class="cert-filter-pill active" data-filter="all">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>كافة الشهادات</span>
+            <span class="pill-badge">٨٤</span>
+          </button>
+          <button type="button" class="cert-filter-pill" data-filter="2014">
+            <i class="fa-solid fa-award"></i>
+            <span>دفعة عام ٢٠١٤</span>
+            <span class="pill-badge">٣</span>
+          </button>
+          <button type="button" class="cert-filter-pill" data-filter="2013">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>دفعة عام ٢٠١٣</span>
+            <span class="pill-badge">١٨</span>
+          </button>
+          <button type="button" class="cert-filter-pill" data-filter="2012">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>دفعة عام ٢٠١٢</span>
+            <span class="pill-badge">٢٧</span>
+          </button>
+          <button type="button" class="cert-filter-pill" data-filter="2011">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>دفعة عام ٢٠١١</span>
+            <span class="pill-badge">١٣</span>
+          </button>
+          <button type="button" class="cert-filter-pill" data-filter="official">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>الأوسمة والدروع الرسمية</span>
+            <span class="pill-badge">٢٣</span>
+          </button>
+        </div>
 
-        <!-- Certificate Card 1 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-01.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #٠١">
-            <img src="images/certificates/cert-01.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ٠١" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-01.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <div class="cert-search-wrapper">
+          <i class="fa-solid fa-magnifying-glass cert-search-icon"></i>
+          <input type="text" id="certSearchInput" class="cert-search-input" placeholder="ابحث باسم المكرم أو جهة التكريم أو السنة..." autocomplete="off">
+          <button type="button" id="certSearchClear" class="cert-search-clear" title="مسح البحث"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+
+      <!-- Grid of Certificates -->
+      <div class="certificates-grid" id="certificatesGrid">
+        <!-- Certificate: اشرف سمير بندارى (2014) -->
+        <div class="certificate-card" data-year="2014" data-recipient="اشرف سمير بندارى" data-title="شهادة تقدير: اشرف سمير بندارى" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2014/اشرف سمير بندارى.jpg" data-cert-title="شهادة شكر وتقدير: اشرف سمير بندارى" data-cert-year="دفعة عام ٢٠١٤">
+            <img src="images/certificates/2014/اشرف سمير بندارى.jpg" loading="lazy" alt="شهادة شكر وتقدير: اشرف سمير بندارى - دفعة عام ٢٠١٤">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٤</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-01.jpg" download="شهادة-تقدير-جمعية-أخوين-01.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2014/اشرف سمير بندارى.jpg" download="شهادة-تقدير-اشرف-سمير-بندارى-2014.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title" title="اشرف سمير بندارى">اشرف سمير بندارى</h3>
+            <span class="cert-number-tag">عام ٢٠١٤</span>
+          </div>
+        </div>
+        <!-- Certificate: شريف احمد حسين (2014) -->
+        <div class="certificate-card" data-year="2014" data-recipient="شريف احمد حسين" data-title="شهادة تقدير: شريف احمد حسين" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2014/شريف احمد حسين.jpg" data-cert-title="شهادة شكر وتقدير: شريف احمد حسين" data-cert-year="دفعة عام ٢٠١٤">
+            <img src="images/certificates/2014/شريف احمد حسين.jpg" loading="lazy" alt="شهادة شكر وتقدير: شريف احمد حسين - دفعة عام ٢٠١٤">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٤</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2014/شريف احمد حسين.jpg" download="شهادة-تقدير-شريف-احمد-حسين-2014.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="شريف احمد حسين">شريف احمد حسين</h3>
+            <span class="cert-number-tag">عام ٢٠١٤</span>
+          </div>
+        </div>
+        <!-- Certificate: محمد ابو العينين (2014) -->
+        <div class="certificate-card" data-year="2014" data-recipient="محمد ابو العينين" data-title="شهادة تقدير: محمد ابو العينين" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2014/محمد ابو العينين.jpg" data-cert-title="شهادة شكر وتقدير: محمد ابو العينين" data-cert-year="دفعة عام ٢٠١٤">
+            <img src="images/certificates/2014/محمد ابو العينين.jpg" loading="lazy" alt="شهادة شكر وتقدير: محمد ابو العينين - دفعة عام ٢٠١٤">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٤</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2014/محمد ابو العينين.jpg" download="شهادة-تقدير-محمد-ابو-العينين-2014.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="محمد ابو العينين">محمد ابو العينين</h3>
+            <span class="cert-number-tag">عام ٢٠١٤</span>
+          </div>
+        </div>
+        <!-- Certificate: احمد خلف الله احمد (2013) -->
+        <div class="certificate-card" data-year="2013" data-recipient="احمد خلف الله احمد" data-title="شهادة تقدير: احمد خلف الله احمد" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2013/احمد خلف الله احمد.jpg" data-cert-title="شهادة شكر وتقدير: احمد خلف الله احمد" data-cert-year="دفعة عام ٢٠١٣">
+            <img src="images/certificates/2013/احمد خلف الله احمد.jpg" loading="lazy" alt="شهادة شكر وتقدير: احمد خلف الله احمد - دفعة عام ٢٠١٣">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٣</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2013/احمد خلف الله احمد.jpg" download="شهادة-تقدير-احمد-خلف-الله-احمد-2013.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="احمد خلف الله احمد">احمد خلف الله احمد</h3>
+            <span class="cert-number-tag">عام ٢٠١٣</span>
+          </div>
+        </div>
+        <!-- Certificate: اسامة اسماعيل ابراهيم (2013) -->
+        <div class="certificate-card" data-year="2013" data-recipient="اسامة اسماعيل ابراهيم" data-title="شهادة تقدير: اسامة اسماعيل ابراهيم" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2013/اسامة اسماعيل ابراهيم.jpg" data-cert-title="شهادة شكر وتقدير: اسامة اسماعيل ابراهيم" data-cert-year="دفعة عام ٢٠١٣">
+            <img src="images/certificates/2013/اسامة اسماعيل ابراهيم.jpg" loading="lazy" alt="شهادة شكر وتقدير: اسامة اسماعيل ابراهيم - دفعة عام ٢٠١٣">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٣</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2013/اسامة اسماعيل ابراهيم.jpg" download="شهادة-تقدير-اسامة-اسماعيل-ابراهيم-2013.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="اسامة اسماعيل ابراهيم">اسامة اسماعيل ابراهيم</h3>
+            <span class="cert-number-tag">عام ٢٠١٣</span>
+          </div>
+        </div>
+        <!-- Certificate: اسماعيل ابراهيم اسماعيل (2013) -->
+        <div class="certificate-card" data-year="2013" data-recipient="اسماعيل ابراهيم اسماعيل" data-title="شهادة تقدير: اسماعيل ابراهيم اسماعيل" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2013/اسماعيل ابراهيم اسماعيل.jpg" data-cert-title="شهادة شكر وتقدير: اسماعيل ابراهيم اسماعيل" data-cert-year="دفعة عام ٢٠١٣">
+            <img src="images/certificates/2013/اسماعيل ابراهيم اسماعيل.jpg" loading="lazy" alt="شهادة شكر وتقدير: اسماعيل ابراهيم اسماعيل - دفعة عام ٢٠١٣">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٣</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2013/اسماعيل ابراهيم اسماعيل.jpg" download="شهادة-تقدير-اسماعيل-ابراهيم-اسماعيل-2013.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="اسماعيل ابراهيم اسماعيل">اسماعيل ابراهيم اسماعيل</h3>
+            <span class="cert-number-tag">عام ٢٠١٣</span>
+          </div>
+        </div>
+        <!-- Certificate: اشرف سمير بندارى (2013) -->
+        <div class="certificate-card" data-year="2013" data-recipient="اشرف سمير بندارى" data-title="شهادة تقدير: اشرف سمير بندارى" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2013/اشرف سمير بندارى.jpg" data-cert-title="شهادة شكر وتقدير: اشرف سمير بندارى" data-cert-year="دفعة عام ٢٠١٣">
+            <img src="images/certificates/2013/اشرف سمير بندارى.jpg" loading="lazy" alt="شهادة شكر وتقدير: اشرف سمير بندارى - دفعة عام ٢٠١٣">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٣</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2013/اشرف سمير بندارى.jpg" download="شهادة-تقدير-اشرف-سمير-بندارى-2013.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="اشرف سمير بندارى">اشرف سمير بندارى</h3>
+            <span class="cert-number-tag">عام ٢٠١٣</span>
+          </div>
+        </div>
+        <!-- Certificate: اميرة سامى سعيد (2013) -->
+        <div class="certificate-card" data-year="2013" data-recipient="اميرة سامى سعيد" data-title="شهادة تقدير: اميرة سامى سعيد" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2013/اميرة سامى سعيد.jpg" data-cert-title="شهادة شكر وتقدير: اميرة سامى سعيد" data-cert-year="دفعة عام ٢٠١٣">
+            <img src="images/certificates/2013/اميرة سامى سعيد.jpg" loading="lazy" alt="شهادة شكر وتقدير: اميرة سامى سعيد - دفعة عام ٢٠١٣">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٣</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2013/اميرة سامى سعيد.jpg" download="شهادة-تقدير-اميرة-سامى-سعيد-2013.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="اميرة سامى سعيد">اميرة سامى سعيد</h3>
+            <span class="cert-number-tag">عام ٢٠١٣</span>
+          </div>
+        </div>
+        <!-- Certificate: سامية اسماعيل ابراهيم (2013) -->
+        <div class="certificate-card" data-year="2013" data-recipient="سامية اسماعيل ابراهيم" data-title="شهادة تقدير: سامية اسماعيل ابراهيم" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2013/سامية اسماعيل ابراهيم.jpg" data-cert-title="شهادة شكر وتقدير: سامية اسماعيل ابراهيم" data-cert-year="دفعة عام ٢٠١٣">
+            <img src="images/certificates/2013/سامية اسماعيل ابراهيم.jpg" loading="lazy" alt="شهادة شكر وتقدير: سامية اسماعيل ابراهيم - دفعة عام ٢٠١٣">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٣</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2013/سامية اسماعيل ابراهيم.jpg" download="شهادة-تقدير-سامية-اسماعيل-ابراهيم-2013.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="سامية اسماعيل ابراهيم">سامية اسماعيل ابراهيم</h3>
+            <span class="cert-number-tag">عام ٢٠١٣</span>
+          </div>
+        </div>
+        <!-- Certificate: شريف احمد حسين (2013) -->
+        <div class="certificate-card" data-year="2013" data-recipient="شريف احمد حسين" data-title="شهادة تقدير: شريف احمد حسين" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2013/شريف احمد حسين.jpg" data-cert-title="شهادة شكر وتقدير: شريف احمد حسين" data-cert-year="دفعة عام ٢٠١٣">
+            <img src="images/certificates/2013/شريف احمد حسين.jpg" loading="lazy" alt="شهادة شكر وتقدير: شريف احمد حسين - دفعة عام ٢٠١٣">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٣</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2013/شريف احمد حسين.jpg" download="شهادة-تقدير-شريف-احمد-حسين-2013.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="شريف احمد حسين">شريف احمد حسين</h3>
+            <span class="cert-number-tag">عام ٢٠١٣</span>
+          </div>
+        </div>
+        <!-- Certificate: عصمت اسماعيل ابراهيم (2013) -->
+        <div class="certificate-card" data-year="2013" data-recipient="عصمت اسماعيل ابراهيم" data-title="شهادة تقدير: عصمت اسماعيل ابراهيم" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2013/عصمت اسماعيل ابراهيم.jpg" data-cert-title="شهادة شكر وتقدير: عصمت اسماعيل ابراهيم" data-cert-year="دفعة عام ٢٠١٣">
+            <img src="images/certificates/2013/عصمت اسماعيل ابراهيم.jpg" loading="lazy" alt="شهادة شكر وتقدير: عصمت اسماعيل ابراهيم - دفعة عام ٢٠١٣">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٣</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2013/عصمت اسماعيل ابراهيم.jpg" download="شهادة-تقدير-عصمت-اسماعيل-ابراهيم-2013.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="عصمت اسماعيل ابراهيم">عصمت اسماعيل ابراهيم</h3>
+            <span class="cert-number-tag">عام ٢٠١٣</span>
+          </div>
+        </div>
+        <!-- Certificate: علاء اسماعيل ابراهيم (2013) -->
+        <div class="certificate-card" data-year="2013" data-recipient="علاء اسماعيل ابراهيم" data-title="شهادة تقدير: علاء اسماعيل ابراهيم" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2013/علاء اسماعيل ابراهيم.jpg" data-cert-title="شهادة شكر وتقدير: علاء اسماعيل ابراهيم" data-cert-year="دفعة عام ٢٠١٣">
+            <img src="images/certificates/2013/علاء اسماعيل ابراهيم.jpg" loading="lazy" alt="شهادة شكر وتقدير: علاء اسماعيل ابراهيم - دفعة عام ٢٠١٣">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٣</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2013/علاء اسماعيل ابراهيم.jpg" download="شهادة-تقدير-علاء-اسماعيل-ابراهيم-2013.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="علاء اسماعيل ابراهيم">علاء اسماعيل ابراهيم</h3>
+            <span class="cert-number-tag">عام ٢٠١٣</span>
+          </div>
+        </div>
+        <!-- Certificate: على اسماعيل ابراهيم (2013) -->
+        <div class="certificate-card" data-year="2013" data-recipient="على اسماعيل ابراهيم" data-title="شهادة تقدير: على اسماعيل ابراهيم" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2013/على اسماعيل ابراهية.jpg" data-cert-title="شهادة شكر وتقدير: على اسماعيل ابراهيم" data-cert-year="دفعة عام ٢٠١٣">
+            <img src="images/certificates/2013/على اسماعيل ابراهية.jpg" loading="lazy" alt="شهادة شكر وتقدير: على اسماعيل ابراهيم - دفعة عام ٢٠١٣">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٣</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2013/على اسماعيل ابراهية.jpg" download="شهادة-تقدير-على-اسماعيل-ابراهيم-2013.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="على اسماعيل ابراهيم">على اسماعيل ابراهيم</h3>
+            <span class="cert-number-tag">عام ٢٠١٣</span>
+          </div>
+        </div>
+        <!-- Certificate: غادة محمد المرسى (2013) -->
+        <div class="certificate-card" data-year="2013" data-recipient="غادة محمد المرسى" data-title="شهادة تقدير: غادة محمد المرسى" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2013/غادة محمد المرسى.jpg" data-cert-title="شهادة شكر وتقدير: غادة محمد المرسى" data-cert-year="دفعة عام ٢٠١٣">
+            <img src="images/certificates/2013/غادة محمد المرسى.jpg" loading="lazy" alt="شهادة شكر وتقدير: غادة محمد المرسى - دفعة عام ٢٠١٣">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٣</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2013/غادة محمد المرسى.jpg" download="شهادة-تقدير-غادة-محمد-المرسى-2013.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="غادة محمد المرسى">غادة محمد المرسى</h3>
+            <span class="cert-number-tag">عام ٢٠١٣</span>
+          </div>
+        </div>
+        <!-- Certificate: فوزية محمد احمد (2013) -->
+        <div class="certificate-card" data-year="2013" data-recipient="فوزية محمد احمد" data-title="شهادة تقدير: فوزية محمد احمد" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2013/فوزية محمد احمد.jpg" data-cert-title="شهادة شكر وتقدير: فوزية محمد احمد" data-cert-year="دفعة عام ٢٠١٣">
+            <img src="images/certificates/2013/فوزية محمد احمد.jpg" loading="lazy" alt="شهادة شكر وتقدير: فوزية محمد احمد - دفعة عام ٢٠١٣">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٣</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2013/فوزية محمد احمد.jpg" download="شهادة-تقدير-فوزية-محمد-احمد-2013.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="فوزية محمد احمد">فوزية محمد احمد</h3>
+            <span class="cert-number-tag">عام ٢٠١٣</span>
+          </div>
+        </div>
+        <!-- Certificate: ليلى محمد حسن (2013) -->
+        <div class="certificate-card" data-year="2013" data-recipient="ليلى محمد حسن" data-title="شهادة تقدير: ليلى محمد حسن" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2013/ليلى محمد حسن.jpg" data-cert-title="شهادة شكر وتقدير: ليلى محمد حسن" data-cert-year="دفعة عام ٢٠١٣">
+            <img src="images/certificates/2013/ليلى محمد حسن.jpg" loading="lazy" alt="شهادة شكر وتقدير: ليلى محمد حسن - دفعة عام ٢٠١٣">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٣</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2013/ليلى محمد حسن.jpg" download="شهادة-تقدير-ليلى-محمد-حسن-2013.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="ليلى محمد حسن">ليلى محمد حسن</h3>
+            <span class="cert-number-tag">عام ٢٠١٣</span>
+          </div>
+        </div>
+        <!-- Certificate: محمد ابو العينين (2013) -->
+        <div class="certificate-card" data-year="2013" data-recipient="محمد ابو العينين" data-title="شهادة تقدير: محمد ابو العينين" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2013/محمد ابو العينين.jpg" data-cert-title="شهادة شكر وتقدير: محمد ابو العينين" data-cert-year="دفعة عام ٢٠١٣">
+            <img src="images/certificates/2013/محمد ابو العينين.jpg" loading="lazy" alt="شهادة شكر وتقدير: محمد ابو العينين - دفعة عام ٢٠١٣">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٣</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2013/محمد ابو العينين.jpg" download="شهادة-تقدير-محمد-ابو-العينين-2013.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="محمد ابو العينين">محمد ابو العينين</h3>
+            <span class="cert-number-tag">عام ٢٠١٣</span>
+          </div>
+        </div>
+        <!-- Certificate: محمد صلاح حسانين (2013) -->
+        <div class="certificate-card" data-year="2013" data-recipient="محمد صلاح حسانين" data-title="شهادة تقدير: محمد صلاح حسانين" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2013/محمد صلاح حسانين.jpg" data-cert-title="شهادة شكر وتقدير: محمد صلاح حسانين" data-cert-year="دفعة عام ٢٠١٣">
+            <img src="images/certificates/2013/محمد صلاح حسانين.jpg" loading="lazy" alt="شهادة شكر وتقدير: محمد صلاح حسانين - دفعة عام ٢٠١٣">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٣</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2013/محمد صلاح حسانين.jpg" download="شهادة-تقدير-محمد-صلاح-حسانين-2013.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="محمد صلاح حسانين">محمد صلاح حسانين</h3>
+            <span class="cert-number-tag">عام ٢٠١٣</span>
+          </div>
+        </div>
+        <!-- Certificate: ناهد محمد عبد الجليل (2013) -->
+        <div class="certificate-card" data-year="2013" data-recipient="ناهد محمد عبد الجليل" data-title="شهادة تقدير: ناهد محمد عبد الجليل" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2013/ناهد محمد عبد الجليل.jpg" data-cert-title="شهادة شكر وتقدير: ناهد محمد عبد الجليل" data-cert-year="دفعة عام ٢٠١٣">
+            <img src="images/certificates/2013/ناهد محمد عبد الجليل.jpg" loading="lazy" alt="شهادة شكر وتقدير: ناهد محمد عبد الجليل - دفعة عام ٢٠١٣">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٣</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2013/ناهد محمد عبد الجليل.jpg" download="شهادة-تقدير-ناهد-محمد-عبد-الجليل-2013.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="ناهد محمد عبد الجليل">ناهد محمد عبد الجليل</h3>
+            <span class="cert-number-tag">عام ٢٠١٣</span>
+          </div>
+        </div>
+        <!-- Certificate: هانى ذكى حسين (2013) -->
+        <div class="certificate-card" data-year="2013" data-recipient="هانى ذكى حسين" data-title="شهادة تقدير: هانى ذكى حسين" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2013/هانى ذكى حسين.jpg" data-cert-title="شهادة شكر وتقدير: هانى ذكى حسين" data-cert-year="دفعة عام ٢٠١٣">
+            <img src="images/certificates/2013/هانى ذكى حسين.jpg" loading="lazy" alt="شهادة شكر وتقدير: هانى ذكى حسين - دفعة عام ٢٠١٣">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٣</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2013/هانى ذكى حسين.jpg" download="شهادة-تقدير-هانى-ذكى-حسين-2013.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="هانى ذكى حسين">هانى ذكى حسين</h3>
+            <span class="cert-number-tag">عام ٢٠١٣</span>
+          </div>
+        </div>
+        <!-- Certificate: هدى اسماعيل ابراهيم (2013) -->
+        <div class="certificate-card" data-year="2013" data-recipient="هدى اسماعيل ابراهيم" data-title="شهادة تقدير: هدى اسماعيل ابراهيم" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2013/هدى اسماعيل ابراهيم.jpg" data-cert-title="شهادة شكر وتقدير: هدى اسماعيل ابراهيم" data-cert-year="دفعة عام ٢٠١٣">
+            <img src="images/certificates/2013/هدى اسماعيل ابراهيم.jpg" loading="lazy" alt="شهادة شكر وتقدير: هدى اسماعيل ابراهيم - دفعة عام ٢٠١٣">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٣</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2013/هدى اسماعيل ابراهيم.jpg" download="شهادة-تقدير-هدى-اسماعيل-ابراهيم-2013.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="هدى اسماعيل ابراهيم">هدى اسماعيل ابراهيم</h3>
+            <span class="cert-number-tag">عام ٢٠١٣</span>
+          </div>
+        </div>
+        <!-- Certificate: احسان مصطفى (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="احسان مصطفى" data-title="شهادة تقدير: احسان مصطفى" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/احسان مصطفى.jpg" data-cert-title="شهادة شكر وتقدير: احسان مصطفى" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/احسان مصطفى.jpg" loading="lazy" alt="شهادة شكر وتقدير: احسان مصطفى - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/احسان مصطفى.jpg" download="شهادة-تقدير-احسان-مصطفى-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="احسان مصطفى">احسان مصطفى</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: احمد خلف الله احمد (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="احمد خلف الله احمد" data-title="شهادة تقدير: احمد خلف الله احمد" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/احمد خلف الله احمد.jpg" data-cert-title="شهادة شكر وتقدير: احمد خلف الله احمد" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/احمد خلف الله احمد.jpg" loading="lazy" alt="شهادة شكر وتقدير: احمد خلف الله احمد - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/احمد خلف الله احمد.jpg" download="شهادة-تقدير-احمد-خلف-الله-احمد-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="احمد خلف الله احمد">احمد خلف الله احمد</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: اسامة اسماعيل ابراهيم (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="اسامة اسماعيل ابراهيم" data-title="شهادة تقدير: اسامة اسماعيل ابراهيم" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/اسامة اسماعيل ابراهيم.jpg" data-cert-title="شهادة شكر وتقدير: اسامة اسماعيل ابراهيم" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/اسامة اسماعيل ابراهيم.jpg" loading="lazy" alt="شهادة شكر وتقدير: اسامة اسماعيل ابراهيم - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/اسامة اسماعيل ابراهيم.jpg" download="شهادة-تقدير-اسامة-اسماعيل-ابراهيم-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="اسامة اسماعيل ابراهيم">اسامة اسماعيل ابراهيم</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: اسماعيل ابراهيم اسماعيل (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="اسماعيل ابراهيم اسماعيل" data-title="شهادة تقدير: اسماعيل ابراهيم اسماعيل" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/اسماعيل ابراهيم اسماعيل.jpg" data-cert-title="شهادة شكر وتقدير: اسماعيل ابراهيم اسماعيل" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/اسماعيل ابراهيم اسماعيل.jpg" loading="lazy" alt="شهادة شكر وتقدير: اسماعيل ابراهيم اسماعيل - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/اسماعيل ابراهيم اسماعيل.jpg" download="شهادة-تقدير-اسماعيل-ابراهيم-اسماعيل-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="اسماعيل ابراهيم اسماعيل">اسماعيل ابراهيم اسماعيل</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: اشرف سمير بندارى (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="اشرف سمير بندارى" data-title="شهادة تقدير: اشرف سمير بندارى" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/اشرف سمير بندارى.jpg" data-cert-title="شهادة شكر وتقدير: اشرف سمير بندارى" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/اشرف سمير بندارى.jpg" loading="lazy" alt="شهادة شكر وتقدير: اشرف سمير بندارى - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/اشرف سمير بندارى.jpg" download="شهادة-تقدير-اشرف-سمير-بندارى-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="اشرف سمير بندارى">اشرف سمير بندارى</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: اللواء احمد ابو النصر (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="اللواء احمد ابو النصر" data-title="شهادة تقدير: اللواء احمد ابو النصر" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/اللواء احمد ابو النصر.jpg" data-cert-title="شهادة شكر وتقدير: اللواء احمد ابو النصر" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/اللواء احمد ابو النصر.jpg" loading="lazy" alt="شهادة شكر وتقدير: اللواء احمد ابو النصر - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/اللواء احمد ابو النصر.jpg" download="شهادة-تقدير-اللواء-احمد-ابو-النصر-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="اللواء احمد ابو النصر">اللواء احمد ابو النصر</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: اميرة سامى سعيد (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="اميرة سامى سعيد" data-title="شهادة تقدير: اميرة سامى سعيد" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/اميرة سامى سعيد.jpg" data-cert-title="شهادة شكر وتقدير: اميرة سامى سعيد" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/اميرة سامى سعيد.jpg" loading="lazy" alt="شهادة شكر وتقدير: اميرة سامى سعيد - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/اميرة سامى سعيد.jpg" download="شهادة-تقدير-اميرة-سامى-سعيد-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="اميرة سامى سعيد">اميرة سامى سعيد</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: سامية اسماعيل ابراهيم (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="سامية اسماعيل ابراهيم" data-title="شهادة تقدير: سامية اسماعيل ابراهيم" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/سامية اسماعيل ابراهيم.jpg" data-cert-title="شهادة شكر وتقدير: سامية اسماعيل ابراهيم" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/سامية اسماعيل ابراهيم.jpg" loading="lazy" alt="شهادة شكر وتقدير: سامية اسماعيل ابراهيم - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/سامية اسماعيل ابراهيم.jpg" download="شهادة-تقدير-سامية-اسماعيل-ابراهيم-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="سامية اسماعيل ابراهيم">سامية اسماعيل ابراهيم</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: سعاد محمد احمد (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="سعاد محمد احمد" data-title="شهادة تقدير: سعاد محمد احمد" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/سعاد محمد احمد.jpg" data-cert-title="شهادة شكر وتقدير: سعاد محمد احمد" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/سعاد محمد احمد.jpg" loading="lazy" alt="شهادة شكر وتقدير: سعاد محمد احمد - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/سعاد محمد احمد.jpg" download="شهادة-تقدير-سعاد-محمد-احمد-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="سعاد محمد احمد">سعاد محمد احمد</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: سناء عبد العزيز (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="سناء عبد العزيز" data-title="شهادة تقدير: سناء عبد العزيز" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/سناء عبد العزيز.jpg" data-cert-title="شهادة شكر وتقدير: سناء عبد العزيز" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/سناء عبد العزيز.jpg" loading="lazy" alt="شهادة شكر وتقدير: سناء عبد العزيز - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/سناء عبد العزيز.jpg" download="شهادة-تقدير-سناء-عبد-العزيز-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="سناء عبد العزيز">سناء عبد العزيز</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: شريف احمد حسين (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="شريف احمد حسين" data-title="شهادة تقدير: شريف احمد حسين" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/شريف احمد حسين.jpg" data-cert-title="شهادة شكر وتقدير: شريف احمد حسين" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/شريف احمد حسين.jpg" loading="lazy" alt="شهادة شكر وتقدير: شريف احمد حسين - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/شريف احمد حسين.jpg" download="شهادة-تقدير-شريف-احمد-حسين-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="شريف احمد حسين">شريف احمد حسين</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: شريف فهمى (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="شريف فهمى" data-title="شهادة تقدير: شريف فهمى" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/شريف فهمى.jpg" data-cert-title="شهادة شكر وتقدير: شريف فهمى" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/شريف فهمى.jpg" loading="lazy" alt="شهادة شكر وتقدير: شريف فهمى - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/شريف فهمى.jpg" download="شهادة-تقدير-شريف-فهمى-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="شريف فهمى">شريف فهمى</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: عصمت اسماعيل ابراهيم (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="عصمت اسماعيل ابراهيم" data-title="شهادة تقدير: عصمت اسماعيل ابراهيم" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/عصمت اسماعيل ابراهيم.jpg" data-cert-title="شهادة شكر وتقدير: عصمت اسماعيل ابراهيم" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/عصمت اسماعيل ابراهيم.jpg" loading="lazy" alt="شهادة شكر وتقدير: عصمت اسماعيل ابراهيم - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/عصمت اسماعيل ابراهيم.jpg" download="شهادة-تقدير-عصمت-اسماعيل-ابراهيم-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="عصمت اسماعيل ابراهيم">عصمت اسماعيل ابراهيم</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: علاء اسماعيل ابراهيم (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="علاء اسماعيل ابراهيم" data-title="شهادة تقدير: علاء اسماعيل ابراهيم" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/علاء اسماعيل ابراهيم.jpg" data-cert-title="شهادة شكر وتقدير: علاء اسماعيل ابراهيم" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/علاء اسماعيل ابراهيم.jpg" loading="lazy" alt="شهادة شكر وتقدير: علاء اسماعيل ابراهيم - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/علاء اسماعيل ابراهيم.jpg" download="شهادة-تقدير-علاء-اسماعيل-ابراهيم-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="علاء اسماعيل ابراهيم">علاء اسماعيل ابراهيم</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: على اسماعيل ابراهيم (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="على اسماعيل ابراهيم" data-title="شهادة تقدير: على اسماعيل ابراهيم" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/على اسماعيل ابراهية.jpg" data-cert-title="شهادة شكر وتقدير: على اسماعيل ابراهيم" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/على اسماعيل ابراهية.jpg" loading="lazy" alt="شهادة شكر وتقدير: على اسماعيل ابراهيم - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/على اسماعيل ابراهية.jpg" download="شهادة-تقدير-على-اسماعيل-ابراهيم-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="على اسماعيل ابراهيم">على اسماعيل ابراهيم</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: على عبد الخالق بندق (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="على عبد الخالق بندق" data-title="شهادة تقدير: على عبد الخالق بندق" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/على عبد الخالق بندق.jpg" data-cert-title="شهادة شكر وتقدير: على عبد الخالق بندق" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/على عبد الخالق بندق.jpg" loading="lazy" alt="شهادة شكر وتقدير: على عبد الخالق بندق - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/على عبد الخالق بندق.jpg" download="شهادة-تقدير-على-عبد-الخالق-بندق-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="على عبد الخالق بندق">على عبد الخالق بندق</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: غادة محمد المرسى (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="غادة محمد المرسى" data-title="شهادة تقدير: غادة محمد المرسى" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/غادة محمد المرسى.jpg" data-cert-title="شهادة شكر وتقدير: غادة محمد المرسى" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/غادة محمد المرسى.jpg" loading="lazy" alt="شهادة شكر وتقدير: غادة محمد المرسى - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/غادة محمد المرسى.jpg" download="شهادة-تقدير-غادة-محمد-المرسى-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="غادة محمد المرسى">غادة محمد المرسى</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: فوزية محمد احمد (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="فوزية محمد احمد" data-title="شهادة تقدير: فوزية محمد احمد" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/فوزية محمد احمد.jpg" data-cert-title="شهادة شكر وتقدير: فوزية محمد احمد" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/فوزية محمد احمد.jpg" loading="lazy" alt="شهادة شكر وتقدير: فوزية محمد احمد - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/فوزية محمد احمد.jpg" download="شهادة-تقدير-فوزية-محمد-احمد-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="فوزية محمد احمد">فوزية محمد احمد</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: ليلى محمد حسن (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="ليلى محمد حسن" data-title="شهادة تقدير: ليلى محمد حسن" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/ليلى محمد حسن.jpg" data-cert-title="شهادة شكر وتقدير: ليلى محمد حسن" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/ليلى محمد حسن.jpg" loading="lazy" alt="شهادة شكر وتقدير: ليلى محمد حسن - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/ليلى محمد حسن.jpg" download="شهادة-تقدير-ليلى-محمد-حسن-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="ليلى محمد حسن">ليلى محمد حسن</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: ماجدة سعيد (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="ماجدة سعيد" data-title="شهادة تقدير: ماجدة سعيد" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/ماجدة سعيد.jpg" data-cert-title="شهادة شكر وتقدير: ماجدة سعيد" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/ماجدة سعيد.jpg" loading="lazy" alt="شهادة شكر وتقدير: ماجدة سعيد - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/ماجدة سعيد.jpg" download="شهادة-تقدير-ماجدة-سعيد-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="ماجدة سعيد">ماجدة سعيد</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: محمد ابو العينين (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="محمد ابو العينين" data-title="شهادة تقدير: محمد ابو العينين" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/محمد ابو العينين.jpg" data-cert-title="شهادة شكر وتقدير: محمد ابو العينين" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/محمد ابو العينين.jpg" loading="lazy" alt="شهادة شكر وتقدير: محمد ابو العينين - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/محمد ابو العينين.jpg" download="شهادة-تقدير-محمد-ابو-العينين-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="محمد ابو العينين">محمد ابو العينين</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: محمد احمد حشاد (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="محمد احمد حشاد" data-title="شهادة تقدير: محمد احمد حشاد" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/محمد احمد حشاد.jpg" data-cert-title="شهادة شكر وتقدير: محمد احمد حشاد" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/محمد احمد حشاد.jpg" loading="lazy" alt="شهادة شكر وتقدير: محمد احمد حشاد - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/محمد احمد حشاد.jpg" download="شهادة-تقدير-محمد-احمد-حشاد-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="محمد احمد حشاد">محمد احمد حشاد</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: محمد توفيق حسين (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="محمد توفيق حسين" data-title="شهادة تقدير: محمد توفيق حسين" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/محمد توفيق حسين.jpg" data-cert-title="شهادة شكر وتقدير: محمد توفيق حسين" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/محمد توفيق حسين.jpg" loading="lazy" alt="شهادة شكر وتقدير: محمد توفيق حسين - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/محمد توفيق حسين.jpg" download="شهادة-تقدير-محمد-توفيق-حسين-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="محمد توفيق حسين">محمد توفيق حسين</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: محمد محمود مصطفى الاكوح (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="محمد محمود مصطفى الاكوح" data-title="شهادة تقدير: محمد محمود مصطفى الاكوح" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/محمد محمود مصطفى الاكوح.jpg" data-cert-title="شهادة شكر وتقدير: محمد محمود مصطفى الاكوح" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/محمد محمود مصطفى الاكوح.jpg" loading="lazy" alt="شهادة شكر وتقدير: محمد محمود مصطفى الاكوح - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/محمد محمود مصطفى الاكوح.jpg" download="شهادة-تقدير-محمد-محمود-مصطفى-الاكوح-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="محمد محمود مصطفى الاكوح">محمد محمود مصطفى الاكوح</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: ناهد محمد عبد الجليل (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="ناهد محمد عبد الجليل" data-title="شهادة تقدير: ناهد محمد عبد الجليل" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/ناهد محمد عبد الجليل.jpg" data-cert-title="شهادة شكر وتقدير: ناهد محمد عبد الجليل" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/ناهد محمد عبد الجليل.jpg" loading="lazy" alt="شهادة شكر وتقدير: ناهد محمد عبد الجليل - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/ناهد محمد عبد الجليل.jpg" download="شهادة-تقدير-ناهد-محمد-عبد-الجليل-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="ناهد محمد عبد الجليل">ناهد محمد عبد الجليل</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: هانى ذكى حسين (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="هانى ذكى حسين" data-title="شهادة تقدير: هانى ذكى حسين" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/هانى ذكى حسين.jpg" data-cert-title="شهادة شكر وتقدير: هانى ذكى حسين" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/هانى ذكى حسين.jpg" loading="lazy" alt="شهادة شكر وتقدير: هانى ذكى حسين - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/هانى ذكى حسين.jpg" download="شهادة-تقدير-هانى-ذكى-حسين-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="هانى ذكى حسين">هانى ذكى حسين</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: هدى اسماعيل ابراهيم (2012) -->
+        <div class="certificate-card" data-year="2012" data-recipient="هدى اسماعيل ابراهيم" data-title="شهادة تقدير: هدى اسماعيل ابراهيم" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2012/هدى اسماعيل ابراهيم.jpg" data-cert-title="شهادة شكر وتقدير: هدى اسماعيل ابراهيم" data-cert-year="دفعة عام ٢٠١٢">
+            <img src="images/certificates/2012/هدى اسماعيل ابراهيم.jpg" loading="lazy" alt="شهادة شكر وتقدير: هدى اسماعيل ابراهيم - دفعة عام ٢٠١٢">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١٢</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2012/هدى اسماعيل ابراهيم.jpg" download="شهادة-تقدير-هدى-اسماعيل-ابراهيم-2012.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="هدى اسماعيل ابراهيم">هدى اسماعيل ابراهيم</h3>
+            <span class="cert-number-tag">عام ٢٠١٢</span>
+          </div>
+        </div>
+        <!-- Certificate: ابتسام خليفة امام (2011) -->
+        <div class="certificate-card" data-year="2011" data-recipient="ابتسام خليفة امام" data-title="شهادة تقدير: ابتسام خليفة امام" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2011/ابتسام خليفة امام.jpg" data-cert-title="شهادة شكر وتقدير: ابتسام خليفة امام" data-cert-year="دفعة عام ٢٠١١">
+            <img src="images/certificates/2011/ابتسام خليفة امام.jpg" loading="lazy" alt="شهادة شكر وتقدير: ابتسام خليفة امام - دفعة عام ٢٠١١">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١١</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2011/ابتسام خليفة امام.jpg" download="شهادة-تقدير-ابتسام-خليفة-امام-2011.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="ابتسام خليفة امام">ابتسام خليفة امام</h3>
+            <span class="cert-number-tag">عام ٢٠١١</span>
+          </div>
+        </div>
+        <!-- Certificate: اميرة سامى سعيد (2011) -->
+        <div class="certificate-card" data-year="2011" data-recipient="اميرة سامى سعيد" data-title="شهادة تقدير: اميرة سامى سعيد" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2011/اميرة سامى سعيد.jpg" data-cert-title="شهادة شكر وتقدير: اميرة سامى سعيد" data-cert-year="دفعة عام ٢٠١١">
+            <img src="images/certificates/2011/اميرة سامى سعيد.jpg" loading="lazy" alt="شهادة شكر وتقدير: اميرة سامى سعيد - دفعة عام ٢٠١١">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١١</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2011/اميرة سامى سعيد.jpg" download="شهادة-تقدير-اميرة-سامى-سعيد-2011.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="اميرة سامى سعيد">اميرة سامى سعيد</h3>
+            <span class="cert-number-tag">عام ٢٠١١</span>
+          </div>
+        </div>
+        <!-- Certificate: ايمان خلف الله احمد (2011) -->
+        <div class="certificate-card" data-year="2011" data-recipient="ايمان خلف الله احمد" data-title="شهادة تقدير: ايمان خلف الله احمد" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2011/ايمان خلف الله احمد.jpg" data-cert-title="شهادة شكر وتقدير: ايمان خلف الله احمد" data-cert-year="دفعة عام ٢٠١١">
+            <img src="images/certificates/2011/ايمان خلف الله احمد.jpg" loading="lazy" alt="شهادة شكر وتقدير: ايمان خلف الله احمد - دفعة عام ٢٠١١">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١١</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2011/ايمان خلف الله احمد.jpg" download="شهادة-تقدير-ايمان-خلف-الله-احمد-2011.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="ايمان خلف الله احمد">ايمان خلف الله احمد</h3>
+            <span class="cert-number-tag">عام ٢٠١١</span>
+          </div>
+        </div>
+        <!-- Certificate: داليا ممدوح (2011) -->
+        <div class="certificate-card" data-year="2011" data-recipient="داليا ممدوح" data-title="شهادة تقدير: داليا ممدوح" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2011/داليا ممدوح.jpg" data-cert-title="شهادة شكر وتقدير: داليا ممدوح" data-cert-year="دفعة عام ٢٠١١">
+            <img src="images/certificates/2011/داليا ممدوح.jpg" loading="lazy" alt="شهادة شكر وتقدير: داليا ممدوح - دفعة عام ٢٠١١">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١١</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2011/داليا ممدوح.jpg" download="شهادة-تقدير-داليا-ممدوح-2011.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="داليا ممدوح">داليا ممدوح</h3>
+            <span class="cert-number-tag">عام ٢٠١١</span>
+          </div>
+        </div>
+        <!-- Certificate: سامية اسماعيل ابراهيم (2011) -->
+        <div class="certificate-card" data-year="2011" data-recipient="سامية اسماعيل ابراهيم" data-title="شهادة تقدير: سامية اسماعيل ابراهيم" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2011/سامية اسماعيل ابراهيم.jpg" data-cert-title="شهادة شكر وتقدير: سامية اسماعيل ابراهيم" data-cert-year="دفعة عام ٢٠١١">
+            <img src="images/certificates/2011/سامية اسماعيل ابراهيم.jpg" loading="lazy" alt="شهادة شكر وتقدير: سامية اسماعيل ابراهيم - دفعة عام ٢٠١١">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١١</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2011/سامية اسماعيل ابراهيم.jpg" download="شهادة-تقدير-سامية-اسماعيل-ابراهيم-2011.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="سامية اسماعيل ابراهيم">سامية اسماعيل ابراهيم</h3>
+            <span class="cert-number-tag">عام ٢٠١١</span>
+          </div>
+        </div>
+        <!-- Certificate: شريف احمد حسين (2011) -->
+        <div class="certificate-card" data-year="2011" data-recipient="شريف احمد حسين" data-title="شهادة تقدير: شريف احمد حسين" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2011/شريف احمد حسين.jpg" data-cert-title="شهادة شكر وتقدير: شريف احمد حسين" data-cert-year="دفعة عام ٢٠١١">
+            <img src="images/certificates/2011/شريف احمد حسين.jpg" loading="lazy" alt="شهادة شكر وتقدير: شريف احمد حسين - دفعة عام ٢٠١١">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١١</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2011/شريف احمد حسين.jpg" download="شهادة-تقدير-شريف-احمد-حسين-2011.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="شريف احمد حسين">شريف احمد حسين</h3>
+            <span class="cert-number-tag">عام ٢٠١١</span>
+          </div>
+        </div>
+        <!-- Certificate: عصمت اسماعيل ابراهيم (2011) -->
+        <div class="certificate-card" data-year="2011" data-recipient="عصمت اسماعيل ابراهيم" data-title="شهادة تقدير: عصمت اسماعيل ابراهيم" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2011/عصمت اسماعيل ابراهيم.jpg" data-cert-title="شهادة شكر وتقدير: عصمت اسماعيل ابراهيم" data-cert-year="دفعة عام ٢٠١١">
+            <img src="images/certificates/2011/عصمت اسماعيل ابراهيم.jpg" loading="lazy" alt="شهادة شكر وتقدير: عصمت اسماعيل ابراهيم - دفعة عام ٢٠١١">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١١</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2011/عصمت اسماعيل ابراهيم.jpg" download="شهادة-تقدير-عصمت-اسماعيل-ابراهيم-2011.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="عصمت اسماعيل ابراهيم">عصمت اسماعيل ابراهيم</h3>
+            <span class="cert-number-tag">عام ٢٠١١</span>
+          </div>
+        </div>
+        <!-- Certificate: علاء اسماعيل ابراهيم (2011) -->
+        <div class="certificate-card" data-year="2011" data-recipient="علاء اسماعيل ابراهيم" data-title="شهادة تقدير: علاء اسماعيل ابراهيم" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2011/علاء اسماعيل ابراهيم.jpg" data-cert-title="شهادة شكر وتقدير: علاء اسماعيل ابراهيم" data-cert-year="دفعة عام ٢٠١١">
+            <img src="images/certificates/2011/علاء اسماعيل ابراهيم.jpg" loading="lazy" alt="شهادة شكر وتقدير: علاء اسماعيل ابراهيم - دفعة عام ٢٠١١">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١١</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2011/علاء اسماعيل ابراهيم.jpg" download="شهادة-تقدير-علاء-اسماعيل-ابراهيم-2011.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="علاء اسماعيل ابراهيم">علاء اسماعيل ابراهيم</h3>
+            <span class="cert-number-tag">عام ٢٠١١</span>
+          </div>
+        </div>
+        <!-- Certificate: على عبد الخالق بندق (2011) -->
+        <div class="certificate-card" data-year="2011" data-recipient="على عبد الخالق بندق" data-title="شهادة تقدير: على عبد الخالق بندق" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2011/على عبد الخالق بندق.jpg" data-cert-title="شهادة شكر وتقدير: على عبد الخالق بندق" data-cert-year="دفعة عام ٢٠١١">
+            <img src="images/certificates/2011/على عبد الخالق بندق.jpg" loading="lazy" alt="شهادة شكر وتقدير: على عبد الخالق بندق - دفعة عام ٢٠١١">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١١</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2011/على عبد الخالق بندق.jpg" download="شهادة-تقدير-على-عبد-الخالق-بندق-2011.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="على عبد الخالق بندق">على عبد الخالق بندق</h3>
+            <span class="cert-number-tag">عام ٢٠١١</span>
+          </div>
+        </div>
+        <!-- Certificate: عمرو مصطفى عبد العظيم (2011) -->
+        <div class="certificate-card" data-year="2011" data-recipient="عمرو مصطفى عبد العظيم" data-title="شهادة تقدير: عمرو مصطفى عبد العظيم" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2011/عمرو مصطفى عبد العظيم.jpg" data-cert-title="شهادة شكر وتقدير: عمرو مصطفى عبد العظيم" data-cert-year="دفعة عام ٢٠١١">
+            <img src="images/certificates/2011/عمرو مصطفى عبد العظيم.jpg" loading="lazy" alt="شهادة شكر وتقدير: عمرو مصطفى عبد العظيم - دفعة عام ٢٠١١">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١١</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2011/عمرو مصطفى عبد العظيم.jpg" download="شهادة-تقدير-عمرو-مصطفى-عبد-العظيم-2011.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="عمرو مصطفى عبد العظيم">عمرو مصطفى عبد العظيم</h3>
+            <span class="cert-number-tag">عام ٢٠١١</span>
+          </div>
+        </div>
+        <!-- Certificate: فواد محى الدين (2011) -->
+        <div class="certificate-card" data-year="2011" data-recipient="فواد محى الدين" data-title="شهادة تقدير: فواد محى الدين" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2011/فواد محى الدين.jpg" data-cert-title="شهادة شكر وتقدير: فواد محى الدين" data-cert-year="دفعة عام ٢٠١١">
+            <img src="images/certificates/2011/فواد محى الدين.jpg" loading="lazy" alt="شهادة شكر وتقدير: فواد محى الدين - دفعة عام ٢٠١١">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١١</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2011/فواد محى الدين.jpg" download="شهادة-تقدير-فواد-محى-الدين-2011.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="فواد محى الدين">فواد محى الدين</h3>
+            <span class="cert-number-tag">عام ٢٠١١</span>
+          </div>
+        </div>
+        <!-- Certificate: هانى ذكى حسين (2011) -->
+        <div class="certificate-card" data-year="2011" data-recipient="هانى ذكى حسين" data-title="شهادة تقدير: هانى ذكى حسين" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2011/هانى ذكى حسين.jpg" data-cert-title="شهادة شكر وتقدير: هانى ذكى حسين" data-cert-year="دفعة عام ٢٠١١">
+            <img src="images/certificates/2011/هانى ذكى حسين.jpg" loading="lazy" alt="شهادة شكر وتقدير: هانى ذكى حسين - دفعة عام ٢٠١١">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١١</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2011/هانى ذكى حسين.jpg" download="شهادة-تقدير-هانى-ذكى-حسين-2011.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="هانى ذكى حسين">هانى ذكى حسين</h3>
+            <span class="cert-number-tag">عام ٢٠١١</span>
+          </div>
+        </div>
+        <!-- Certificate: هدى اسماعيل ابراهيم (2011) -->
+        <div class="certificate-card" data-year="2011" data-recipient="هدى اسماعيل ابراهيم" data-title="شهادة تقدير: هدى اسماعيل ابراهيم" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/2011/هدى اسماعيل ابراهيم.jpg" data-cert-title="شهادة شكر وتقدير: هدى اسماعيل ابراهيم" data-cert-year="دفعة عام ٢٠١١">
+            <img src="images/certificates/2011/هدى اسماعيل ابراهيم.jpg" loading="lazy" alt="شهادة شكر وتقدير: هدى اسماعيل ابراهيم - دفعة عام ٢٠١١">
+            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> دفعة ٢٠١١</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/2011/هدى اسماعيل ابراهيم.jpg" download="شهادة-تقدير-هدى-اسماعيل-ابراهيم-2011.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title" title="هدى اسماعيل ابراهيم">هدى اسماعيل ابراهيم</h3>
+            <span class="cert-number-tag">عام ٢٠١١</span>
+          </div>
+        </div>
+        <!-- Official Recognition Certificate 1 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #٠١" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-01.jpg" data-cert-title="شهادة تقدير رسمية #٠١" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-01.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ٠١" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-01.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
+            <div class="cert-hover-overlay">
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-01.jpg" download="شهادة-تقدير-رسمية-01.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="cert-info-bar">
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#٠١</span>
           </div>
         </div>
-        <!-- Certificate Card 2 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-02.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #٠٢">
-            <img src="images/certificates/cert-02.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ٠٢" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-02.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <!-- Official Recognition Certificate 2 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #٠٢" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-02.jpg" data-cert-title="شهادة تقدير رسمية #٠٢" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-02.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ٠٢" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-02.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-02.jpg" download="شهادة-تقدير-جمعية-أخوين-02.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-02.jpg" download="شهادة-تقدير-رسمية-02.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#٠٢</span>
           </div>
         </div>
-        <!-- Certificate Card 3 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-03.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #٠٣">
-            <img src="images/certificates/cert-03.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ٠٣" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-03.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <!-- Official Recognition Certificate 3 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #٠٣" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-03.jpg" data-cert-title="شهادة تقدير رسمية #٠٣" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-03.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ٠٣" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-03.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-03.jpg" download="شهادة-تقدير-جمعية-أخوين-03.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-03.jpg" download="شهادة-تقدير-رسمية-03.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#٠٣</span>
           </div>
         </div>
-        <!-- Certificate Card 4 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="0">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-04.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #٠٤">
-            <img src="images/certificates/cert-04.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ٠٤" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-04.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <!-- Official Recognition Certificate 4 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #٠٤" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-04.jpg" data-cert-title="شهادة تقدير رسمية #٠٤" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-04.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ٠٤" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-04.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-04.jpg" download="شهادة-تقدير-جمعية-أخوين-04.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-04.jpg" download="شهادة-تقدير-رسمية-04.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#٠٤</span>
           </div>
         </div>
-        <!-- Certificate Card 5 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-05.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #٠٥">
-            <img src="images/certificates/cert-05.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ٠٥" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-05.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <!-- Official Recognition Certificate 5 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #٠٥" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-05.jpg" data-cert-title="شهادة تقدير رسمية #٠٥" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-05.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ٠٥" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-05.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-05.jpg" download="شهادة-تقدير-جمعية-أخوين-05.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-05.jpg" download="شهادة-تقدير-رسمية-05.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#٠٥</span>
           </div>
         </div>
-        <!-- Certificate Card 6 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-06.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #٠٦">
-            <img src="images/certificates/cert-06.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ٠٦" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-06.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <!-- Official Recognition Certificate 6 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #٠٦" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-06.jpg" data-cert-title="شهادة تقدير رسمية #٠٦" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-06.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ٠٦" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-06.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-06.jpg" download="شهادة-تقدير-جمعية-أخوين-06.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-06.jpg" download="شهادة-تقدير-رسمية-06.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#٠٦</span>
           </div>
         </div>
-        <!-- Certificate Card 7 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-07.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #٠٧">
-            <img src="images/certificates/cert-07.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ٠٧" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-07.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <!-- Official Recognition Certificate 7 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #٠٧" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-07.jpg" data-cert-title="شهادة تقدير رسمية #٠٧" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-07.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ٠٧" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-07.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-07.jpg" download="شهادة-تقدير-جمعية-أخوين-07.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-07.jpg" download="شهادة-تقدير-رسمية-07.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#٠٧</span>
           </div>
         </div>
-        <!-- Certificate Card 8 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="0">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-08.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #٠٨">
-            <img src="images/certificates/cert-08.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ٠٨" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-08.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <!-- Official Recognition Certificate 8 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #٠٨" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-08.jpg" data-cert-title="شهادة تقدير رسمية #٠٨" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-08.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ٠٨" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-08.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-08.jpg" download="شهادة-تقدير-جمعية-أخوين-08.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-08.jpg" download="شهادة-تقدير-رسمية-08.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#٠٨</span>
           </div>
         </div>
-        <!-- Certificate Card 9 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-09.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #٠٩">
-            <img src="images/certificates/cert-09.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ٠٩" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-09.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <!-- Official Recognition Certificate 9 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #٠٩" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-09.jpg" data-cert-title="شهادة تقدير رسمية #٠٩" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-09.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ٠٩" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-09.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-09.jpg" download="شهادة-تقدير-جمعية-أخوين-09.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-09.jpg" download="شهادة-تقدير-رسمية-09.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#٠٩</span>
           </div>
         </div>
-        <!-- Certificate Card 10 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-10.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #١٠">
-            <img src="images/certificates/cert-10.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ١٠" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-10.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <!-- Official Recognition Certificate 10 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #١٠" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-10.jpg" data-cert-title="شهادة تقدير رسمية #١٠" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-10.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ١٠" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-10.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-10.jpg" download="شهادة-تقدير-جمعية-أخوين-10.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-10.jpg" download="شهادة-تقدير-رسمية-10.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#١٠</span>
           </div>
         </div>
-        <!-- Certificate Card 11 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-11.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #١١">
-            <img src="images/certificates/cert-11.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ١١" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-11.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <!-- Official Recognition Certificate 11 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #١١" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-11.jpg" data-cert-title="شهادة تقدير رسمية #١١" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-11.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ١١" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-11.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-11.jpg" download="شهادة-تقدير-جمعية-أخوين-11.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-11.jpg" download="شهادة-تقدير-رسمية-11.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#١١</span>
           </div>
         </div>
-        <!-- Certificate Card 12 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="0">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-12.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #١٢">
-            <img src="images/certificates/cert-12.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ١٢" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-12.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <!-- Official Recognition Certificate 12 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #١٢" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-12.jpg" data-cert-title="شهادة تقدير رسمية #١٢" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-12.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ١٢" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-12.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-12.jpg" download="شهادة-تقدير-جمعية-أخوين-12.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-12.jpg" download="شهادة-تقدير-رسمية-12.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#١٢</span>
           </div>
         </div>
-        <!-- Certificate Card 13 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-13.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #١٣">
-            <img src="images/certificates/cert-13.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ١٣" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-13.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <!-- Official Recognition Certificate 13 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #١٣" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-13.jpg" data-cert-title="شهادة تقدير رسمية #١٣" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-13.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ١٣" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-13.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-13.jpg" download="شهادة-تقدير-جمعية-أخوين-13.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-13.jpg" download="شهادة-تقدير-رسمية-13.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#١٣</span>
           </div>
         </div>
-        <!-- Certificate Card 14 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-14.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #١٤">
-            <img src="images/certificates/cert-14.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ١٤" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-14.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <!-- Official Recognition Certificate 14 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #١٤" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-14.jpg" data-cert-title="شهادة تقدير رسمية #١٤" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-14.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ١٤" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-14.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-14.jpg" download="شهادة-تقدير-جمعية-أخوين-14.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-14.jpg" download="شهادة-تقدير-رسمية-14.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#١٤</span>
           </div>
         </div>
-        <!-- Certificate Card 15 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-15.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #١٥">
-            <img src="images/certificates/cert-15.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ١٥" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-15.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <!-- Official Recognition Certificate 15 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #١٥" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-15.jpg" data-cert-title="شهادة تقدير رسمية #١٥" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-15.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ١٥" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-15.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-15.jpg" download="شهادة-تقدير-جمعية-أخوين-15.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-15.jpg" download="شهادة-تقدير-رسمية-15.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#١٥</span>
           </div>
         </div>
-        <!-- Certificate Card 16 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="0">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-16.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #١٦">
-            <img src="images/certificates/cert-16.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ١٦" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-16.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <!-- Official Recognition Certificate 16 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #١٦" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-16.jpg" data-cert-title="شهادة تقدير رسمية #١٦" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-16.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ١٦" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-16.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-16.jpg" download="شهادة-تقدير-جمعية-أخوين-16.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-16.jpg" download="شهادة-تقدير-رسمية-16.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#١٦</span>
           </div>
         </div>
-        <!-- Certificate Card 17 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-17.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #١٧">
-            <img src="images/certificates/cert-17.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ١٧" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-17.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <!-- Official Recognition Certificate 17 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #١٧" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-17.jpg" data-cert-title="شهادة تقدير رسمية #١٧" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-17.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ١٧" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-17.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-17.jpg" download="شهادة-تقدير-جمعية-أخوين-17.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-17.jpg" download="شهادة-تقدير-رسمية-17.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#١٧</span>
           </div>
         </div>
-        <!-- Certificate Card 18 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-18.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #١٨">
-            <img src="images/certificates/cert-18.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ١٨" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-18.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <!-- Official Recognition Certificate 18 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #١٨" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-18.jpg" data-cert-title="شهادة تقدير رسمية #١٨" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-18.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ١٨" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-18.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-18.jpg" download="شهادة-تقدير-جمعية-أخوين-18.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-18.jpg" download="شهادة-تقدير-رسمية-18.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#١٨</span>
           </div>
         </div>
-        <!-- Certificate Card 19 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-19.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #١٩">
-            <img src="images/certificates/cert-19.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ١٩" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-19.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <!-- Official Recognition Certificate 19 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #١٩" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-19.jpg" data-cert-title="شهادة تقدير رسمية #١٩" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-19.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ١٩" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-19.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-19.jpg" download="شهادة-تقدير-جمعية-أخوين-19.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-19.jpg" download="شهادة-تقدير-رسمية-19.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#١٩</span>
           </div>
         </div>
-        <!-- Certificate Card 20 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="0">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-20.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #٢٠">
-            <img src="images/certificates/cert-20.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ٢٠" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-20.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <!-- Official Recognition Certificate 20 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #٢٠" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-20.jpg" data-cert-title="شهادة تقدير رسمية #٢٠" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-20.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ٢٠" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-20.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-20.jpg" download="شهادة-تقدير-جمعية-أخوين-20.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-20.jpg" download="شهادة-تقدير-رسمية-20.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#٢٠</span>
           </div>
         </div>
-        <!-- Certificate Card 21 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-21.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #٢١">
-            <img src="images/certificates/cert-21.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ٢١" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-21.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <!-- Official Recognition Certificate 21 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #٢١" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-21.jpg" data-cert-title="شهادة تقدير رسمية #٢١" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-21.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ٢١" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-21.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-21.jpg" download="شهادة-تقدير-جمعية-أخوين-21.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-21.jpg" download="شهادة-تقدير-رسمية-21.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#٢١</span>
           </div>
         </div>
-        <!-- Certificate Card 22 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-22.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #٢٢">
-            <img src="images/certificates/cert-22.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ٢٢" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-22.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <!-- Official Recognition Certificate 22 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #٢٢" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-22.jpg" data-cert-title="شهادة تقدير رسمية #٢٢" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-22.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ٢٢" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-22.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-22.jpg" download="شهادة-تقدير-جمعية-أخوين-22.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-22.jpg" download="شهادة-تقدير-رسمية-22.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#٢٢</span>
           </div>
         </div>
-        <!-- Certificate Card 23 -->
-        <div class="certificate-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="cert-image-frame" data-cert-src="images/certificates/cert-23.jpg" data-cert-title="شهادة تقدير رسمية - جمعية أخوين الخيرية #٢٣">
-            <img src="images/certificates/cert-23.jpg" loading="lazy" alt="شهادة شكر وتقدير جمعية أخوين الخيرية ٢٣" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-23.jpg'">
-            <span class="cert-badge-ribbon"><i class="fa-solid fa-award"></i> تقدير رسمي</span>
+        <!-- Official Recognition Certificate 23 -->
+        <div class="certificate-card" data-year="official" data-recipient="شهادة تقدير ووسام رسمي" data-title="شهادة تقدير رسمية #٢٣" data-aos="fade-up">
+          <div class="cert-image-frame" data-cert-src="images/certificates/cert-23.jpg" data-cert-title="شهادة تقدير رسمية #٢٣" data-cert-year="وسام رسمي">
+            <img src="images/certificates/cert-23.jpg" loading="lazy" alt="شهادة شكر وتقدير رسمية ٢٣" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/04/cert-23.jpg'">
+            <span class="cert-badge-ribbon ribbon-official"><i class="fa-solid fa-shield-halved"></i> وسام رسمي</span>
             <div class="cert-hover-overlay">
-              <button type="button" class="cert-action-btn" title="تكبير ومعاينة"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-              <a href="images/certificates/cert-23.jpg" download="شهادة-تقدير-جمعية-أخوين-23.jpg" class="cert-action-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
+              <button type="button" class="cert-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة</button>
+              <a href="images/certificates/cert-23.jpg" download="شهادة-تقدير-رسمية-23.jpg" class="cert-action-dl-btn cert-download-direct" title="تحميل الشهادة"><i class="fa-solid fa-download"></i></a>
             </div>
           </div>
           <div class="cert-info-bar">
-            <h3 class="cert-info-title"><i class="fa-solid fa-file-certificate"></i> شهادة شكر وتقدير</h3>
+            <h3 class="cert-info-title">وسام وتقدير رسمي</h3>
             <span class="cert-number-tag">#٢٣</span>
           </div>
         </div>
+      </div>
+
+      <!-- Empty State -->
+      <div class="cert-empty-state" id="certEmptyState">
+        <div class="cert-empty-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <h3 class="cert-empty-title">لم يتم العثور على شهادات مطابقة</h3>
+        <p class="cert-empty-desc">لا توجد نتائج تطابق كلمات البحث المدخلة. يرجى مراجعة الاسم أو إعادة عرض كافة الشهادات.</p>
+        <button type="button" class="btn btn-primary" id="certResetFiltersBtn" style="border-radius: var(--radius-full); padding: 0.6rem 1.75rem;"><i class="fa-solid fa-rotate-right"></i> عرض كافة الشهادات</button>
       </div>
 
     </div>
@@ -474,7 +1438,7 @@
     <div class="cert-lightbox-header">
       <div class="cert-lightbox-counter" id="certLightboxCounter">
         <i class="fa-solid fa-award" style="color: var(--accent);"></i>
-        <span>شهادة ١ من ٢٣</span>
+        <span>شهادة ١ من ٨٤</span>
       </div>
       <div class="cert-lightbox-actions">
         <a href="#" class="cert-lightbox-btn" id="certLightboxDownload" download="شهادة-تقدير.jpg" title="تحميل الشهادة بدقة عالية"><i class="fa-solid fa-download"></i></a>
@@ -488,6 +1452,12 @@
 
     <div class="cert-lightbox-body">
       <img src="images/certificates/cert-01.jpg" alt="شهادة تقدير" class="cert-lightbox-img" id="certLightboxImg">
+    </div>
+
+    <!-- Lightbox Bottom Caption -->
+    <div class="cert-lightbox-caption" id="certLightboxCaption">
+      <span class="cert-lightbox-caption-title" id="certLightboxCaptionTitle">شهادة تقدير</span>
+      <span class="cert-lightbox-caption-year" id="certLightboxCaptionYear">عام ٢٠١٤</span>
     </div>
   </div>
 
@@ -523,6 +1493,7 @@
             <li><a href="about.html"><i class="fa-solid fa-chevron-left"></i> عن الجمعية</a></li>
             <li><a href="activities.html"><i class="fa-solid fa-chevron-left"></i> ميادين العمل والأنشطة</a></li>
             <li><a href="causes.html"><i class="fa-solid fa-chevron-left"></i> حالات التبرع والمشاريع</a></li>
+            <li><a href="gallery.html"><i class="fa-solid fa-chevron-left"></i> المركز الإعلامي والمعرض</a></li>
             <li><a href="certificates.html"><i class="fa-solid fa-chevron-left"></i> شهادات التقدير والأوسمة</a></li>
             <li><a href="contact.html"><i class="fa-solid fa-chevron-left"></i> تواصل معنا</a></li>
           </ul>
@@ -610,7 +1581,7 @@
         <li><a href="activities.html"><i class="fa-solid fa-list-check" style="color: var(--primary);"></i> ميادين العمل والأنشطة</a></li>
         <li><a href="causes.html"><i class="fa-solid fa-hand-holding-heart" style="color: var(--primary);"></i> حالات التبرع</a></li>
         <li><a href="javascript:void(0)" onclick="event.preventDefault();"><i class="fa-solid fa-building-columns" style="color: var(--primary);"></i> وسائل التبرع</a></li>
-        <li><a href="javascript:void(0)" onclick="event.preventDefault();"><i class="fa-solid fa-newspaper" style="color: var(--primary);"></i> المركز الإعلامي</a></li>
+        <li><a href="gallery.html"><i class="fa-solid fa-photo-film" style="color: var(--primary);"></i> المركز الإعلامي والمعرض</a></li>
         <li><a href="javascript:void(0)" onclick="event.preventDefault();"><i class="fa-solid fa-handshake" style="color: var(--primary);"></i> البروتوكولات</a></li>
         <li><a href="certificates.html" class="active"><i class="fa-solid fa-award" style="color: var(--primary);"></i> شهادات التقدير</a></li>
         <li><a href="contact.html"><i class="fa-solid fa-phone" style="color: var(--primary);"></i> تواصل معنا</a></li>
@@ -620,7 +1591,6 @@
   </aside>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
   <script src="js/main.js?v=1788800001"></script>
 </body>
 </html>
