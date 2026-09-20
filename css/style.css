@@ -4888,3 +4888,373 @@ img, svg, video, iframe {
 }
 
 
+
+/* ==========================================================================
+   COMPREHENSIVE RESPONSIVE OVERRIDES - Final Polish Layer
+   تشمل كل المشاكل المتبقية في الـ mobile و tablet
+   ========================================================================== */
+
+/* ---- 1. Page Banner ---- */
+@media (max-width: 768px) {
+  .page-banner {
+    padding: 3.5rem 0 3rem !important;
+  }
+  .page-banner-title {
+    font-size: 1.85rem !important;
+    line-height: 1.35 !important;
+  }
+  .page-banner-desc {
+    font-size: 1rem !important;
+    line-height: 1.65 !important;
+    padding: 0 0.5rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .page-banner {
+    padding: 2.75rem 0 2.25rem !important;
+  }
+  .page-banner-title {
+    font-size: 1.55rem !important;
+  }
+  .page-banner-desc {
+    font-size: 0.92rem !important;
+  }
+}
+
+/* ---- 2. About & Goals Grids ---- */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  .about-main-img {
+    height: 260px !important;
+  }
+  .about-hero-title {
+    font-size: 1.6rem !important;
+  }
+  .about-goals-list {
+    grid-template-columns: 1fr !important;
+  }
+  .about-content {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .experience-badge {
+    position: relative !important;
+    bottom: auto !important;
+    right: auto !important;
+    margin-top: 1rem !important;
+    display: inline-flex !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* ---- 3. Causes Header Bar ---- */
+@media (max-width: 768px) {
+  .causes-header-bar {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+    margin-bottom: 2rem !important;
+  }
+  .causes-header-bar > div:last-child {
+    width: 100% !important;
+  }
+  .causes-header-bar > div:last-child .btn {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+}
+
+/* ---- 4. Home Causes Grid ---- */
+@media (max-width: 768px) {
+  .home-causes-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+}
+
+/* ---- 5. Solidarity Section ---- */
+@media (max-width: 992px) {
+  .solidarity-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+  .video-box {
+    height: 280px !important;
+  }
+}
+@media (max-width: 576px) {
+  .video-box {
+    height: 220px !important;
+  }
+  .solidarity-section {
+    padding: 3.5rem 0 !important;
+  }
+}
+
+/* ---- 6. Newsletter Grid ---- */
+@media (max-width: 992px) {
+  .newsletter-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  .visitor-counter-box {
+    max-width: 420px !important;
+    margin: 0 auto !important;
+  }
+}
+
+/* ---- 7. Stats Grid ---- */
+@media (max-width: 576px) {
+  .stats-section {
+    padding: 3.5rem 0 !important;
+  }
+  .stat-number {
+    font-size: 2.5rem !important;
+  }
+  .stat-label {
+    font-size: 1rem !important;
+  }
+}
+
+/* ---- 8. Bank Accounts Section ---- */
+@media (max-width: 768px) {
+  .bank-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+  .bank-accounts-section {
+    padding: 3.5rem 0 !important;
+  }
+}
+
+/* ---- 9. Footer ---- */
+@media (max-width: 576px) {
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  .footer-bottom {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 0.75rem !important;
+  }
+  .main-footer {
+    padding: 3rem 0 1.5rem !important;
+  }
+}
+
+/* ---- 10. Contact Cards Grid ---- */
+@media (max-width: 480px) {
+  .contact-cards-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ---- 11. Top Bar ---- */
+@media (max-width: 576px) {
+  .top-bar {
+    display: none !important;
+  }
+}
+
+/* ---- 12. Programs Section ---- */
+@media (max-width: 576px) {
+  .programs-section {
+    padding: 3rem 0 !important;
+  }
+  .programs-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+    margin-top: 1.5rem !important;
+  }
+  .programs-header {
+    margin-bottom: 2rem !important;
+  }
+  .program-img-box {
+    height: 190px !important;
+  }
+}
+
+/* ---- 13. Form Sections ---- */
+@media (max-width: 576px) {
+  .form-wrapper {
+    padding: 2rem 1rem !important;
+  }
+}
+
+/* ---- 14. Gallery / Media Grid ---- */
+@media (max-width: 576px) {
+  .gallery-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+  .gallery-toolbar-container {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .gallery-search-wrapper {
+    min-width: unset !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  .gallery-filter-nav {
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 0.5rem !important;
+    justify-content: flex-start !important;
+  }
+  .gallery-filter-pill {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* ---- 15. VMV Cards ---- */
+@media (max-width: 768px) {
+  .vmv-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 480px !important;
+    margin: 0 auto !important;
+  }
+  .vmv-card {
+    padding: 2rem 1.5rem !important;
+  }
+}
+
+/* ---- 16. Mobile Drawer Improvements ---- */
+.mobile-nav-links a {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.65rem !important;
+  padding: 0.85rem 1rem !important;
+  font-weight: 600 !important;
+  border-radius: var(--radius-sm) !important;
+  transition: all 0.2s ease !important;
+  border-bottom: 1px solid var(--border-light) !important;
+  color: var(--secondary) !important;
+}
+.mobile-nav-links li:last-child a {
+  border-bottom: none !important;
+}
+.mobile-nav-links a:hover {
+  background: var(--primary-subtle) !important;
+  color: var(--primary) !important;
+  padding-right: 1.35rem !important;
+}
+
+/* ---- 17. Quick Action Strip ---- */
+@media (max-width: 768px) {
+  .quick-action-strip {
+    margin-top: -30px !important;
+    padding: 1.25rem !important;
+  }
+  .action-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+}
+
+/* ---- 18. General Section Padding on Mobile ---- */
+@media (max-width: 576px) {
+  .about-section,
+  .goals-action-section,
+  .causes-section,
+  .programs-section,
+  .bank-accounts-section,
+  .solidarity-section,
+  .contact-strip-section,
+  .newsletter-section,
+  .certificates-section,
+  .partners-section,
+  .home-gallery-preview-section {
+    padding: 3rem 0 !important;
+  }
+}
+
+/* ---- 19. Section Title & Tag ---- */
+@media (max-width: 576px) {
+  .section-tag {
+    font-size: 0.88rem !important;
+  }
+}
+
+/* ---- 20. About Page Specific ---- */
+@media (max-width: 768px) {
+  .page-intro-header {
+    padding: 2.5rem 0 1.5rem !important;
+  }
+}
+
+/* ---- 21. Causes / News Grid ---- */
+@media (max-width: 576px) {
+  .causes-grid,
+  .news-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+}
+
+/* ---- 22. Floating Buttons Position ---- */
+@media (max-width: 576px) {
+  .floating-actions {
+    bottom: 1rem !important;
+    left: 0.75rem !important;
+    gap: 0.5rem !important;
+  }
+  .floating-btn {
+    width: 46px !important;
+    height: 46px !important;
+    font-size: 1.2rem !important;
+  }
+}
+
+/* ---- 23. Hero Section Fixes for Small Mobile ---- */
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 2.5rem 0 4rem !important;
+  }
+  .hero-cta-group {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .hero-cta-group .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+/* ---- 24. Partners ---- */
+@media (max-width: 576px) {
+  .partners-carousel {
+    gap: 1.5rem !important;
+  }
+  .partner-logo-item {
+    height: 45px !important;
+  }
+}
+
+/* ---- 25. Features List ---- */
+@media (max-width: 768px) {
+  .features-list {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+}
+
+/* ---- 26. Mobile Nav Drawer Width Fix ---- */
+@media (max-width: 400px) {
+  .mobile-nav-drawer {
+    width: 100vw !important;
+    right: -100vw !important;
+  }
+  .mobile-nav-drawer.active {
+    right: 0 !important;
+  }
+}
