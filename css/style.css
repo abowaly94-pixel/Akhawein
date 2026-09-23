@@ -4453,12 +4453,37 @@ img, svg, video, iframe {
   .vmv-grid {
     grid-template-columns: 1fr !important;
   }
+  .about-image-wrapper {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
   .experience-badge {
     position: relative !important;
     bottom: auto !important;
     right: auto !important;
-    margin-top: 1.25rem !important;
+    margin-top: 1.75rem !important;
+    margin-bottom: 0.75rem !important;
     display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 1.5rem !important;
+    padding: 1rem 2.25rem !important;
+    border-radius: 50px !important;
+    box-shadow: 0 10px 25px rgba(213, 123, 30, 0.28) !important;
+  }
+  .experience-badge .experience-years {
+    font-size: 2.3rem !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+  }
+  .experience-badge .experience-text {
+    font-size: 0.98rem !important;
+    margin-top: 0 !important;
+    line-height: 1.4 !important;
+    text-align: right !important;
   }
 }
 
@@ -4792,6 +4817,17 @@ img, svg, video, iframe {
    4. Breakpoint: Standard Smartphones (max-width: 576px)
    -------------------------------------------------------------------------- */
 @media (max-width: 576px) {
+  .experience-badge {
+    gap: 1.15rem !important;
+    padding: 0.85rem 1.5rem !important;
+    border-radius: 50px !important;
+  }
+  .experience-badge .experience-years {
+    font-size: 1.85rem !important;
+  }
+  .experience-badge .experience-text {
+    font-size: 0.86rem !important;
+  }
   .container {
     padding-left: 0.85rem !important;
     padding-right: 0.85rem !important;
@@ -4889,6 +4925,16 @@ img, svg, video, iframe {
    5. Breakpoint: Compact Smartphones (max-width: 380px)
    -------------------------------------------------------------------------- */
 @media (max-width: 380px) {
+  .experience-badge {
+    gap: 0.75rem !important;
+    padding: 0.7rem 0.95rem !important;
+  }
+  .experience-badge .experience-years {
+    font-size: 1.6rem !important;
+  }
+  .experience-badge .experience-text {
+    font-size: 0.78rem !important;
+  }
   .logo-img {
     height: 34px !important;
   }
@@ -4977,10 +5023,29 @@ img, svg, video, iframe {
     position: relative !important;
     bottom: auto !important;
     right: auto !important;
-    margin-top: 1rem !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 1rem !important;
     display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 1.35rem !important;
+    padding: 0.95rem 1.85rem !important;
     margin-left: auto !important;
     margin-right: auto !important;
+    border-radius: 50px !important;
+    box-shadow: 0 10px 25px rgba(213, 123, 30, 0.28) !important;
+  }
+  .experience-badge .experience-years {
+    font-size: 2.1rem !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+  }
+  .experience-badge .experience-text {
+    font-size: 0.92rem !important;
+    margin-top: 0 !important;
+    line-height: 1.4 !important;
+    text-align: right !important;
   }
 }
 
