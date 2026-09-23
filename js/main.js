@@ -64,6 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmartEmailLinks();
   initCertificatesLightbox();
   initGalleryMedia();
+  initDonationTabs();
+  initDonationViewSwitcher();
 });
 
 /* -------------------------------------------------------------------------- */
@@ -1364,11 +1366,11 @@ function initGalleryMedia() {
       }
 
       if (downloadBtn) {
-        downloadBtn.style.display = 'inline-flex';
-        downloadBtn.href = `https://www.youtube.com/watch?v=${mediaSrc}`;
+        downloadBtn.style.display = 'none';
+        downloadBtn.href = '#';
         downloadBtn.removeAttribute('download');
-        downloadBtn.setAttribute('target', '_blank');
-        downloadBtn.setAttribute('title', 'مشاهدة على يوتيوب في نافذة جديدة');
+        downloadBtn.removeAttribute('target');
+        downloadBtn.removeAttribute('title');
       }
     } else if (mediaType === 'video-local') {
       if (modalImg) modalImg.style.display = 'none';
@@ -1475,4 +1477,187 @@ function initGalleryMedia() {
   }, { passive: true });
 }
 
+
+
+
+/* -------------------------------------------------------------------------- */
+/* 22. Donation Methods Tab Bar Controller                                    */
+/* -------------------------------------------------------------------------- */
+function initDonationTabs() {
+  const tabBtns = document.querySelectorAll('.donation-tab-btn');
+  const tabPanes = document.querySelectorAll('.donation-tab-pane');
+  if (!tabBtns.length || !tabPanes.length) return;
+
+  function switchTab(targetId) {
+    tabBtns.forEach(btn => {
+      const match = btn.getAttribute('data-tab') === targetId;
+      btn.classList.toggle('active', match);
+      btn.setAttribute('aria-selected', match ? 'true' : 'false');
+    });
+
+    tabPanes.forEach(pane => {
+      if (pane.id === targetId) {
+        pane.classList.add('active');
+      } else {
+        pane.classList.remove('active');
+      }
+    });
+  }
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = btn.getAttribute('data-tab');
+      if (targetId) {
+        switchTab(targetId);
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState(null, null, '#' + targetId);
+        }
+      }
+    });
+  });
+
+  // Check URL hash on page load
+  const currentHash = window.location.hash.replace('#', '');
+  if (currentHash && document.getElementById(currentHash) && document.querySelector(`[data-tab="${currentHash}"]`)) {
+    switchTab(currentHash);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* 23. Interactive Copy to Clipboard with Feedback                            */
+/* -------------------------------------------------------------------------- */
+function initCopyToClipboard() {
+  const copyButtons = document.querySelectorAll('.copy-btn, [data-copy]');
+  if (!copyButtons.length) return;
+
+  copyButtons.forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const textToCopy = btn.getAttribute('data-copy');
+      if (!textToCopy) return;
+
+      try {
+        await navigator.clipboard.writeText(textToCopy);
+      } catch (err) {
+        const textarea = document.createElement('textarea');
+        textarea.value = textToCopy;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      }
+
+      // Visual feedback on button
+      const originalHTML = btn.innerHTML;
+      btn.classList.add('copied');
+      btn.innerHTML = '<i class="fa-solid fa-check"></i> تم النسخ!';
+
+      // Micro Confetti if available
+      if (typeof confetti === 'function') {
+        const rect = btn.getBoundingClientRect();
+        const x = (rect.left + rect.width / 2) / window.innerWidth;
+        const y = (rect.top + rect.height / 2) / window.innerHeight;
+        confetti({
+          particleCount: 22,
+          spread: 50,
+          origin: { x, y },
+          colors: ['#10b981', '#0b3b4f', '#f59e0b'],
+          disableForReducedMotion: true
+        });
+      }
+
+      // Show toast if container exists
+      const toastContainer = document.getElementById('toastContainer');
+      if (toastContainer) {
+        const toast = document.createElement('div');
+        toast.className = 'toast show';
+        toast.style.background = '#0b3b4f';
+        toast.style.color = '#ffffff';
+        toast.style.borderRadius = '10px';
+        toast.style.padding = '0.75rem 1.25rem';
+        toast.style.boxShadow = '0 8px 24px rgba(0,0,0,0.18)';
+        toast.style.display = 'flex';
+        toast.style.alignItems = 'center';
+        toast.style.gap = '0.6rem';
+        toast.style.fontSize = '0.92rem';
+        toast.style.fontWeight = '700';
+        toast.style.marginTop = '0.5rem';
+        toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color: #10b981;"></i> تم نسخ (${textToCopy}) بنجاح`;
+        toastContainer.appendChild(toast);
+        setTimeout(() => {
+          toast.remove();
+        }, 3000);
+      }
+
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = originalHTML;
+      }, 2000);
+    });
+  });
+}
+
+/* -------------------------------------------------------------------------- */
+/* 24. Banque Misr View Switcher (Cards vs Table)                             */
+/* -------------------------------------------------------------------------- */
+function initDonationViewSwitcher() {
+  const switchBtns = document.querySelectorAll('.view-switch-btn');
+  const panels = {
+    cards: document.getElementById('viewCards'),
+    table: document.getElementById('viewTable')
+  };
+  if (!switchBtns.length) return;
+
+  switchBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetView = btn.getAttribute('data-view');
+      switchBtns.forEach(b => {
+        const isMatch = b === btn;
+        b.classList.toggle('active', isMatch);
+        b.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+      });
+
+      if (panels.cards && panels.table) {
+        if (targetView === 'cards') {
+          panels.cards.classList.add('active');
+          panels.table.classList.remove('active');
+        } else if (targetView === 'table') {
+          panels.table.classList.add('active');
+          panels.cards.classList.remove('active');
+        }
+      }
+    });
+  });
+}
+
+/* -------------------------------------------------------------------------- */
+/* 25. Global Branches Filter Controller                                      */
+/* -------------------------------------------------------------------------- */
+function filterBranches(gov) {
+  const govSections = document.querySelectorAll('.gov-section');
+  const filterBtns = document.querySelectorAll('.branch-filter-btn');
+
+  filterBtns.forEach(btn => {
+    const isMatch = btn.getAttribute('data-gov') === gov;
+    btn.classList.toggle('active', isMatch);
+    btn.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+  });
+
+  govSections.forEach(section => {
+    if (gov === 'all' || section.getAttribute('data-gov') === gov) {
+      section.style.display = 'block';
+    } else {
+      section.style.display = 'none';
+    }
+  });
+
+  if (typeof AOS !== 'undefined') {
+    AOS.refresh();
+  }
+}
+window.filterBranches = filterBranches;
 

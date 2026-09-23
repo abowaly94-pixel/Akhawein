@@ -38,6 +38,14 @@ const handler = (req, res) => {
       urlPath = '/index.html';
     }
 
+    // Handle Arabic route aliases (e.g. /البروتوكولات -> /protocols.html, /الفروع -> /branches.html)
+    const normalizedPath = urlPath.replace(/\/+$/, '');
+    if (normalizedPath === '/البروتوكولات' || normalizedPath === '/بروتوكولات') {
+      urlPath = '/protocols.html';
+    } else if (normalizedPath === '/الفروع' || normalizedPath === '/فروع' || normalizedPath === '/branches') {
+      urlPath = '/branches.html';
+    }
+
     const baseDir = process.cwd();
     let targetPath = path.join(baseDir, urlPath);
 

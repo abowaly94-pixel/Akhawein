@@ -102,19 +102,27 @@ button, input, select, textarea {
   font-size: inherit;
 }
 
-/* Custom Scrollbar */
+/* Custom Modern Slim Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
   background: #f1f5f9;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--accent);
-  border-radius: 5px;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
+}
+
+/* Firefox Support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) #f1f5f9;
 }
 
 /* Utility Container */
@@ -5282,3 +5290,1349 @@ img, svg, video, iframe {
     right: 0 !important;
   }
 }
+
+
+/* ==========================================================================
+   27. Donation Methods Tab Bar & Bank Tables
+   ========================================================================== */
+.donation-tabs-wrapper {
+  margin: 2.5rem auto 4rem;
+  max-width: 1140px;
+}
+
+.donation-tabs-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: #f1f5f9;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  max-width: 680px;
+  margin: 0 auto 2.5rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.donation-tab-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.5rem;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.02rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.donation-tab-btn i {
+  font-size: 1.15rem;
+  transition: transform 0.2s ease;
+}
+
+.donation-tab-btn:hover {
+  color: var(--primary);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.donation-tab-btn.active {
+  background: #ffffff;
+  color: var(--primary);
+  box-shadow: 0 4px 14px rgba(11, 59, 79, 0.12);
+}
+
+.donation-tab-btn.active i {
+  color: var(--accent);
+  transform: scale(1.1);
+}
+
+.donation-tab-pane {
+  display: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.donation-tab-pane.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================================================== */
+/* Premium Banque Misr Official Accounts Card & Modern UX                     */
+/* ========================================================================== */
+.bank-official-card {
+  max-width: 1040px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 12px 40px -10px rgba(11, 59, 79, 0.08), 0 2px 6px rgba(0, 0, 0, 0.02);
+  padding: 2.75rem 2.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.bank-logo-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid #edf2f7;
+  text-align: center;
+}
+
+.bank-logo-box {
+  background: #ffffff;
+  padding: 0.6rem 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  border: 1px solid #f1f5f9;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bank-logo-box img {
+  max-height: 80px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.bank-logo-box:hover img {
+  transform: scale(1.04);
+}
+
+.bank-official-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #0b3b4f;
+  margin: 0.25rem 0 0.5rem;
+  letter-spacing: -0.3px;
+}
+
+.bank-meta-chips {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.35rem;
+}
+
+.bank-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #f8fafc;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  padding: 0.4rem 0.95rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+
+
+.bank-chip i {
+  font-size: 0.9rem;
+}
+
+/* View Switcher */
+.bank-view-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #f1f5f9;
+  padding: 0.35rem;
+  border-radius: 9999px;
+  max-width: 440px;
+  margin: 0 auto 2.25rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.view-switch-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.15rem;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.92rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.view-switch-btn:hover {
+  color: var(--primary);
+}
+
+.view-switch-btn.active {
+  background: #ffffff;
+  color: var(--primary);
+  box-shadow: 0 4px 12px rgba(11, 59, 79, 0.1);
+}
+
+/* View Containers */
+.view-panel {
+  display: none;
+  animation: fadeInView 0.35s ease forwards;
+}
+
+.view-panel.active {
+  display: block;
+}
+
+@keyframes fadeInView {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Modern Account Cards Grid                                                  */
+/* -------------------------------------------------------------------------- */
+.donation-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.donor-account-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 2rem 1.75rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.donor-account-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transition: height 0.25s ease;
+}
+
+.donor-account-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(11, 59, 79, 0.09);
+  border-color: #cbd5e1;
+}
+
+.donor-account-card:hover::before {
+  height: 6px;
+}
+
+.donor-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.15rem;
+  margin-bottom: 1.5rem;
+}
+
+.donor-card-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.45rem;
+  flex-shrink: 0;
+}
+
+.donor-card-icon.meals {
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.donor-card-icon.medical {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+}
+
+.donor-card-head-content {
+  flex: 1;
+}
+
+.donor-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  margin-bottom: 0.35rem;
+}
+
+.donor-card-badge.badge-meals {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.donor-card-badge.badge-medical {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.donor-card-title {
+  font-size: 1.28rem;
+  font-weight: 800;
+  color: #0b3b4f;
+  margin: 0 0 0.25rem;
+}
+
+.donor-card-desc {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* Number Fields inside Cards */
+.donor-card-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  background: #f8fafc;
+  padding: 1.15rem;
+  border-radius: 14px;
+  border: 1px solid #eef2f6;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.field-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.field-value-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  padding: 0.6rem 0.85rem;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  gap: 0.5rem;
+}
+
+.field-number {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: #0f172a;
+  direction: ltr;
+  letter-spacing: 0.5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.field-number.iban {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #334155;
+  letter-spacing: 0.3px;
+}
+
+.btn-card-copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.8rem;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.btn-card-copy:hover {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.btn-card-copy.copied {
+  background: #10b981 !important;
+  color: #ffffff !important;
+  border-color: #10b981 !important;
+}
+
+.donor-card-action {
+  margin-top: auto;
+}
+
+.btn-receipt-whatsapp {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #25d366;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+}
+
+.btn-receipt-whatsapp:hover {
+  background: #1eb856;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Refined Official Table View                                                */
+/* -------------------------------------------------------------------------- */
+.bank-table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+  margin-bottom: 2rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) #f8fafc;
+}
+
+.bank-table-responsive::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+}
+
+.bank-table-responsive::-webkit-scrollbar-track {
+  background: #f8fafc;
+  border-radius: 9999px;
+}
+
+.bank-table-responsive::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 9999px;
+}
+
+.bank-table-responsive::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+.bank-official-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: right;
+  direction: rtl;
+}
+
+.bank-official-table th {
+  background: #0b3b4f;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 1rem 0.85rem;
+  border: none;
+  white-space: nowrap;
+}
+
+.bank-official-table th:first-child {
+  border-top-right-radius: 12px;
+}
+
+.bank-official-table th:last-child {
+  border-top-left-radius: 12px;
+}
+
+.bank-official-table td {
+  padding: 1rem 0.85rem;
+  border-bottom: 1px solid #f1f5f9;
+  color: var(--text-main);
+  font-size: 0.92rem;
+  vertical-align: middle;
+  background: #ffffff;
+}
+
+.bank-official-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.bank-official-table tbody tr:nth-child(even) td {
+  background-color: #fafbfc;
+}
+
+.bank-official-table tbody tr:hover td {
+  background-color: #f0fdf4 !important;
+}
+
+/* Branch Pill */
+.branch-pill {
+  display: inline-block;
+  background: rgba(11, 59, 79, 0.07);
+  color: var(--primary);
+  font-weight: 800;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+/* Currency Pill */
+.currency-pill {
+  display: inline-block;
+  color: #475569;
+  font-weight: 600;
+  font-size: 0.86rem;
+}
+
+/* Account Name Box in Table */
+.acc-name-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.acc-name-title {
+  font-weight: 800;
+  color: #0b3b4f;
+  font-size: 1rem;
+}
+
+/* Copy Pill in Table */
+.table-num-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  background: #f8fafc;
+  padding: 0.35rem 0.55rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.table-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.55rem;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.table-copy-btn:hover {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.table-copy-btn.copied {
+  background: #10b981 !important;
+  color: #ffffff !important;
+  border-color: #10b981 !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Unified Assistance & Deposit Notice Card                                  */
+/* -------------------------------------------------------------------------- */
+.deposit-assistance-card {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.assistance-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  min-width: 280px;
+}
+
+.assistance-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #ecfdf5;
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  border: 1px solid #a7f3d0;
+}
+
+.assistance-text h4 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0b3b4f;
+  margin: 0 0 0.25rem;
+}
+
+.assistance-text p {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.btn-assistance-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #25d366;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.7rem 1.35rem;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+  white-space: nowrap;
+}
+
+.btn-assistance-whatsapp:hover {
+  background: #1eb856;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
+}
+
+.acc-num-code {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+  direction: ltr;
+  display: inline-block;
+  letter-spacing: 0.6px;
+}
+
+.iban-code {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #334155;
+  direction: ltr;
+  display: inline-block;
+  letter-spacing: 0.4px;
+}
+
+@media (max-width: 768px) {
+  .bank-official-card {
+    padding: 1.5rem 1.15rem;
+    border-radius: 18px;
+  }
+  .bank-official-title {
+    font-size: 1.22rem;
+  }
+  .bank-meta-chips {
+    gap: 0.4rem;
+  }
+  .bank-chip {
+    font-size: 0.78rem;
+    padding: 0.35rem 0.75rem;
+  }
+  .bank-view-switcher {
+    width: 100%;
+    max-width: 100%;
+  }
+  .view-switch-btn {
+    font-size: 0.84rem;
+    padding: 0.55rem 0.85rem;
+  }
+  .donor-account-card {
+    padding: 1.5rem 1.25rem;
+  }
+  .field-value-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  .field-number {
+    text-align: center;
+    font-size: 0.98rem;
+  }
+  .btn-card-copy {
+    width: 100%;
+    padding: 0.55rem;
+  }
+  .deposit-assistance-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.35rem 1.15rem;
+  }
+  .assistance-info {
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+  }
+  .btn-assistance-whatsapp {
+    width: 100%;
+    justify-content: center;
+    padding: 0.8rem 1rem;
+  }
+}
+
+/* ==========================================================================
+   Protocols Page (بروتوكولات التعاون المشترك)
+   Exact match to official Akhawein specifications with modern polish
+   ========================================================================== */
+.protocols-section {
+  padding: 4.5rem 0 6rem;
+  background-color: var(--bg-main, #f8fafc);
+}
+
+.protocols-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  background: #ffffff;
+  padding: 1.25rem 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--border-color, #e2e8f0);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  margin-bottom: 2.5rem;
+}
+
+.protocols-count-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-weight: 700;
+  color: var(--secondary, #1f2937);
+  font-size: 1.05rem;
+}
+
+.protocols-count-badge i {
+  color: var(--primary, #d57b1e);
+  font-size: 1.2rem;
+}
+
+.protocols-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 30px;
+  padding: 0.55rem 1.25rem;
+  min-width: 300px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.protocols-search-wrap:focus-within {
+  border-color: var(--primary, #d57b1e);
+  box-shadow: 0 0 0 3px rgba(213, 123, 30, 0.12);
+  background: #ffffff;
+}
+
+.protocols-search-wrap input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--text-main, #1e293b);
+}
+
+.protocols-search-wrap i {
+  color: #94a3b8;
+}
+
+.protocols-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 991px) {
+  .protocols-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .protocols-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .protocols-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .protocols-search-wrap {
+    min-width: 100%;
+  }
+}
+
+.card_box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.card_box:hover {
+  border-color: #d57b1e;
+  box-shadow: 0 12px 24px rgba(213, 123, 30, 0.14);
+  transform: translateY(-5px);
+}
+
+.card_box .card-img-wrapper {
+  height: 125px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  padding: 12px;
+  background: #fafaf9;
+  border-radius: 12px;
+  border: 1px solid #f1f5f9;
+}
+
+.card_box .card-img-wrapper img {
+  max-height: 95px;
+  max-width: 100%;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.card_box:hover .card-img-wrapper img {
+  transform: scale(1.05);
+}
+
+.card_box .elementor-image-box-title,
+.card_box .card-title {
+  font-family: var(--font-heading, 'Cairo', sans-serif);
+  font-size: 1.22rem;
+  font-weight: 700;
+  color: var(--text-main, #1e293b);
+  margin-bottom: 0.85rem;
+  text-align: center;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid #f8fafc;
+  padding-bottom: 0.5rem;
+}
+
+.card_box .elementor-image-box-description {
+  min-height: 165px;
+  height: 165px;
+  overflow-y: auto;
+  padding: 12px 14px;
+  background: #f8fafc;
+  border-radius: 10px;
+  font-size: 0.93rem;
+  line-height: 1.85;
+  color: #475569;
+  text-align: right;
+  white-space: pre-line;
+  border: 1px solid #f1f5f9;
+}
+
+/* Custom Scrollbar matching Akhawein original (#fcb429) */
+.card_box .elementor-image-box-description::-webkit-scrollbar {
+  width: 8px;
+}
+.card_box .elementor-image-box-description::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+.card_box .elementor-image-box-description::-webkit-scrollbar-thumb {
+  background: #fcb429;
+  border-radius: 4px;
+}
+.card_box .elementor-image-box-description::-webkit-scrollbar-thumb:hover {
+  background: #d57b1e;
+}
+
+/* Card for CAF Certificate */
+.card_box.card_caf {
+  display: flex;
+  flex-direction: column;
+}
+.card_box.card_caf .card-img-wrapper {
+  height: 200px;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  position: relative;
+  overflow: hidden;
+}
+.card_box.card_caf .card-img-wrapper img {
+  max-height: 185px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.card_box.card_caf .card-img-wrapper::after {
+  content: '🔍 عرض الشهادة كاملة';
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 23, 42, 0.85);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+.card_box.card_caf .card-img-wrapper:hover::after {
+  opacity: 1;
+}
+
+/* Protocol Lightbox Modal */
+.protocol-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(8px);
+  z-index: 99999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.protocol-modal.active {
+  display: flex;
+  opacity: 1;
+}
+.protocol-modal-content {
+  position: relative;
+  max-width: 850px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  max-height: 90vh;
+  overflow-y: auto;
+  text-align: center;
+  animation: modalScaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes modalScaleUp {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.protocol-modal-close {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: #f1f5f9;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  color: #334155;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+.protocol-modal-close:hover {
+  background: #ef4444;
+  color: #ffffff;
+}
+.protocol-modal-img {
+  max-width: 100%;
+  max-height: 65vh;
+  object-fit: contain;
+  margin: 1rem auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.protocol-modal-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--secondary, #1f2937);
+  margin-bottom: 0.5rem;
+}
+.protocol-modal-desc {
+  font-size: 0.98rem;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   Branches Section (عناوين الفروع ومراكز التدريب والخدمة)
+   ========================================================================== */
+.branches-container-section {
+  padding: 4.5rem 0 5.5rem;
+  background-color: var(--bg-main, #f8fafc);
+  border-top: 1px solid var(--border-color, #e2e8f0);
+}
+
+.branches-filter-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+}
+
+.branch-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: var(--radius-full, 9999px);
+  color: var(--text-muted, #64748b);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.branch-filter-btn:hover {
+  border-color: var(--primary, #d57b1e);
+  color: var(--primary, #d57b1e);
+  transform: translateY(-2px);
+}
+
+.branch-filter-btn.active {
+  background: var(--primary, #d57b1e);
+  border-color: var(--primary, #d57b1e);
+  color: #ffffff;
+  box-shadow: 0 6px 15px rgba(213, 123, 30, 0.3);
+}
+
+.branch-filter-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  padding: 2px 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.branch-filter-btn.active .branch-filter-badge {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+.gov-section {
+  margin-bottom: 3.5rem;
+  transition: all 0.3s ease;
+}
+
+.gov-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.gov-badge-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--primary, #d57b1e) 0%, #b86211 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 10px rgba(213, 123, 30, 0.25);
+}
+
+.gov-title {
+  font-family: var(--font-heading, 'Cairo', sans-serif);
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--secondary, #1f2937);
+  margin: 0;
+}
+
+.gov-subtitle {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  font-weight: 500;
+  margin-right: 0.5rem;
+}
+
+.branches-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  .branches-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.branch-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 1.75rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.branch-card:hover {
+  border-color: var(--primary, #d57b1e);
+  box-shadow: 0 12px 28px rgba(213, 123, 30, 0.12);
+  transform: translateY(-4px);
+}
+
+.branch-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.branch-title-area {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.branch-center-name {
+  font-family: var(--font-heading, 'Cairo', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--secondary, #1f2937);
+  line-height: 1.35;
+}
+
+.branch-location-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--primary, #d57b1e);
+  font-weight: 600;
+}
+
+.branch-gov-pill {
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-full, 9999px);
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.branch-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.branch-info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: #334155;
+}
+
+.branch-info-row i {
+  color: var(--primary, #d57b1e);
+  font-size: 1rem;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+  width: 18px;
+  text-align: center;
+}
+
+.branch-info-label {
+  font-weight: 700;
+  color: var(--secondary, #1f2937);
+  margin-left: 0.3rem;
+}
+
+.branch-phone-link {
+  color: var(--primary, #d57b1e);
+  font-weight: 700;
+  direction: ltr;
+  display: inline-block;
+  transition: color 0.2s;
+}
+.branch-phone-link:hover {
+  text-decoration: underline;
+  color: #b86211;
+}
+
+.branch-map-embed {
+  border-radius: 12px;
+  overflow: hidden;
+  height: 240px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  margin-top: auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.branch-map-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.branch-card-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.15rem;
+  flex-wrap: wrap;
+}
+
+.branch-action-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.branch-action-call {
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+.branch-action-call:hover {
+  background: #fde68a;
+  color: #92400e;
+}
+
+.branch-action-maps {
+  background: #f1f5f9;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+}
+.branch-action-maps:hover {
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+
