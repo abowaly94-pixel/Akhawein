@@ -866,7 +866,7 @@ function initMobileDrawer() {
 /* -------------------------------------------------------------------------- */
 function initCertificatesLightbox() {
   const modal = document.getElementById('certLightboxModal');
-  const cardsGrid = document.getElementById('certificatesGrid');
+  const cardsGrid = document.getElementById('certificatesContainer') || document.getElementById('certificatesGrid');
   if (!modal || !cardsGrid) return;
 
   const modalImg = document.getElementById('certLightboxImg');
@@ -887,7 +887,8 @@ function initCertificatesLightbox() {
   const resetFiltersBtn = document.getElementById('certResetFiltersBtn');
   const summaryPill = document.getElementById('certSummaryPill');
 
-  const allCards = Array.from(cardsGrid.querySelectorAll('.certificate-card'));
+  const allYearGroups = Array.from(document.querySelectorAll('.cert-year-group'));
+  const allCards = Array.from(document.querySelectorAll('.certificate-card'));
   if (allCards.length === 0) return;
 
   let activeFilter = 'all';
@@ -915,32 +916,77 @@ function initCertificatesLightbox() {
     let visibleCount = 0;
     activeVisibleCards = [];
 
-    allCards.forEach(card => {
-      const cardYear = card.getAttribute('data-year') || '';
-      const cardRecipient = card.getAttribute('data-recipient') || '';
-      const cardTitle = card.getAttribute('data-title') || '';
-      const combinedText = normalizeArabic(`${cardRecipient} ${cardTitle} ${cardYear}`);
+    if (allYearGroups.length > 0) {
+      allYearGroups.forEach(group => {
+        const groupYear = group.getAttribute('data-year') || '';
+        const groupCards = Array.from(group.querySelectorAll('.certificate-card'));
+        let groupVisibleCount = 0;
 
-      const matchesFilter = (activeFilter === 'all' || cardYear === activeFilter);
-      const matchesSearch = !normQuery || combinedText.includes(normQuery);
+        const matchesFilter = (activeFilter === 'all' || groupYear === activeFilter);
 
-      if (matchesFilter && matchesSearch) {
-        card.style.display = '';
-        activeVisibleCards.push(card);
-        visibleCount++;
-      } else {
-        card.style.display = 'none';
-      }
-    });
+        groupCards.forEach(card => {
+          const cardYear = card.getAttribute('data-year') || '';
+          const cardRecipient = card.getAttribute('data-recipient') || '';
+          const cardTitle = card.getAttribute('data-title') || '';
+          const combinedText = normalizeArabic(`${cardRecipient} ${cardTitle} ${cardYear}`);
+
+          const matchesSearch = !normQuery || combinedText.includes(normQuery);
+
+          if (matchesFilter && matchesSearch) {
+            card.style.display = '';
+            card.classList.add('aos-animate');
+            activeVisibleCards.push(card);
+            visibleCount++;
+            groupVisibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        // Show/hide group based on filter and whether it has matching cards
+        if (matchesFilter && groupVisibleCount > 0) {
+          group.style.display = '';
+          group.classList.add('aos-animate');
+        } else {
+          group.style.display = 'none';
+        }
+      });
+    } else {
+      allCards.forEach(card => {
+        const cardYear = card.getAttribute('data-year') || '';
+        const cardRecipient = card.getAttribute('data-recipient') || '';
+        const cardTitle = card.getAttribute('data-title') || '';
+        const combinedText = normalizeArabic(`${cardRecipient} ${cardTitle} ${cardYear}`);
+
+        const matchesFilter = (activeFilter === 'all' || cardYear === activeFilter);
+        const matchesSearch = !normQuery || combinedText.includes(normQuery);
+
+        if (matchesFilter && matchesSearch) {
+          card.style.display = '';
+          card.classList.add('aos-animate');
+          activeVisibleCards.push(card);
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Refresh AOS animations
+    if (typeof AOS !== 'undefined' && AOS.refresh) {
+      AOS.refresh();
+    }
 
     // Toggle Empty State
     if (emptyState) {
       if (visibleCount === 0) {
         emptyState.classList.add('active');
+        emptyState.style.display = 'block';
         cardsGrid.style.display = 'none';
       } else {
         emptyState.classList.remove('active');
-        cardsGrid.style.display = 'grid';
+        emptyState.style.display = 'none';
+        cardsGrid.style.display = '';
       }
     }
 
@@ -961,6 +1007,19 @@ function initCertificatesLightbox() {
       pill.classList.add('active');
       activeFilter = pill.getAttribute('data-filter') || 'all';
       filterCertificates();
+
+      // Smooth scroll to target year group or top of container
+      if (activeFilter !== 'all') {
+        const targetGroup = document.querySelector(`.cert-year-group[data-year="${activeFilter}"]`);
+        if (targetGroup) {
+          targetGroup.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      } else {
+        const container = document.getElementById('certificatesContainer');
+        if (container) {
+          container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
     });
   });
 
