@@ -22,7 +22,7 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/style.css?v=3.0.0">
+  <link rel="stylesheet" href="css/style.css?v=3.5.0">
 </head>
 <body>
   <!-- Top Scroll Progress Bar -->
@@ -225,6 +225,50 @@
   </section>
 
   <!-- ======================================================================== -->
+  <!-- Official Platform Stats & Trust Strip (Above Footer)                     -->
+  <!-- ======================================================================== -->
+  <section class="trust-stats-strip">
+    <div class="container">
+      <div class="trust-stats-grid" data-aos="fade-up">
+        
+        <!-- Live Visitor Counter -->
+        <div class="trust-stat-box">
+          <div class="trust-stat-icon">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <div class="trust-stat-info">
+            <span class="trust-stat-label">إجمالي زوار المنصة المعتمد</span>
+            <strong class="trust-stat-value" id="statsVisitorCount">١,٤٨٦,٢٣٠</strong>
+          </div>
+        </div>
+
+        <!-- Official Accreditation -->
+        <div class="trust-stat-box">
+          <div class="trust-stat-icon">
+            <i class="fa-solid fa-certificate"></i>
+          </div>
+          <div class="trust-stat-info">
+            <span class="trust-stat-label">القيد والإشهار الرسمي</span>
+            <strong class="trust-stat-value">مشهرة برقم ٧٧٠٢ لسنة ٢٠٠٩</strong>
+          </div>
+        </div>
+
+        <!-- Institutional Oversight -->
+        <div class="trust-stat-box">
+          <div class="trust-stat-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div class="trust-stat-info">
+            <span class="trust-stat-label">الشفافية والرقابة الحكومية</span>
+            <strong class="trust-stat-value">إشراف وزارة التضامن الاجتماعي</strong>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================== -->
   <!-- Main Footer                                                              -->
   <!-- ======================================================================== -->
   <footer class="main-footer">
@@ -326,7 +370,7 @@
   </footer>
 
   <!-- ======================================================================== -->
-  <!-- Floating Quick Action Buttons                                             -->
+  <!-- Floating Action Buttons (Bottom-Left: WhatsApp & Back to Top)            -->
   <!-- ======================================================================== -->
   <div class="floating-actions">
     <!-- Back to Top Button -->
@@ -335,10 +379,19 @@
     </a>
 
     <!-- WhatsApp Button -->
-    <a href="https://wa.me/201281769685?text=السلام%20عليكم%20ورحمة%20الله،%20أود%20الاستفسار%20عن%20التبرع%20لجمعية%20أخوين" target="_blank" rel="noopener noreferrer" class="floating-btn whatsapp" aria-label="تواصل واتساب">
+    <a href="https://wa.me/201281769685?text=السلام%20عليكم%20ورحمة%20الله،%20أود%20الاستفسار%20عن%20التبرع%20لجمعية%20أخوين" target="_blank" rel="noopener noreferrer" class="floating-btn whatsapp" aria-label="تواصل واتساب" title="تواصل عبر واتساب">
       <i class="fa-brands fa-whatsapp"></i>
     </a>
   </div>
+
+  <!-- ======================================================================== -->
+  <!-- Standalone Floating Donate Button (Anchored in Bottom-Right Corner)      -->
+  <!-- ======================================================================== -->
+  <a href="#banque-misr" class="floating-glass-donate" aria-label="تبرع الآن - الحسابات البنكية المعتمدة" title="الانتقال إلى الحسابات البنكية المعتمدة">
+    <span class="glass-icon-circle"><i class="fa-solid fa-hand-holding-heart"></i></span>
+    <span class="glass-text">تبرع الآن</span>
+    <i class="fa-solid fa-chevron-left glass-arrow"></i>
+  </a>
 
   <!-- ======================================================================== -->
   <!-- Mobile Navigation Drawer                                                 -->
@@ -370,6 +423,6 @@
 
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="js/main.js?v=3.0.0"></script>
+  <script src="js/main.js?v=3.5.0"></script>
 </body>
 </html>

@@ -603,8 +603,8 @@ h1, h2, h3, h4, h5, h6 {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(15, 23, 42, 0.94) 0%, rgba(15, 23, 42, 0.78) 50%, rgba(15, 23, 42, 0.35) 100%),
-              radial-gradient(circle at 85% 15%, rgba(213, 123, 30, 0.25) 0%, transparent 60%);
+  background: linear-gradient(to left, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.82) 48%, rgba(15, 23, 42, 0.32) 100%),
+              radial-gradient(circle at 85% 15%, rgba(213, 123, 30, 0.22) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -1919,42 +1919,210 @@ textarea.form-control {
   box-shadow: 0 0 0 3px rgba(252, 180, 41, 0.2);
 }
 
-.visitor-counter-box {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
+/* ==========================================================================
+   Corner Live Visitor Counter Widget (Floating & Hero Corner)
+   ========================================================================== */
 
-.visitor-counter-box h4 {
-  color: #ffffff;
-  margin-bottom: 1.25rem;
-}
-
-.counter-digits {
+/* 1. Corner Floating Widget (Bottom-Right Corner) */
+.corner-visitor-widget {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 998;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: var(--font-primary);
+  user-select: none;
+}
+
+/* Floating Pill */
+.corner-visitor-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: rgba(15, 23, 42, 0.88);
+  border: 1px solid rgba(252, 180, 41, 0.45);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 15px rgba(213, 123, 30, 0.2);
+  padding: 0.55rem 1.25rem;
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  cursor: default;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.corner-visitor-pill:hover {
+  transform: translateY(-3px) scale(1.03);
+  border-color: var(--accent);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45), 0 0 25px rgba(252, 180, 41, 0.35);
+  background: rgba(15, 23, 42, 0.95);
+}
+
+.corner-info-group {
+  display: flex;
+  align-items: center;
   gap: 0.45rem;
-  margin-bottom: 1rem;
+  color: #ffffff;
 }
 
-.digit-box {
-  background: #0f172a;
+.corner-title {
+  color: #94a3b8;
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.corner-title i {
   color: var(--accent);
-  font-family: monospace;
-  font-size: 1.65rem;
-  font-weight: 800;
-  padding: 0.45rem 0.85rem;
-  border-radius: 8px;
-  border: 1px solid rgba(252, 180, 41, 0.35);
-  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease;
+  font-size: 0.78rem;
 }
 
-.digit-box.flip {
-  transform: rotateX(360deg);
+.corner-num {
+  color: #fbbf24;
+  font-family: monospace, var(--font-primary);
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.corner-num.bump {
+  animation: numberPop 0.6s ease;
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(252, 180, 41, 0.9);
+}
+
+@keyframes numberPop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.22); color: #4ade80; }
+  100% { transform: scale(1); }
+}
+
+/* Floating +1 Particle */
+.corner-plus-indicator {
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background: #22c55e;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0);
+}
+
+.corner-plus-indicator.animate {
+  animation: floatPlus 1.2s ease-out forwards;
+}
+
+@keyframes floatPlus {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.7);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.15);
+  }
+  80% {
+    opacity: 0.9;
+    transform: translateY(-16px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-28px) scale(0.9);
+  }
+}
+
+/* 2. Hero Corner Visitor Pill (Inside Hero Slider Container) */
+.hero-corner-visitor-pill {
+  position: absolute;
+  bottom: 22px;
+  right: 25px;
+  z-index: 25;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(252, 180, 41, 0.4);
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.hero-corner-visitor-pill:hover {
+  background: rgba(15, 23, 42, 0.9);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.hero-corner-text {
+  color: #cbd5e1;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.hero-corner-num {
+  color: var(--accent);
+  font-family: monospace, var(--font-primary);
+  font-size: 0.98rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.hero-corner-num.bump {
+  animation: numberPop 0.6s ease;
+  color: #ffffff;
+}
+
+.hero-corner-inc {
+  position: absolute;
+  top: -12px;
+  left: 15px;
+  background: #22c55e;
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-full);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-corner-inc.animate {
+  animation: floatPlus 1.2s ease-out forwards;
+}
+
+/* 3. Footer Visitor Badge */
+.footer-visitor-counter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  font-size: 0.84rem;
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--radius-full);
+}
+
+.footer-visitor-counter-badge strong {
+  color: var(--accent);
+  font-family: var(--font-primary);
 }
 
 /* ==========================================================================
@@ -2285,7 +2453,87 @@ a.contact-item-val:hover {
 }
 
 /* ==========================================================================
-   Floating Action Buttons & Back-to-Top
+   Trust & Platform Stats Strip (Live Counter Above Footer)
+   ========================================================================== */
+.trust-stats-strip {
+  background: linear-gradient(180deg, #f8fafc 0%, #edf2f7 100%);
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #cbd5e1;
+  padding: 1.5rem 0;
+  position: relative;
+}
+
+.trust-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.trust-stat-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+}
+
+.trust-stat-box:hover {
+  background: #ffffff;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.trust-stat-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(213, 123, 30, 0.12);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.trust-stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.trust-stat-label {
+  color: #64748b;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.trust-stat-value {
+  color: #0b3b4f;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+@media (max-width: 991px) {
+  .trust-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+.corner-visitor-widget {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Floating Action Buttons (Bottom-Left: WhatsApp & Back-to-Top)
    ========================================================================== */
 .floating-actions {
   position: fixed;
@@ -2294,7 +2542,12 @@ a.contact-item-val:hover {
   z-index: 999;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 0.85rem;
+}
+
+#banque-misr, #bank-accounts {
+  scroll-margin-top: 100px;
 }
 
 .floating-btn {
@@ -2321,6 +2574,159 @@ a.contact-item-val:hover {
 .floating-btn.whatsapp {
   background-color: #25d366;
   animation: pulse-green 2.5s infinite;
+}
+
+/* ==========================================================================
+   Luxury Glassmorphism Floating Donate Button ("تبرع الآن" - Bottom-Right)
+   ========================================================================== */
+.floating-glass-donate {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.45rem 1.15rem 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  user-select: none;
+  white-space: nowrap;
+  
+  /* Fix Chromium curve antialiasing / subpixel clipping */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  isolation: isolate;
+  transform: translateZ(0);
+  
+  /* Symmetrical Vertical Frosted Glass (Left & Right curves match 100%) */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.32) 0%,
+    rgba(252, 180, 41, 0.22) 42%,
+    rgba(15, 23, 42, 0.85) 100%
+  );
+  backdrop-filter: blur(16px) saturate(190%);
+  -webkit-backdrop-filter: blur(16px) saturate(190%);
+  
+  /* Perfectly Seamless Uniform Border - Zero diagonal seams in curves */
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 
+    0 10px 28px rgba(0, 0, 0, 0.3),
+    0 0 16px rgba(213, 123, 30, 0.3),
+    inset 0 1.5px 2px rgba(255, 255, 255, 0.8),
+    inset 0 -1.5px 2px rgba(0, 0, 0, 0.25);
+  
+  color: #ffffff;
+  font-family: 'Cairo', var(--font-primary), sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: floating-glass-pulse 3.5s infinite ease-in-out;
+}
+
+.floating-glass-donate .glass-icon-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fcb429 0%, #e07a18 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.92rem;
+  box-shadow: 0 3px 10px rgba(224, 122, 24, 0.45), inset 0 1px 1.5px rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.floating-glass-donate .glass-text {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.2px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+}
+
+.floating-glass-donate .glass-arrow {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.85);
+  transition: transform 0.25s ease, color 0.25s ease;
+  margin-right: 0.15rem;
+}
+
+/* Moving Light Sweep Sheen Across the Glass */
+.floating-glass-donate::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -70%;
+  width: 45%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+  transform: rotate(25deg);
+  animation: glass-shimmer-sweep 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+@keyframes glass-shimmer-sweep {
+  0% {
+    left: -70%;
+  }
+  30%, 100% {
+    left: 140%;
+  }
+}
+
+@keyframes floating-glass-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 10px 28px rgba(0, 0, 0, 0.3),
+      0 0 16px rgba(213, 123, 30, 0.3),
+      inset 0 1.5px 2px rgba(255, 255, 255, 0.8);
+    transform: translateY(0);
+  }
+  50% {
+    box-shadow: 
+      0 14px 34px rgba(0, 0, 0, 0.38),
+      0 0 24px rgba(252, 180, 41, 0.5),
+      inset 0 1.5px 2px rgba(255, 255, 255, 0.95);
+    transform: translateY(-2px);
+  }
+}
+
+.floating-glass-donate:hover {
+  transform: translateY(-3px) scale(1.04);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.42) 0%,
+    rgba(252, 180, 41, 0.3) 42%,
+    rgba(15, 23, 42, 0.9) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.45),
+    0 0 30px rgba(252, 180, 41, 0.6),
+    inset 0 1.5px 2px #ffffff;
+  color: #ffffff;
+}
+
+.floating-glass-donate:hover .glass-icon-circle {
+  transform: scale(1.12) rotate(-8deg);
+  box-shadow: 0 4px 14px rgba(224, 122, 24, 0.6);
+}
+
+.floating-glass-donate:hover .glass-arrow {
+  transform: translateX(-4px);
+  color: #ffd166;
 }
 
 .floating-btn.donate {
@@ -4711,6 +5117,9 @@ img, svg, video, iframe {
   .hero-slide {
     min-height: 520px !important;
   }
+  .hero-overlay {
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.88) 0%, rgba(15, 23, 42, 0.94) 100%) !important;
+  }
   .hero-content {
     padding: 3rem 0 4.5rem !important;
     text-align: center !important;
@@ -5387,6 +5796,28 @@ img, svg, video, iframe {
   }
 }
 
+/* ---- 17.1. Corner Visitor Counter Mobile ---- */
+@media (max-width: 768px) {
+  .corner-visitor-widget {
+    bottom: 20px !important;
+    right: 18px !important;
+  }
+  .corner-visitor-pill {
+    padding: 0.45rem 0.85rem !important;
+    font-size: 0.82rem !important;
+  }
+  .corner-num {
+    font-size: 0.95rem !important;
+  }
+  .corner-visitor-card {
+    width: 260px !important;
+    right: 0 !important;
+  }
+  .hero-corner-visitor-pill {
+    display: none !important;
+  }
+}
+
 /* ---- 18. General Section Padding on Mobile ---- */
 @media (max-width: 576px) {
   .about-section,
@@ -5438,6 +5869,20 @@ img, svg, video, iframe {
     width: 46px !important;
     height: 46px !important;
     font-size: 1.2rem !important;
+  }
+  .floating-glass-donate {
+    position: fixed !important;
+    bottom: 1rem !important;
+    right: 0.75rem !important;
+    left: auto !important;
+    padding: 0.45rem 0.95rem 0.45rem 0.75rem !important;
+    font-size: 0.86rem !important;
+    gap: 0.45rem !important;
+  }
+  .floating-glass-donate .glass-icon-circle {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 0.82rem !important;
   }
 }
 

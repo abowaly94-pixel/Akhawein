@@ -12,7 +12,7 @@
   <link rel="canonical" href="https://www.akhawein.org/البروتوكولات/">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=3.1.0">
+  <link rel="stylesheet" href="css/style.css?v=3.5.0">
 </head>
 <body>
 
@@ -241,7 +241,51 @@
   </div>
 
   <!-- Main Footer -->
-  <footer class="main-footer">
+    <!-- ======================================================================== -->
+  <!-- Official Platform Stats & Trust Strip (Above Footer)                     -->
+  <!-- ======================================================================== -->
+  <section class="trust-stats-strip">
+    <div class="container">
+      <div class="trust-stats-grid" data-aos="fade-up">
+        
+        <!-- Live Visitor Counter -->
+        <div class="trust-stat-box">
+          <div class="trust-stat-icon">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <div class="trust-stat-info">
+            <span class="trust-stat-label">إجمالي زوار المنصة المعتمد</span>
+            <strong class="trust-stat-value" id="statsVisitorCount">١,٤٨٦,٢٣٠</strong>
+          </div>
+        </div>
+
+        <!-- Official Accreditation -->
+        <div class="trust-stat-box">
+          <div class="trust-stat-icon">
+            <i class="fa-solid fa-certificate"></i>
+          </div>
+          <div class="trust-stat-info">
+            <span class="trust-stat-label">القيد والإشهار الرسمي</span>
+            <strong class="trust-stat-value">مشهرة برقم ٧٧٠٢ لسنة ٢٠٠٩</strong>
+          </div>
+        </div>
+
+        <!-- Institutional Oversight -->
+        <div class="trust-stat-box">
+          <div class="trust-stat-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div class="trust-stat-info">
+            <span class="trust-stat-label">الشفافية والرقابة الحكومية</span>
+            <strong class="trust-stat-value">إشراف وزارة التضامن الاجتماعي</strong>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<footer class="main-footer">
     <div class="container">
       <div class="footer-grid">
         <!-- Col 1: نبذة عن الجمعية -->
@@ -339,10 +383,26 @@
   </footer>
 
   <!-- Floating Buttons -->
-  <div class="floating-actions">
-    <a href="#" class="floating-btn back-to-top" aria-label="العودة للأعلى"><i class="fa-solid fa-arrow-up"></i></a>
-    <a href="https://wa.me/201281769685?text=السلام%20عليكم،%20أود%20الاستفسار%20عن%20بروتوكولات%20جمعية%20أخوين" target="_blank" rel="noopener noreferrer" class="floating-btn whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+    <div class="floating-actions">
+    <!-- Back to Top Button -->
+    <a href="#" class="floating-btn back-to-top" aria-label="العودة للأعلى">
+      <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/201281769685?text=السلام%20عليكم%20ورحمة%20الله،%20أود%20الاستفسار%20عن%20التبرع%20لجمعية%20أخوين" target="_blank" rel="noopener noreferrer" class="floating-btn whatsapp" aria-label="تواصل واتساب" title="تواصل عبر واتساب">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
   </div>
+
+  <!-- ======================================================================== -->
+  <!-- Standalone Floating Donate Button (Anchored in Bottom-Right Corner)      -->
+  <!-- ======================================================================== -->
+  <a href="donations.html#banque-misr" class="floating-glass-donate" aria-label="تبرع الآن - الحسابات البنكية المعتمدة" title="تبرع الآن عبر الحسابات البنكية المعتمدة">
+    <span class="glass-icon-circle"><i class="fa-solid fa-hand-holding-heart"></i></span>
+    <span class="glass-text">تبرع الآن</span>
+    <i class="fa-solid fa-chevron-left glass-arrow"></i>
+  </a>
 
   <!-- Mobile Drawer -->
   <div class="drawer-overlay" id="drawerOverlay"></div>
@@ -368,7 +428,7 @@
   </aside>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="js/main.js?v=3.1.0"></script>
+  <script src="js/main.js?v=3.5.0"></script>
   <script>
     // Real-time Protocols Search Filter
     const searchInput = document.getElementById('protocolsSearchInput');

@@ -677,39 +677,157 @@ function showToast(message) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 18. Visitor Counter Simulation                                             */
+/* -------------------------------------------------------------------------- */
+/* 18. Corner Live Visitor Counter Simulation & Professional Animation        */
 /* -------------------------------------------------------------------------- */
 function initVisitorCounter() {
-  const digitsContainer = document.getElementById('visitorDigits');
-  const totalUsersElem = document.getElementById('totalUsersCount');
-  const totalViewsElem = document.getElementById('totalViewsCount');
-  if (!digitsContainer) return;
+  const cornerWidget = document.getElementById('cornerVisitorWidget');
+  const cornerPill = document.getElementById('cornerVisitorPill');
+  const cornerNum = document.getElementById('cornerVisitorNum');
+  const cornerPlus = document.getElementById('cornerPlusIndicator');
+  const cornerCardClose = document.getElementById('cornerCardClose');
+  
+  const heroNum = document.getElementById('heroVisitorCount');
+  const heroPlus = document.getElementById('heroCornerInc');
+  
+  const popupVisitor = document.getElementById('popupVisitorCount');
+  const popupViews = document.getElementById('popupViewsCount');
+  const popupOnline = document.getElementById('popupOnlineCount');
+  const footerVisitor = document.getElementById('footerVisitorCount');
+  const statsVisitor = document.getElementById('statsVisitorCount');
 
-  let baseCount = 1006847;
-  let viewsCount = 1021073;
+  // Realistic, large starting numbers (over 1.48M visitors)
+  const BASE_VISITORS = 1486230;
+  const BASE_VIEWS = 2841950;
 
-  function renderDigits(count) {
-    const str = count.toString().padStart(7, '0');
-    digitsContainer.innerHTML = '';
-    for (let char of str) {
-      const digit = document.createElement('div');
-      digit.className = 'digit-box';
-      digit.textContent = char;
-      digitsContainer.appendChild(digit);
+  // Retrieve or initialize from localStorage
+  let storedVisitors = parseInt(localStorage.getItem('akhawein_visitor_count'), 10);
+  let storedViews = parseInt(localStorage.getItem('akhawein_views_count'), 10);
+
+  if (isNaN(storedVisitors) || storedVisitors < BASE_VISITORS) {
+    storedVisitors = BASE_VISITORS;
+  }
+  if (isNaN(storedViews) || storedViews < BASE_VIEWS) {
+    storedViews = BASE_VIEWS;
+  }
+
+  // Count each visit / new session realistically
+  if (!sessionStorage.getItem('akhawein_session_counted')) {
+    storedVisitors += 1;
+    storedViews += Math.floor(Math.random() * 3) + 1;
+    localStorage.setItem('akhawein_visitor_count', storedVisitors);
+    localStorage.setItem('akhawein_views_count', storedViews);
+    sessionStorage.setItem('akhawein_session_counted', 'true');
+  }
+
+  let currentVisitors = storedVisitors;
+  let currentViews = storedViews;
+  let currentOnline = Math.floor(Math.random() * 25) + 38;
+
+  function formatCount(num) {
+    return num.toLocaleString('ar-EG');
+  }
+
+  // Initial smooth roll animation on page load (Count-up effect)
+  function animateCountUp(target) {
+    const start = target - 32;
+    const duration = 1400; // 1.4s
+    const startTime = performance.now();
+
+    function step(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // easeOutCubic
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const val = Math.floor(start + (target - start) * ease);
+      const formatted = formatCount(val);
+
+      if (cornerNum) cornerNum.textContent = formatted;
+      if (heroNum) heroNum.textContent = formatted;
+      if (popupVisitor) popupVisitor.textContent = formatted;
+      if (footerVisitor) footerVisitor.textContent = formatted;
+      if (statsVisitor) statsVisitor.textContent = formatted;
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        const finalFormatted = formatCount(target);
+        if (cornerNum) cornerNum.textContent = finalFormatted;
+        if (heroNum) heroNum.textContent = finalFormatted;
+        if (popupVisitor) popupVisitor.textContent = finalFormatted;
+        if (footerVisitor) footerVisitor.textContent = finalFormatted;
+        if (statsVisitor) statsVisitor.textContent = finalFormatted;
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  // Trigger initial smooth count-up
+  animateCountUp(currentVisitors);
+
+  if (popupViews) popupViews.textContent = formatCount(currentViews);
+  if (popupOnline) popupOnline.textContent = `${toArabicDigits(currentOnline)} متصفح نشط`;
+
+  // Professional live increment with +1 floating particle and bump effect
+  function triggerIncrement() {
+    currentVisitors += 1;
+    currentViews += Math.floor(Math.random() * 2) + 1;
+    localStorage.setItem('akhawein_visitor_count', currentVisitors);
+    localStorage.setItem('akhawein_views_count', currentViews);
+
+    const formatted = formatCount(currentVisitors);
+
+    // 1. Update text & add bump animation
+    if (cornerNum) {
+      cornerNum.textContent = formatted;
+      cornerNum.classList.remove('bump');
+      void cornerNum.offsetWidth; // trigger reflow
+      cornerNum.classList.add('bump');
+    }
+    if (heroNum) {
+      heroNum.textContent = formatted;
+      heroNum.classList.remove('bump');
+      void heroNum.offsetWidth;
+      heroNum.classList.add('bump');
+    }
+    if (statsVisitor) {
+      statsVisitor.textContent = formatted;
+      statsVisitor.classList.remove('bump');
+      void statsVisitor.offsetWidth;
+      statsVisitor.classList.add('bump');
+    }
+    if (popupVisitor) popupVisitor.textContent = formatted;
+    if (footerVisitor) footerVisitor.textContent = formatted;
+    if (popupViews) popupViews.textContent = formatCount(currentViews);
+
+    // 2. Trigger floating +1 indicator
+    if (cornerPlus) {
+      cornerPlus.classList.remove('animate');
+      void cornerPlus.offsetWidth;
+      cornerPlus.classList.add('animate');
+    }
+    if (heroPlus) {
+      heroPlus.classList.remove('animate');
+      void heroPlus.offsetWidth;
+      heroPlus.classList.add('animate');
     }
   }
 
-  renderDigits(baseCount);
-  if (totalUsersElem) totalUsersElem.textContent = baseCount.toLocaleString('ar-EG');
-  if (totalViewsElem) totalViewsElem.textContent = viewsCount.toLocaleString('ar-EG');
-
+  // Periodic realistic tick every 8 to 12 seconds
   setInterval(() => {
-    baseCount += 1;
-    viewsCount += Math.floor(Math.random() * 2) + 1;
-    renderDigits(baseCount);
-    if (totalUsersElem) totalUsersElem.textContent = baseCount.toLocaleString('ar-EG');
-    if (totalViewsElem) totalViewsElem.textContent = viewsCount.toLocaleString('ar-EG');
-  }, 12000);
+    // 65% chance of incrementing to feel natural
+    if (Math.random() > 0.35) {
+      triggerIncrement();
+    }
+
+    // Minor fluctuation in active online users
+    if (popupOnline && Math.random() > 0.4) {
+      const delta = Math.floor(Math.random() * 5) - 2;
+      currentOnline = Math.max(34, Math.min(85, currentOnline + delta));
+      popupOnline.textContent = `${toArabicDigits(currentOnline)} متصفح نشط`;
+    }
+  }, 9500);
+
 }
 
 /* -------------------------------------------------------------------------- */
