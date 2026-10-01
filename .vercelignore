@@ -7,4 +7,19 @@
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# Raw High-Res Media Folders (Handled via web-optimized images in images/gallery/)
+الفيوم/
+فلسطين/
+اسماعلية/
+قسم الصور/
+موقع شهادات التقدير/
 صور حفلة يوم اليتيم/
+images/gallery/originals_backup/
+
+# Video Files
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
