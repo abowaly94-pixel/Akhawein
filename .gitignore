@@ -27,3 +27,19 @@ desktop.ini
 .idea/
 *.sublime-workspace
 *.sublime-project
+
+# Large Media & Video Files (to be hosted on YouTube / External Storage)
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.flv
+*.wmv
+
+# Raw Media Folders
+الفيوم/
+فلسطين/
+اسماعلية/
+قسم الصور/
+موقع شهادات التقدير/

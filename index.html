@@ -19,7 +19,7 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/style.css?v=3.5.0">
+  <link rel="stylesheet" href="css/style.css?v=4.0.0">
 </head>
 <body>
   <!-- Nuxt-style Top Scroll Progress Bar -->
@@ -868,29 +868,31 @@
     </div>
   </footer>
 
-  <!-- ======================================================================== -->
-  <!-- Floating Action Buttons (Bottom-Left: WhatsApp & Back to Top)            -->
+    <!-- ======================================================================== -->
+  <!-- Left Floating Actions (Donate on Top, WhatsApp on Bottom)                -->
   <!-- ======================================================================== -->
   <div class="floating-actions">
-    <!-- Back to Top Button -->
-    <a href="#" class="floating-btn back-to-top" aria-label="العودة للأعلى">
-      <i class="fa-solid fa-arrow-up"></i>
+    <!-- Donate Button (On Top of WhatsApp) -->
+    <a href="donations.html#banque-misr" class="floating-glass-donate" aria-label="تبرع الآن - الحسابات البنكية المعتمدة" title="تبرع الآن عبر الحسابات البنكية المعتمدة">
+      <span class="glass-icon-circle"><i class="fa-solid fa-hand-holding-heart"></i></span>
+      <span class="glass-text">تبرع الآن</span>
+      <i class="fa-solid fa-chevron-left glass-arrow"></i>
     </a>
 
-    <!-- WhatsApp Button -->
+    <!-- WhatsApp Button (Below Donate) -->
     <a href="https://wa.me/201281769685?text=السلام%20عليكم%20ورحمة%20الله،%20أود%20الاستفسار%20عن%20التبرع%20لجمعية%20أخوين" target="_blank" rel="noopener noreferrer" class="floating-btn whatsapp" aria-label="تواصل واتساب" title="تواصل عبر واتساب">
       <i class="fa-brands fa-whatsapp"></i>
     </a>
   </div>
 
   <!-- ======================================================================== -->
-  <!-- Standalone Floating Donate Button (Anchored in Bottom-Right Corner)      -->
+  <!-- Standalone Back to Top Button (Anchored in Bottom-Right Corner)          -->
   <!-- ======================================================================== -->
-  <a href="donations.html#banque-misr" class="floating-glass-donate" aria-label="تبرع الآن - الحسابات البنكية المعتمدة" title="تبرع الآن عبر الحسابات البنكية المعتمدة">
-    <span class="glass-icon-circle"><i class="fa-solid fa-hand-holding-heart"></i></span>
-    <span class="glass-text">تبرع الآن</span>
-    <i class="fa-solid fa-chevron-left glass-arrow"></i>
+  <a href="#" class="floating-btn back-to-top" aria-label="العودة للأعلى" title="العودة للأعلى">
+    <i class="fa-solid fa-arrow-up"></i>
   </a>
+
+  
 
   <!-- ======================================================================== -->
   <!-- Mobile Navigation Drawer                                                 -->
@@ -975,6 +977,6 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
   
   <!-- Custom JavaScript -->
-  <script src="js/main.js?v=3.5.0"></script>
+  <script src="js/main.js?v=4.0.0"></script>
 </body>
 </html>

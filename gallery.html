@@ -19,7 +19,7 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/style.css?v=3.5.0">
+  <link rel="stylesheet" href="css/style.css?v=4.1.0">
 </head>
 <body>
   <!-- Nuxt-style Top Scroll Progress Bar -->
@@ -108,7 +108,7 @@
       <div class="gallery-intro-bar" data-aos="fade-up">
         <div class="gallery-count-pill" id="gallerySummaryPill">
           <i class="fa-solid fa-photo-film"></i>
-          <span>١١ مادة إعلامية موثقة</span>
+          <span>٢٣ مادة إعلامية موثقة</span>
         </div>
         <div class="gallery-note-text">
           <i class="fa-solid fa-shield-halved" style="color: var(--primary);"></i>
@@ -122,17 +122,32 @@
           <button type="button" class="gallery-filter-pill active" data-filter="all">
             <i class="fa-solid fa-layer-group"></i>
             <span>كافة الوسائط</span>
-            <span class="pill-badge">١١</span>
+            <span class="pill-badge">٢٣</span>
+          </button>
+          <button type="button" class="gallery-filter-pill" data-filter="palestine">
+            <i class="fa-solid fa-hand-holding-heart" style="color: #16a34a;"></i>
+            <span>إغاثة فلسطين</span>
+            <span class="pill-badge">٥</span>
+          </button>
+          <button type="button" class="gallery-filter-pill" data-filter="ismailia">
+            <i class="fa-solid fa-truck-fast" style="color: #0284c7;"></i>
+            <span>قوافل الإسماعيلية</span>
+            <span class="pill-badge">٣</span>
+          </button>
+          <button type="button" class="gallery-filter-pill" data-filter="fayoum">
+            <i class="fa-solid fa-graduation-cap" style="color: #d97706;"></i>
+            <span>مبادرات وتأهيل الفيوم</span>
+            <span class="pill-badge">٤</span>
           </button>
           <button type="button" class="gallery-filter-pill" data-filter="meals">
             <i class="fa-solid fa-bowl-food"></i>
             <span>قوافل الإطعام الساخن</span>
-            <span class="pill-badge">٦</span>
+            <span class="pill-badge">٧</span>
           </button>
           <button type="button" class="gallery-filter-pill" data-filter="videos">
             <i class="fa-solid fa-video"></i>
             <span>الفيديوهات والتوثيق المرئي</span>
-            <span class="pill-badge">٤</span>
+            <span class="pill-badge">٦</span>
           </button>
           <button type="button" class="gallery-filter-pill" data-filter="trips">
             <i class="fa-solid fa-hands-holding-child"></i>
@@ -142,13 +157,13 @@
           <button type="button" class="gallery-filter-pill" data-filter="volunteers">
             <i class="fa-solid fa-people-group"></i>
             <span>فريق المتطوعين</span>
-            <span class="pill-badge">٢</span>
+            <span class="pill-badge">٦</span>
           </button>
         </div>
 
         <div class="gallery-search-wrapper">
           <i class="fa-solid fa-magnifying-glass gallery-search-icon"></i>
-          <input type="text" id="gallerySearchInput" class="gallery-search-input" placeholder="ابحث عن صورة أو فيديو أو كلمة (إطعام، يتيم، الأقصر...)" autocomplete="off">
+          <input type="text" id="gallerySearchInput" class="gallery-search-input" placeholder="ابحث عن صورة أو فيديو أو كلمة (فلسطين، إسماعيلية، فيوم، إطعام، تدريب...)" autocomplete="off">
           <button type="button" id="gallerySearchClear" class="gallery-search-clear" title="مسح البحث"><i class="fa-solid fa-xmark"></i></button>
         </div>
       </div>
@@ -385,6 +400,264 @@
           </div>
         </div>
 
+        <!-- ========================================== -->
+        <!-- قوافل وحملات إغاثة أهلنا في فلسطين         -->
+        <!-- ========================================== -->
+
+        <!-- Card 12: Palestine Documentary Video -->
+        <div class="media-card" data-type="video-local" data-category="palestine videos" data-src="images/gallery/palestine-relief-video.mp4" data-title="الفيلم التوثيقي: إغاثة أهلنا في فلسطين بين الخوف والجوع - جمعية أخوين الخيرية" data-badge="وثائقي إغاثة فلسطين" data-date="حملة إغاثة غزة" data-aos="fade-up">
+          <div class="media-thumb-frame">
+            <img src="images/gallery/palestine-relief-video-thumb.jpg" loading="lazy" alt="فيديو إغاثة فلسطين - جمعية أخوين الخيرية">
+            <span class="media-ribbon-type type-video-local" style="background: linear-gradient(135deg, #15803d, #166534);"><i class="fa-solid fa-video"></i> وثائقي فلسطين</span>
+            <span class="media-ribbon-date"><i class="fa-solid fa-flag"></i> غزة العزة</span>
+            <div class="media-play-center">
+              <span class="media-play-pulse-btn" style="background: rgba(22, 101, 52, 0.9);"><i class="fa-solid fa-play"></i></span>
+            </div>
+            <div class="media-hover-overlay">
+              <button type="button" class="media-action-preview-btn"><i class="fa-solid fa-circle-play"></i> تشغيل الفيلم الوثائقي</button>
+              <a href="images/gallery/palestine-relief-video.mp4" download="فيديو-إغاثة-فلسطين-جمعية-أخوين.mp4" class="media-action-dl-btn" title="تحميل الفيديو الميداني"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="media-info-bar">
+            <h3 class="media-info-title" title="الفيلم التوثيقي: إغاثة أهلنا في فلسطين بين الخوف والجوع - جمعية أخوين الخيرية">وثائقي: فلسطين بين الخوف والجوع - جمعية أخوين</h3>
+            <div class="media-meta-row">
+              <span class="media-category-tag" style="background: rgba(22, 163, 74, 0.1); color: #16a34a;"><i class="fa-solid fa-hand-holding-heart"></i> إغاثة فلسطين</span>
+              <span class="media-type-pill"><i class="fa-solid fa-clapperboard" style="color: #16a34a;"></i> فيديو مباشر MP4</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 13: Palestine Winter Blankets Photo -->
+        <div class="media-card" data-type="image" data-category="palestine" data-src="images/gallery/palestine-winter-blankets.jpg" data-title="إغاثة فلسطين: توفير البطاطين ومستلزمات الشتاء الدافئ للأسر المتضررة والنازحة" data-badge="قوافل الإغاثة الإنسانية" data-date="شتاء ٢٠٢٤ / ٢٠٢٥" data-aos="fade-up">
+          <div class="media-thumb-frame">
+            <img src="images/gallery/palestine-winter-blankets.jpg" loading="lazy" alt="توفير البطاطين ومستلزمات الشتاء للأسر المتضررة بفلسطين">
+            <span class="media-ribbon-type type-photo" style="background: linear-gradient(135deg, #15803d, #047857);"><i class="fa-solid fa-box-open"></i> إغاثة شتوية</span>
+            <span class="media-ribbon-date"><i class="fa-regular fa-calendar"></i> ديسمبر ٢٠٢٤</span>
+            <div class="media-hover-overlay">
+              <button type="button" class="media-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة وتكبير</button>
+              <a href="images/gallery/palestine-winter-blankets.jpg" download="بطاطين-شتاء-إغاثة-فلسطين.jpg" class="media-action-dl-btn" title="تحميل الصورة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="media-info-bar">
+            <h3 class="media-info-title" title="إغاثة فلسطين: توفير البطاطين ومستلزمات الشتاء الدافئ للأسر المتضررة والنازحة">توفير بطاطين الشتاء الدافئ للأسر النازحة بفلسطين</h3>
+            <div class="media-meta-row">
+              <span class="media-category-tag" style="background: rgba(22, 163, 74, 0.1); color: #16a34a;"><i class="fa-solid fa-shield-heart"></i> قوافل الدفء</span>
+              <span class="media-type-pill"><i class="fa-regular fa-image"></i> جودة فائقة</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 14: Palestine Living Supplies Photo -->
+        <div class="media-card" data-type="image" data-category="palestine" data-src="images/gallery/palestine-living-supplies.jpg" data-title="إغاثة فلسطين: تجهيز مواقد الطهي وأدوات المعيشة الأساسية للأسر في مراكز الإيواء" data-badge="عون وإيواء المنكوبين" data-date="ديسمبر ٢٠٢٤" data-aos="fade-up">
+          <div class="media-thumb-frame">
+            <img src="images/gallery/palestine-living-supplies.jpg" loading="lazy" alt="تجهيز مواقد الطهي وأدوات المعيشة للأسر الفلسطينية">
+            <span class="media-ribbon-type type-photo" style="background: linear-gradient(135deg, #15803d, #047857);"><i class="fa-solid fa-fire-burner"></i> تجهيزات المعيشة</span>
+            <span class="media-ribbon-date"><i class="fa-regular fa-calendar"></i> ديسمبر ٢٠٢٤</span>
+            <div class="media-hover-overlay">
+              <button type="button" class="media-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة وتكبير</button>
+              <a href="images/gallery/palestine-living-supplies.jpg" download="مواقد-الطهي-إغاثة-فلسطين.jpg" class="media-action-dl-btn" title="تحميل الصورة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="media-info-bar">
+            <h3 class="media-info-title" title="إغاثة فلسطين: تجهيز مواقد الطهي وأدوات المعيشة الأساسية للأسر في مراكز الإيواء">تجهيز مواقد الطهي والمعيشة للأسر بمراكز الإيواء</h3>
+            <div class="media-meta-row">
+              <span class="media-category-tag" style="background: rgba(22, 163, 74, 0.1); color: #16a34a;"><i class="fa-solid fa-house-chimney-crack"></i> مستلزمات الإيواء</span>
+              <span class="media-type-pill"><i class="fa-regular fa-image"></i> جودة فائقة</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 15: Palestine Shelter Aid Photo -->
+        <div class="media-card" data-type="image" data-category="palestine" data-src="images/gallery/palestine-shelter-aid.jpg" data-title="إغاثة فلسطين: طرود الأجهزة والمستلزمات المنزلية للأسر الفلسطينية المتضررة" data-badge="طرود المعيشة والإسناد" data-date="ديسمبر ٢٠٢٤" data-aos="fade-up">
+          <div class="media-thumb-frame">
+            <img src="images/gallery/palestine-shelter-aid.jpg" loading="lazy" alt="طرود الأجهزة والمستلزمات المنزلية للأسر الفلسطينية">
+            <span class="media-ribbon-type type-photo" style="background: linear-gradient(135deg, #15803d, #047857);"><i class="fa-solid fa-boxes-packing"></i> طرود الإسناد</span>
+            <span class="media-ribbon-date"><i class="fa-regular fa-calendar"></i> ديسمبر ٢٠٢٤</span>
+            <div class="media-hover-overlay">
+              <button type="button" class="media-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة وتكبير</button>
+              <a href="images/gallery/palestine-shelter-aid.jpg" download="طرود-أجهزة-المعيشة-فلسطين.jpg" class="media-action-dl-btn" title="تحميل الصورة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="media-info-bar">
+            <h3 class="media-info-title" title="إغاثة فلسطين: طرود الأجهزة والمستلزمات المنزلية للأسر الفلسطينية المتضررة">طرود الأجهزة والمستلزمات المعيشية للأسر المنكوبة</h3>
+            <div class="media-meta-row">
+              <span class="media-category-tag" style="background: rgba(22, 163, 74, 0.1); color: #16a34a;"><i class="fa-solid fa-handshake-angle"></i> دعم الصمود</span>
+              <span class="media-type-pill"><i class="fa-regular fa-image"></i> جودة فائقة</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 16: Palestine Pediatric Care Photo -->
+        <div class="media-card" data-type="image" data-category="palestine" data-src="images/gallery/palestine-pediatric-care.jpg" data-title="إغاثة فلسطين: توفير الكراسي المتحركة والرعاية الطبية الشاملة للأطفال المصابين" data-badge="رعاية صحية وتأهيل طبي" data-date="رعاية الحالات الصحية" data-aos="fade-up">
+          <div class="media-thumb-frame">
+            <img src="images/gallery/palestine-pediatric-care.jpg" loading="lazy" alt="رعاية طبية وكراسي متحركة لأطفال فلسطين المصابين">
+            <span class="media-ribbon-type type-photo" style="background: linear-gradient(135deg, #15803d, #047857);"><i class="fa-solid fa-wheelchair"></i> رعاية طبية</span>
+            <span class="media-ribbon-date"><i class="fa-solid fa-heart-pulse"></i> أمل وشفاء</span>
+            <div class="media-hover-overlay">
+              <button type="button" class="media-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة وتكبير</button>
+              <a href="images/gallery/palestine-pediatric-care.jpg" download="رعاية-الأطفال-المصابين-فلسطين.jpg" class="media-action-dl-btn" title="تحميل الصورة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="media-info-bar">
+            <h3 class="media-info-title" title="إغاثة فلسطين: توفير الكراسي المتحركة والرعاية الطبية الشاملة للأطفال المصابين">توفير الكراسي المتحركة والرعاية الطبية للأطفال المصابين</h3>
+            <div class="media-meta-row">
+              <span class="media-category-tag" style="background: rgba(22, 163, 74, 0.1); color: #16a34a;"><i class="fa-solid fa-user-doctor"></i> الرعاية العلاجية</span>
+              <span class="media-type-pill"><i class="fa-regular fa-image"></i> جودة فائقة</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- قوافل وجولات المتطوعين بالإسماعيلية        -->
+        <!-- ========================================== -->
+
+        <!-- Card 17: Ismailia Meal Distribution Photo -->
+        <div class="media-card" data-type="image" data-category="ismailia meals volunteers" data-src="images/gallery/ismailia-meal-distribution.jpg" data-title="قوافل الإسماعيلية: توزيع الوجبات الساخنة على الأطفال والأسر الأولى بالرعاية" data-badge="قوافل الإسماعيلية الميدانية" data-date="١٣ ديسمبر ٢٠٢٤" data-aos="fade-up">
+          <div class="media-thumb-frame">
+            <img src="images/gallery/ismailia-meal-distribution.jpg" loading="lazy" alt="توزيع وجبات الإطعام في الإسماعيلية">
+            <span class="media-ribbon-type type-photo" style="background: linear-gradient(135deg, #0284c7, #0369a1);"><i class="fa-solid fa-bowl-food"></i> إطعام الإسماعيلية</span>
+            <span class="media-ribbon-date"><i class="fa-regular fa-calendar"></i> ١٣ ديسمبر ٢٠٢٤</span>
+            <div class="media-hover-overlay">
+              <button type="button" class="media-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة وتكبير</button>
+              <a href="images/gallery/ismailia-meal-distribution.jpg" download="توزيع-وجبات-الإسماعيلية.jpg" class="media-action-dl-btn" title="تحميل الصورة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="media-info-bar">
+            <h3 class="media-info-title" title="قوافل الإسماعيلية: توزيع الوجبات الساخنة على الأطفال والأسر الأولى بالرعاية">توزيع وجبات الإطعام الساخنة على الأطفال بالإسماعيلية</h3>
+            <div class="media-meta-row">
+              <span class="media-category-tag" style="background: rgba(2, 132, 199, 0.1); color: #0284c7;"><i class="fa-solid fa-location-dot"></i> قوافل الإسماعيلية</span>
+              <span class="media-type-pill"><i class="fa-regular fa-image"></i> جودة فائقة</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 18: Ismailia Volunteers Group Photo -->
+        <div class="media-card" data-type="image" data-category="ismailia volunteers" data-src="images/gallery/ismailia-volunteers-group.jpg" data-title="قوافل الإسماعيلية: الصورة الجماعية لمتطوعي جمعية أخوين عقب إتمام حملة التوزيع" data-badge="فريق متطوعي الإسماعيلية" data-date="١٣ ديسمبر ٢٠٢٤" data-aos="fade-up">
+          <div class="media-thumb-frame">
+            <img src="images/gallery/ismailia-volunteers-group.jpg" loading="lazy" alt="الصورة الجماعية لمتطوعي أخوين بالإسماعيلية">
+            <span class="media-ribbon-type type-photo" style="background: linear-gradient(135deg, #0284c7, #0369a1);"><i class="fa-solid fa-people-group"></i> شباب الإسماعيلية</span>
+            <span class="media-ribbon-date"><i class="fa-regular fa-calendar"></i> ١٣ ديسمبر ٢٠٢٤</span>
+            <div class="media-hover-overlay">
+              <button type="button" class="media-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة وتكبير</button>
+              <a href="images/gallery/ismailia-volunteers-group.jpg" download="متطوعو-أخوين-بالإسماعيلية.jpg" class="media-action-dl-btn" title="تحميل الصورة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="media-info-bar">
+            <h3 class="media-info-title" title="قوافل الإسماعيلية: الصورة الجماعية لمتطوعي جمعية أخوين عقب إتمام حملة التوزيع">الصورة الجماعية لشباب ومتطوعي أخوين بحدائق الإسماعيلية</h3>
+            <div class="media-meta-row">
+              <span class="media-category-tag" style="background: rgba(2, 132, 199, 0.1); color: #0284c7;"><i class="fa-solid fa-users"></i> فريق الميدان</span>
+              <span class="media-type-pill"><i class="fa-regular fa-image"></i> جودة فائقة</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 19: Ismailia Youth Team Photo -->
+        <div class="media-card" data-type="image" data-category="ismailia volunteers" data-src="images/gallery/ismailia-youth-team.jpg" data-title="قوافل الإسماعيلية: همة وعزيمة شباب أخوين بالسترات الرسمية في الميدان" data-badge="توثيق الهوية الميدانية" data-date="١٣ ديسمبر ٢٠٢٤" data-aos="fade-up">
+          <div class="media-thumb-frame">
+            <img src="images/gallery/ismailia-youth-team.jpg" loading="lazy" alt="عزيمة شباب أخوين بالسترات الرسمية بالإسماعيلية">
+            <span class="media-ribbon-type type-photo" style="background: linear-gradient(135deg, #0284c7, #0369a1);"><i class="fa-solid fa-award"></i> هوية أخوين</span>
+            <span class="media-ribbon-date"><i class="fa-regular fa-calendar"></i> ١٣ ديسمبر ٢٠٢٤</span>
+            <div class="media-hover-overlay">
+              <button type="button" class="media-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة وتكبير</button>
+              <a href="images/gallery/ismailia-youth-team.jpg" download="شباب-أخوين-بالإسماعيلية.jpg" class="media-action-dl-btn" title="تحميل الصورة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="media-info-bar">
+            <h3 class="media-info-title" title="قوافل الإسماعيلية: همة وعزيمة شباب أخوين بالسترات الرسمية في الميدان">همة وعزيمة شباب أخوين بالسترات الرسمية بميدان الإسماعيلية</h3>
+            <div class="media-meta-row">
+              <span class="media-category-tag" style="background: rgba(2, 132, 199, 0.1); color: #0284c7;"><i class="fa-solid fa-hand-fist"></i> طاقة الشباب</span>
+              <span class="media-type-pill"><i class="fa-regular fa-image"></i> جودة فائقة</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- مبادرات وتأهيل مركز أخوين بالفيوم          -->
+        <!-- ========================================== -->
+
+        <!-- Card 20: Fayoum Center Video -->
+        <div class="media-card" data-type="video-local" data-category="fayoum videos" data-src="images/gallery/fayoum-center-video.mp4" data-title="فيديو ميداني: المتدربون وفريق العمل بمركز أخوين للتكوين المهني بالفيوم" data-badge="فيديو توثيقي MP4" data-date="توثيق ميداني حي" data-aos="fade-up">
+          <div class="media-thumb-frame">
+            <img src="images/gallery/fayoum-center-video-thumb.jpg" loading="lazy" alt="فيديو مركز أخوين للتكوين المهني بالفيوم">
+            <span class="media-ribbon-type type-video-local" style="background: linear-gradient(135deg, #d97706, #b45309);"><i class="fa-solid fa-video"></i> فيديو مركز الفيوم</span>
+            <span class="media-ribbon-date"><i class="fa-solid fa-gear"></i> تكوين مهني</span>
+            <div class="media-play-center">
+              <span class="media-play-pulse-btn" style="background: rgba(180, 83, 9, 0.9);"><i class="fa-solid fa-play"></i></span>
+            </div>
+            <div class="media-hover-overlay">
+              <button type="button" class="media-action-preview-btn"><i class="fa-solid fa-circle-play"></i> تشغيل الفيديو</button>
+              <a href="images/gallery/fayoum-center-video.mp4" download="فيديو-مركز-أخوين-للتكوين-المهني-الفيوم.mp4" class="media-action-dl-btn" title="تحميل الفيديو"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="media-info-bar">
+            <h3 class="media-info-title" title="فيديو ميداني: المتدربون وفريق العمل بمركز أخوين للتكوين المهني بالفيوم">فيديو ميداني: المتدربون والجهاز الإداري بمركز الفيوم</h3>
+            <div class="media-meta-row">
+              <span class="media-category-tag" style="background: rgba(217, 119, 6, 0.1); color: #d97706;"><i class="fa-solid fa-graduation-cap"></i> مبادرة الفيوم</span>
+              <span class="media-type-pill"><i class="fa-solid fa-clapperboard" style="color: #d97706;"></i> فيديو مباشر MP4</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 21: Fayoum Center Assignment Photo -->
+        <div class="media-card" data-type="image" data-category="fayoum" data-src="images/gallery/fayoum-center-assignment.jpg" data-title="مبادرة الفيوم: استلام وتوقيع أمر إسناد مركز أخوين للتكوين المهني رسمياً" data-badge="إسناد حكومي وتأهيل مهني" data-date="توثيق رسمي" data-aos="fade-up">
+          <div class="media-thumb-frame">
+            <img src="images/gallery/fayoum-center-assignment.jpg" loading="lazy" alt="مراسم توقيع واستلام أمر إسناد مركز أخوين للتكوين المهني">
+            <span class="media-ribbon-type type-photo" style="background: linear-gradient(135deg, #d97706, #b45309);"><i class="fa-solid fa-file-signature"></i> أمر الإسناد</span>
+            <span class="media-ribbon-date"><i class="fa-solid fa-landmark"></i> جهة حكومية</span>
+            <div class="media-hover-overlay">
+              <button type="button" class="media-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة وتكبير</button>
+              <a href="images/gallery/fayoum-center-assignment.jpg" download="أمر-إسناد-مركز-التكوين-المهني-الفيوم.jpg" class="media-action-dl-btn" title="تحميل الصورة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="media-info-bar">
+            <h3 class="media-info-title" title="مبادرة الفيوم: استلام وتوقيع أمر إسناد مركز أخوين للتكوين المهني رسمياً">مراسم توقيع واستلام أمر إسناد مركز التكوين المهني بالفيوم</h3>
+            <div class="media-meta-row">
+              <span class="media-category-tag" style="background: rgba(217, 119, 6, 0.1); color: #d97706;"><i class="fa-solid fa-certificate"></i> شراكة حكومية</span>
+              <span class="media-type-pill"><i class="fa-regular fa-image"></i> جودة فائقة</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 22: Fayoum Training Graduates Photo -->
+        <div class="media-card" data-type="image" data-category="fayoum volunteers" data-src="images/gallery/fayoum-training-graduates.jpg" data-title="مبادرة الفيوم: تسليم شهادات إتمام الدورات التدريبية لشباب وفتيات المركز" data-badge="تمكين الشباب والفتيات" data-date="دورات معتمدة" data-aos="fade-up">
+          <div class="media-thumb-frame">
+            <img src="images/gallery/fayoum-training-graduates.jpg" loading="lazy" alt="تسليم شهادات إتمام الدورات لمتدربي مركز الفيوم">
+            <span class="media-ribbon-type type-photo" style="background: linear-gradient(135deg, #d97706, #b45309);"><i class="fa-solid fa-user-graduate"></i> شهادات تخرج</span>
+            <span class="media-ribbon-date"><i class="fa-solid fa-ribbon"></i> تكريم وخريجين</span>
+            <div class="media-hover-overlay">
+              <button type="button" class="media-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة وتكبير</button>
+              <a href="images/gallery/fayoum-training-graduates.jpg" download="شهادات-تخرج-مركز-الفيوم.jpg" class="media-action-dl-btn" title="تحميل الصورة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="media-info-bar">
+            <h3 class="media-info-title" title="مبادرة الفيوم: تسليم شهادات إتمام الدورات التدريبية لشباب وفتيات المركز">تسليم شهادات إتمام الدورات التدريبية لشباب وفتيات الفيوم</h3>
+            <div class="media-meta-row">
+              <span class="media-category-tag" style="background: rgba(217, 119, 6, 0.1); color: #d97706;"><i class="fa-solid fa-briefcase"></i> تمكين مهني</span>
+              <span class="media-type-pill"><i class="fa-regular fa-image"></i> جودة فائقة</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 23: Fayoum Trainee Certificate Photo -->
+        <div class="media-card" data-type="image" data-category="fayoum" data-src="images/gallery/fayoum-trainee-certificate.jpg" data-title="مبادرة الفيوم: فرحة خريجي الورش المهنية بالزي الموحد لجمعية أخوين" data-badge="صناعة المستقبل والإنتاج" data-date="تأهيل وتدريب" data-aos="fade-up">
+          <div class="media-thumb-frame">
+            <img src="images/gallery/fayoum-trainee-certificate.jpg" loading="lazy" alt="خريج من أبناء مركز التكوين المهني بالفيوم">
+            <span class="media-ribbon-type type-photo" style="background: linear-gradient(135deg, #d97706, #b45309);"><i class="fa-solid fa-star"></i> تميز مهني</span>
+            <span class="media-ribbon-date"><i class="fa-solid fa-medal"></i> تفوق وتمكين</span>
+            <div class="media-hover-overlay">
+              <button type="button" class="media-action-preview-btn"><i class="fa-solid fa-magnifying-glass-plus"></i> معاينة وتكبير</button>
+              <a href="images/gallery/fayoum-trainee-certificate.jpg" download="خريج-مركز-الفيوم-أخوين.jpg" class="media-action-dl-btn" title="تحميل الصورة"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+          <div class="media-info-bar">
+            <h3 class="media-info-title" title="مبادرة الفيوم: فرحة خريجي الورش المهنية بالزي الموحد لجمعية أخوين">أحد أبناء المركز بالزي الموحد حاملاً شهادة التخرج والتميز</h3>
+            <div class="media-meta-row">
+              <span class="media-category-tag" style="background: rgba(217, 119, 6, 0.1); color: #d97706;"><i class="fa-solid fa-screwdriver-wrench"></i> الورش الحرفية</span>
+              <span class="media-type-pill"><i class="fa-regular fa-image"></i> جودة فائقة</span>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- Empty State -->
@@ -403,7 +676,7 @@
     <div class="media-lightbox-header">
       <div class="media-lightbox-counter" id="mediaLightboxCounter">
         <i class="fa-solid fa-photo-film" style="color: var(--accent);"></i>
-        <span>مادة ١ من ١١</span>
+        <span>مادة ١ من ٢٣</span>
       </div>
       <div class="media-lightbox-actions">
         <a href="#" class="media-lightbox-btn" id="mediaLightboxDownload" download="akhawein-media.jpg" title="تحميل المادة بدقة عالية"><i class="fa-solid fa-download"></i></a>
@@ -580,26 +853,31 @@
   </footer>
 
   <!-- Floating Buttons -->
-    <div class="floating-actions">
-    <!-- Back to Top Button -->
-    <a href="#" class="floating-btn back-to-top" aria-label="العودة للأعلى">
-      <i class="fa-solid fa-arrow-up"></i>
+        <!-- ======================================================================== -->
+  <!-- Left Floating Actions (Donate on Top, WhatsApp on Bottom)                -->
+  <!-- ======================================================================== -->
+  <div class="floating-actions">
+    <!-- Donate Button (On Top of WhatsApp) -->
+    <a href="donations.html#banque-misr" class="floating-glass-donate" aria-label="تبرع الآن - الحسابات البنكية المعتمدة" title="تبرع الآن عبر الحسابات البنكية المعتمدة">
+      <span class="glass-icon-circle"><i class="fa-solid fa-hand-holding-heart"></i></span>
+      <span class="glass-text">تبرع الآن</span>
+      <i class="fa-solid fa-chevron-left glass-arrow"></i>
     </a>
 
-    <!-- WhatsApp Button -->
+    <!-- WhatsApp Button (Below Donate) -->
     <a href="https://wa.me/201281769685?text=السلام%20عليكم%20ورحمة%20الله،%20أود%20الاستفسار%20عن%20التبرع%20لجمعية%20أخوين" target="_blank" rel="noopener noreferrer" class="floating-btn whatsapp" aria-label="تواصل واتساب" title="تواصل عبر واتساب">
       <i class="fa-brands fa-whatsapp"></i>
     </a>
   </div>
 
   <!-- ======================================================================== -->
-  <!-- Standalone Floating Donate Button (Anchored in Bottom-Right Corner)      -->
+  <!-- Standalone Back to Top Button (Anchored in Bottom-Right Corner)          -->
   <!-- ======================================================================== -->
-  <a href="donations.html#banque-misr" class="floating-glass-donate" aria-label="تبرع الآن - الحسابات البنكية المعتمدة" title="تبرع الآن عبر الحسابات البنكية المعتمدة">
-    <span class="glass-icon-circle"><i class="fa-solid fa-hand-holding-heart"></i></span>
-    <span class="glass-text">تبرع الآن</span>
-    <i class="fa-solid fa-chevron-left glass-arrow"></i>
+  <a href="#" class="floating-btn back-to-top" aria-label="العودة للأعلى" title="العودة للأعلى">
+    <i class="fa-solid fa-arrow-up"></i>
   </a>
+
+  
 
   <!-- Mobile Drawer -->
   <div class="drawer-overlay" id="drawerOverlay"></div>
@@ -626,6 +904,6 @@
 
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="js/main.js?v=3.5.0"></script>
+  <script src="js/main.js?v=4.1.0"></script>
 </body>
 </html>

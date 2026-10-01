@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initGalleryMedia();
   initDonationTabs();
   initDonationViewSwitcher();
+  initFloatingDonateExpand();
 });
 
 /* -------------------------------------------------------------------------- */
@@ -303,7 +304,7 @@ function initBackToTopProgress() {
     const progress = scrollTotal > 0 ? (window.scrollY / scrollTotal) * 100 : 0;
     backToTopBtn.style.setProperty('--scroll-percent', `${Math.min(100, Math.max(0, progress))}`);
 
-    if (window.scrollY > 350) {
+    if (window.scrollY > 180) {
       backToTopBtn.classList.add('visible');
     } else {
       backToTopBtn.classList.remove('visible');
@@ -1410,6 +1411,32 @@ function initGalleryMedia() {
     }
   }
 
+  // Update badge counts for filter pills dynamically based on allCards
+  function updatePillBadges() {
+    filterPills.forEach(pill => {
+      const filter = pill.getAttribute('data-filter') || 'all';
+      const badge = pill.querySelector('.pill-badge');
+      if (!badge) return;
+      let count = 0;
+      if (filter === 'all') {
+        count = allCards.length;
+      } else if (filter === 'videos') {
+        count = allCards.filter(c => {
+          const t = c.getAttribute('data-type');
+          return t === 'youtube' || t === 'video-local';
+        }).length;
+      } else if (filter === 'photos') {
+        count = allCards.filter(c => c.getAttribute('data-type') === 'image').length;
+      } else {
+        count = allCards.filter(c => (c.getAttribute('data-category') || '').includes(filter)).length;
+      }
+      badge.textContent = toArabicDigits(count);
+    });
+  }
+
+  // Initial badge calculation
+  updatePillBadges();
+
   // Bind filter pills
   filterPills.forEach(pill => {
     pill.addEventListener('click', () => {
@@ -1837,4 +1864,11 @@ function filterBranches(gov) {
   }
 }
 window.filterBranches = filterBranches;
+
+/* -------------------------------------------------------------------------- */
+/* 26. Floating Donate Button Expand Animation (Expand on Scroll / Hover)     */
+/* -------------------------------------------------------------------------- */
+function initFloatingDonateExpand() {
+  // Pure static circular button without expansion
+}
 
