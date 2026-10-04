@@ -611,9 +611,10 @@ h1, h2, h3, h4, h5, h6 {
 .hero-content {
   position: relative;
   z-index: 10;
-  max-width: 780px;
+  max-width: min(780px, 100%);
   color: #ffffff;
-  padding: 5rem 0 6.5rem;
+  padding: 4.5rem 0 6rem;
+  padding-right: clamp(1rem, 2.5vw, 2.5rem);
 }
 
 .hero-badge {
@@ -634,13 +635,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-title {
-  font-size: 3.4rem;
+  font-size: clamp(2.1rem, 3.8vw, 3.3rem);
   font-weight: 900;
-  line-height: 1.35;
+  line-height: 1.32;
   color: #ffffff;
   margin-bottom: 1.25rem;
   text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   animation: fadeInUp 0.9s ease 0.2s backwards;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 .hero-title span {
@@ -4887,7 +4890,38 @@ img, svg, video, iframe {
 }
 
 /* --------------------------------------------------------------------------
-   1. Breakpoint: Laptops & Small Desktops (max-width: 1200px)
+   0. Breakpoint: Laptops & Medium Screens (1366px, 1280px, Windows Scaling)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1400px) {
+  .hero-section,
+  .hero-slider-container,
+  .hero-slide {
+    min-height: 590px !important;
+  }
+  .hero-content {
+    max-width: 680px !important;
+    padding: 4rem 0 5rem !important;
+    padding-right: 3rem !important; /* Safe margin away from right arrow */
+  }
+  .hero-title {
+    font-size: 2.6rem !important;
+    line-height: 1.32 !important;
+  }
+  .hero-description {
+    font-size: 1.1rem !important;
+    line-height: 1.75 !important;
+  }
+  .slider-nav-btn {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 1.05rem !important;
+  }
+  .slider-nav-prev { right: 18px !important; }
+  .slider-nav-next { left: 18px !important; }
+}
+
+/* --------------------------------------------------------------------------
+   1. Breakpoint: Small Laptops & Desktops (max-width: 1200px)
    -------------------------------------------------------------------------- */
 @media (max-width: 1200px) {
   .nav-menu {
@@ -4900,9 +4934,31 @@ img, svg, video, iframe {
     grid-template-columns: repeat(3, 1fr) !important;
     gap: 1.5rem !important;
   }
-  .hero-title {
-    font-size: 2.75rem !important;
+  .hero-section,
+  .hero-slider-container,
+  .hero-slide {
+    min-height: 550px !important;
   }
+  .hero-content {
+    max-width: 600px !important;
+    padding: 3.5rem 0 4.5rem !important;
+    padding-right: 3.25rem !important; /* Ample room to prevent side overlap */
+  }
+  .hero-title {
+    font-size: 2.3rem !important;
+    line-height: 1.35 !important;
+  }
+  .hero-description {
+    font-size: 1.05rem !important;
+    line-height: 1.7 !important;
+  }
+  .slider-nav-btn {
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 1rem !important;
+  }
+  .slider-nav-prev { right: 14px !important; }
+  .slider-nav-next { left: 14px !important; }
   .contact-cards-grid {
     grid-template-columns: repeat(2, 1fr) !important;
   }
@@ -4919,11 +4975,13 @@ img, svg, video, iframe {
   .hero-section,
   .hero-slider-container,
   .hero-slide {
-    min-height: 580px !important;
+    min-height: 530px !important;
   }
   .hero-content {
     padding: 3.5rem 0 4.5rem !important;
     max-width: 100% !important;
+    padding-right: 3.5rem !important;
+    padding-left: 3.5rem !important;
   }
   .hero-title {
     font-size: 2.3rem !important;
