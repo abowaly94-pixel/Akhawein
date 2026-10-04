@@ -77,7 +77,7 @@ body {
   background-color: var(--bg-main);
   color: var(--text-main);
   line-height: 1.65;
-  overflow-x: hidden;
+  overflow-x: clip; /* clip (not hidden) keeps position: sticky header working */
   -webkit-font-smoothing: antialiased;
 }
 
@@ -2706,11 +2706,14 @@ a.contact-item-val:hover {
   pointer-events: auto !important;
 }
 
-.floating-btn.back-to-top:hover {
-  background: var(--primary, #d57b1e) !important;
+.floating-btn.back-to-top:hover,
+.floating-btn.back-to-top:focus,
+.floating-btn.back-to-top:active {
+  background: var(--secondary, #1f2937) !important;
   color: #ffffff !important;
+  outline: none;
   transform: translateY(-3px) scale(1.08) !important;
-  box-shadow: 0 8px 24px rgba(213, 123, 30, 0.45);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 .floating-tooltip {
@@ -4850,7 +4853,7 @@ a.contact-item-val:hover {
    Global Overflow & Mobile Touch Safety Rules
    -------------------------------------------------------------------------- */
 html {
-  overflow-x: hidden !important;
+  overflow-x: clip !important; /* clip (not hidden) keeps position: sticky header working */
   width: 100% !important;
   max-width: 100% !important;
   -webkit-text-size-adjust: 100%;
@@ -4862,7 +4865,7 @@ html {
 }
 
 body {
-  overflow-x: hidden !important;
+  overflow-x: clip !important; /* clip (not hidden) keeps position: sticky header working */
   width: 100% !important;
   max-width: 100% !important;
   position: relative;

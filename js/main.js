@@ -1383,12 +1383,19 @@ function initGalleryMedia() {
 
       if (matchesFilter && matchesSearch) {
         card.style.display = '';
+        // Ensure AOS-hidden cards (never scrolled into view) become visible after filtering
+        card.classList.add('aos-animate');
         activeVisibleCards.push(card);
         visibleCount++;
       } else {
         card.style.display = 'none';
       }
     });
+
+    // Recalculate AOS positions since layout changed
+    if (typeof AOS !== 'undefined' && AOS.refresh) {
+      AOS.refresh();
+    }
 
     // Toggle Empty State
     if (emptyState) {
