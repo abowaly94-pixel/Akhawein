@@ -944,7 +944,7 @@ function initForms() {
 /* 20. Mobile Navigation Drawer with Auto-Active Highlight                    */
 /* -------------------------------------------------------------------------- */
 function initMobileDrawer() {
-  const toggleBtn = document.querySelector('.mobile-toggle-btn');
+  const toggleBtns = document.querySelectorAll('.mobile-toggle-btn');
   const drawer = document.getElementById('mobileDrawer');
   const drawerOverlay = document.getElementById('drawerOverlay');
   const closeBtn = document.querySelector('.drawer-close-btn');
@@ -961,9 +961,33 @@ function initMobileDrawer() {
     document.body.style.overflow = '';
   }
 
-  if (toggleBtn) toggleBtn.addEventListener('click', openDrawer);
+  toggleBtns.forEach(btn => btn.addEventListener('click', openDrawer));
   if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
   if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+
+  // Close on Escape key press
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer && drawer.classList.contains('active')) {
+      closeDrawer();
+    }
+  });
+
+  // Touch swipe to close (swipe right for RTL)
+  let touchStartX = 0;
+  let touchEndX = 0;
+  if (drawer) {
+    drawer.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    drawer.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      // If swiped right by more than 50px
+      if (touchEndX - touchStartX > 50) {
+        closeDrawer();
+      }
+    }, { passive: true });
+  }
 
   // Mark current active link in drawer automatically
   const rawDrawerPath = window.location.pathname.split('/').filter(Boolean).pop() || 'index';
@@ -973,8 +997,6 @@ function initMobileDrawer() {
     const href = (link.getAttribute('href') || '').replace(/\.html$/, '').replace(/^\.\//, '').toLowerCase();
     if (href === currentDrawerNormalized || ((currentDrawerNormalized === 'index' || currentDrawerNormalized === '') && (href === 'index' || href === ''))) {
       link.classList.add('active');
-      link.style.fontWeight = '700';
-      link.style.color = 'var(--primary)';
     }
     link.addEventListener('click', closeDrawer);
   });
