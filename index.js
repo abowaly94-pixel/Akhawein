@@ -25,6 +25,53 @@ const MIME_TYPES = {
   '.pdf': 'application/pdf'
 };
 
+const ROUTE_MAP = {
+  '/البروتوكولات': '/protocols.html',
+  '/بروتوكولات': '/protocols.html',
+  '/protocols': '/protocols.html',
+  '/الفروع': '/branches.html',
+  '/فروع': '/branches.html',
+  '/branches': '/branches.html',
+  '/عن-الجمعية': '/about.html',
+  '/عن_الجمعية': '/about.html',
+  '/عن-الجمعيه': '/about.html',
+  '/عن_الجمعيه': '/about.html',
+  '/عن': '/about.html',
+  '/about': '/about.html',
+  '/الأنشطة': '/activities.html',
+  '/الانشطة': '/activities.html',
+  '/أنشطة': '/activities.html',
+  '/انشطة': '/activities.html',
+  '/ميادين-العمل': '/activities.html',
+  '/activities': '/activities.html',
+  '/حالات-التبرع': '/causes.html',
+  '/حالات_التبرع': '/causes.html',
+  '/حالات': '/causes.html',
+  '/causes': '/causes.html',
+  '/وسائل-التبرع': '/donations.html',
+  '/وسائل_التبرع': '/donations.html',
+  '/تبرع-الآن': '/donations.html',
+  '/تبرع_الآن': '/donations.html',
+  '/تبرع': '/donations.html',
+  '/donations': '/donations.html',
+  '/المركز-الإعلامي': '/gallery.html',
+  '/المركز-الاعلامي': '/gallery.html',
+  '/المعرض': '/gallery.html',
+  '/معرض-الصور': '/gallery.html',
+  '/gallery': '/gallery.html',
+  '/شهادات-التقدير': '/certificates.html',
+  '/شهادات': '/certificates.html',
+  '/الشهادات': '/certificates.html',
+  '/certificates': '/certificates.html',
+  '/تواصل-معنا': '/contact.html',
+  '/تواصل': '/contact.html',
+  '/اتصل-بنا': '/contact.html',
+  '/contact': '/contact.html',
+  '/الرئيسية': '/index.html',
+  '/الرئيسيه': '/index.html',
+  '/home': '/index.html'
+};
+
 const handler = (req, res) => {
   try {
     let urlPath = req.url || '/';
@@ -38,19 +85,18 @@ const handler = (req, res) => {
       urlPath = '/index.html';
     }
 
-    // Handle Arabic route aliases (e.g. /البروتوكولات -> /protocols.html, /الفروع -> /branches.html)
+    // Handle Arabic route aliases & clean URLs
     const normalizedPath = urlPath.replace(/\/+$/, '');
-    if (normalizedPath === '/البروتوكولات' || normalizedPath === '/بروتوكولات') {
-      urlPath = '/protocols.html';
-    } else if (normalizedPath === '/الفروع' || normalizedPath === '/فروع' || normalizedPath === '/branches') {
-      urlPath = '/branches.html';
+    if (ROUTE_MAP[normalizedPath]) {
+      urlPath = ROUTE_MAP[normalizedPath];
     }
 
     const baseDir = process.cwd();
     let targetPath = path.join(baseDir, urlPath);
 
-    // Security check to prevent directory traversal
-    if (!targetPath.startsWith(baseDir)) {
+    // Security check to prevent directory traversal cross-platform
+    const relative = path.relative(baseDir, targetPath);
+    if (relative.startsWith('..') || path.isAbsolute(relative)) {
       res.writeHead(403, { 'Content-Type': 'text/plain; charset=utf-8' });
       res.end('403 Forbidden');
       return;
