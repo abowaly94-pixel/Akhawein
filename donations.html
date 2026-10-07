@@ -22,7 +22,7 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/style.css?v=4.2.0">
+  <link rel="stylesheet" href="css/style.css?v=4.2.4">
 </head>
 <body>
   <!-- Top Scroll Progress Bar -->
@@ -108,7 +108,7 @@
       <div class="text-center programs-header" data-aos="fade-up" style="margin-bottom: 0;">
         <span class="section-tag">عطاء يدوم وأجر لا ينقطع</span>
         <h1 class="section-title">وسائل وطرق التبرع المعتمدة</h1>
-        <p class="section-desc">يمكنكم التبرع والمساهمة في مختلف مشاريع وأنشطة جمعية أخوين الخيرية عبر حساباتنا البنكية الرسمية المعتمدة لدى بنك مصر بكل سهولة وأمان وشفافية تامة.</p>
+        <p class="section-desc">يمكنكم التبرع والمساهمة في مختلف مشاريع وأنشطة جمعية أخوين الخيرية عبر حساباتنا البنكية الرسمية المعتمدة لدى بنك مصر (الحساب الأساسي العام فرع صلاح سالم، وحسابات فرع الثورة) بكل سهولة وأمان وشفافية تامة.</p>
       </div>
     </div>
   </section>
@@ -131,7 +131,7 @@
           
           <div class="bank-meta-chips">
             <span class="bank-chip"><i class="fa-solid fa-circle-check"></i> حسابات رسمية معتمدة ومفعلة</span>
-            <span class="bank-chip"><i class="fa-solid fa-location-dot"></i> فرع الثورة</span>
+            <span class="bank-chip"><i class="fa-solid fa-location-dot"></i> فروع: صلاح سالم - الثورة</span>
             <span class="bank-chip"><i class="fa-solid fa-coins"></i> العملة: الجنيه المصري</span>
           </div>
         </div>
@@ -141,15 +141,155 @@
           <table class="bank-official-table">
             <thead>
               <tr>
-                <th style="width: 10%;">اسم الفرع</th>
-                <th style="width: 25%;">اسم الحساب والغرض</th>
-                <th style="width: 13%;">العملة</th>
-                <th style="width: 23%;">رقم الحساب</th>
-                <th style="width: 29%;">رقم الآيبان (IBAN)</th>
+                <th style="width: 12%;">اسم الفرع</th>
+                <th style="width: 28%;">اسم الحساب والغرض</th>
+                <th style="width: 12%;">العملة</th>
+                <th style="width: 22%;">رقم الحساب</th>
+                <th style="width: 26%;">رقم الآيبان (IBAN)</th>
               </tr>
             </thead>
             <tbody>
-              <!-- Row 1: اطعام وجبات ساخنة -->
+              <!-- Row 1: حساب جمعية اخوين فرع صلاح سالم (الحساب الأساسي والرئيسي) -->
+              <tr class="primary-account-row">
+                <td><span class="branch-pill branch-primary"><i class="fa-solid fa-star" style="font-size: 0.7rem; margin-left: 3px;"></i>صلاح سالم</span></td>
+                <td>
+                  <div class="acc-name-cell">
+                    <span class="acc-name-title" style="color: #b45309;">حساب جمعية اخوين فرع صلاح سالم</span>
+                    <span class="donor-card-badge badge-primary-acc" style="align-self: flex-start;"><i class="fa-solid fa-crown"></i> الحساب الأساسي (مساعدات عامة)</span>
+                  </div>
+                </td>
+                <td><span class="currency-pill">بالجنيه المصرى</span></td>
+                <td>
+                  <div class="table-num-wrap table-num-primary">
+                    <span class="acc-num-code" style="color: var(--primary); font-weight: 800;">1810001000033972</span>
+                    <button class="table-copy-btn copy-btn" data-copy="1810001000033972" title="نسخ رقم الحساب">
+                      <i class="fa-regular fa-copy"></i> نسخ
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="table-num-wrap table-num-primary">
+                    <span class="iban-code">EG020002018101810001000033972</span>
+                    <button class="table-copy-btn copy-btn" data-copy="EG020002018101810001000033972" title="نسخ الآيبان">
+                      <i class="fa-regular fa-copy"></i> نسخ
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Row 2: دار أخوين للرعاية اللاحقة -->
+              <tr>
+                <td><span class="branch-pill">صلاح سالم</span></td>
+                <td>
+                  <div class="acc-name-cell">
+                    <span class="acc-name-title">دار أخوين للرعاية اللاحقة</span>
+                    <span class="donor-card-badge badge-aftercare" style="align-self: flex-start;"><i class="fa-solid fa-people-roof"></i> رعاية لاحقة وأيتام</span>
+                  </div>
+                </td>
+                <td><span class="currency-pill">بالجنيه المصرى</span></td>
+                <td>
+                  <div class="table-num-wrap">
+                    <span class="acc-num-code" style="color: var(--primary);">1810001000012735</span>
+                    <button class="table-copy-btn copy-btn" data-copy="1810001000012735" title="نسخ رقم الحساب">
+                      <i class="fa-regular fa-copy"></i> نسخ
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="table-num-wrap">
+                    <span class="iban-code">EG340002018101810001000012735</span>
+                    <button class="table-copy-btn copy-btn" data-copy="EG340002018101810001000012735" title="نسخ الآيبان">
+                      <i class="fa-regular fa-copy"></i> نسخ
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Row 3: شنط مواد غذائية -->
+              <tr>
+                <td><span class="branch-pill">الثورة</span></td>
+                <td>
+                  <div class="acc-name-cell">
+                    <span class="acc-name-title">شنط مواد غذائية</span>
+                    <span class="donor-card-badge badge-food-boxes" style="align-self: flex-start;"><i class="fa-solid fa-box-open"></i> شنط غذائية وتكافل</span>
+                  </div>
+                </td>
+                <td><span class="currency-pill">بالجنيه المصرى</span></td>
+                <td>
+                  <div class="table-num-wrap">
+                    <span class="acc-num-code" style="color: var(--primary);">1600001000013660</span>
+                    <button class="table-copy-btn copy-btn" data-copy="1600001000013660" title="نسخ رقم الحساب">
+                      <i class="fa-regular fa-copy"></i> نسخ
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="table-num-wrap">
+                    <span class="iban-code">EG660002016001600001000013660</span>
+                    <button class="table-copy-btn copy-btn" data-copy="EG660002016001600001000013660" title="نسخ الآيبان">
+                      <i class="fa-regular fa-copy"></i> نسخ
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Row 4: صك الأضحية -->
+              <tr>
+                <td><span class="branch-pill">الثورة</span></td>
+                <td>
+                  <div class="acc-name-cell">
+                    <span class="acc-name-title">صك الأضحية</span>
+                    <span class="donor-card-badge badge-sacrifices" style="align-self: flex-start;"><i class="fa-solid fa-cow"></i> صكوك ولحوم الأضاحي</span>
+                  </div>
+                </td>
+                <td><span class="currency-pill">بالجنيه المصرى</span></td>
+                <td>
+                  <div class="table-num-wrap">
+                    <span class="acc-num-code" style="color: var(--primary);">1600001000013671</span>
+                    <button class="table-copy-btn copy-btn" data-copy="1600001000013671" title="نسخ رقم الحساب">
+                      <i class="fa-regular fa-copy"></i> نسخ
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="table-num-wrap">
+                    <span class="iban-code">EG660002016001600001000013671</span>
+                    <button class="table-copy-btn copy-btn" data-copy="EG660002016001600001000013671" title="نسخ الآيبان">
+                      <i class="fa-regular fa-copy"></i> نسخ
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Row 5: تجهيز عرائس -->
+              <tr>
+                <td><span class="branch-pill">الثورة</span></td>
+                <td>
+                  <div class="acc-name-cell">
+                    <span class="acc-name-title">تجهيز عرائس</span>
+                    <span class="donor-card-badge badge-brides" style="align-self: flex-start;"><i class="fa-solid fa-ring"></i> تجهيز الفتيات العرائس</span>
+                  </div>
+                </td>
+                <td><span class="currency-pill">بالجنيه المصرى</span></td>
+                <td>
+                  <div class="table-num-wrap">
+                    <span class="acc-num-code" style="color: var(--primary);">1600001000013693</span>
+                    <button class="table-copy-btn copy-btn" data-copy="1600001000013693" title="نسخ رقم الحساب">
+                      <i class="fa-regular fa-copy"></i> نسخ
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="table-num-wrap">
+                    <span class="iban-code">EG660002016001600001000013693</span>
+                    <button class="table-copy-btn copy-btn" data-copy="EG660002016001600001000013693" title="نسخ الآيبان">
+                      <i class="fa-regular fa-copy"></i> نسخ
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Row 6: اطعام وجبات ساخنة -->
               <tr>
                 <td><span class="branch-pill">الثورة</span></td>
                 <td>
@@ -177,7 +317,7 @@
                 </td>
               </tr>
 
-              <!-- Row 2: جلسة غسيل كلوي -->
+              <!-- Row 7: جلسة غسيل كلوي -->
               <tr>
                 <td><span class="branch-pill">الثورة</span></td>
                 <td>
@@ -210,7 +350,177 @@
         
         <!-- Mobile Bank Cards (Visible on mobile screens <= 768px for optimal touch UX) -->
         <div class="bank-cards-mobile">
-          <!-- Card 1: اطعام وجبات ساخنة -->
+          <!-- Card 1: حساب جمعية اخوين فرع صلاح سالم (الحساب الأساسي) -->
+          <div class="donor-account-card primary-card">
+            <div class="donor-card-header">
+              <div class="donor-card-icon primary-acc">
+                <i class="fa-solid fa-building-columns"></i>
+              </div>
+              <div class="donor-card-head-content">
+                <span class="donor-card-badge badge-primary-acc"><i class="fa-solid fa-crown"></i> الحساب الأساسي المعتمد</span>
+                <h3 class="donor-card-title">حساب جمعية اخوين فرع صلاح سالم</h3>
+                <p class="donor-card-desc">بنك مصر - فرع صلاح سالم (بالجنيه المصري) - الحساب الرئيسي لكافة التبرعات</p>
+              </div>
+            </div>
+            <div class="donor-card-fields">
+              <div class="field-group">
+                <span class="field-label"><i class="fa-solid fa-hashtag"></i> رقم الحساب البنكي:</span>
+                <div class="field-value-row">
+                  <span class="field-number" style="color: var(--primary); font-weight: 800;">1810001000033972</span>
+                  <button type="button" class="btn-card-copy copy-btn" data-copy="1810001000033972" title="نسخ رقم الحساب">
+                    <i class="fa-regular fa-copy"></i> نسخ الرقم
+                  </button>
+                </div>
+              </div>
+              <div class="field-group">
+                <span class="field-label"><i class="fa-solid fa-globe"></i> رقم الآيبان الدولي (IBAN):</span>
+                <div class="field-value-row">
+                  <span class="field-number iban">EG020002018101810001000033972</span>
+                  <button type="button" class="btn-card-copy copy-btn" data-copy="EG020002018101810001000033972" title="نسخ الآيبان">
+                    <i class="fa-regular fa-copy"></i> نسخ الآيبان
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: دار أخوين للرعاية اللاحقة -->
+          <div class="donor-account-card">
+            <div class="donor-card-header">
+              <div class="donor-card-icon aftercare">
+                <i class="fa-solid fa-people-roof"></i>
+              </div>
+              <div class="donor-card-head-content">
+                <span class="donor-card-badge badge-aftercare"><i class="fa-solid fa-circle-check"></i> رعاية لاحقة وأيتام</span>
+                <h3 class="donor-card-title">دار أخوين للرعاية اللاحقة</h3>
+                <p class="donor-card-desc">بنك مصر - فرع صلاح سالم (بالجنيه المصري)</p>
+              </div>
+            </div>
+            <div class="donor-card-fields">
+              <div class="field-group">
+                <span class="field-label"><i class="fa-solid fa-hashtag"></i> رقم الحساب البنكي:</span>
+                <div class="field-value-row">
+                  <span class="field-number" style="color: var(--primary); font-weight: 800;">1810001000012735</span>
+                  <button type="button" class="btn-card-copy copy-btn" data-copy="1810001000012735" title="نسخ رقم الحساب">
+                    <i class="fa-regular fa-copy"></i> نسخ الرقم
+                  </button>
+                </div>
+              </div>
+              <div class="field-group">
+                <span class="field-label"><i class="fa-solid fa-globe"></i> رقم الآيبان الدولي (IBAN):</span>
+                <div class="field-value-row">
+                  <span class="field-number iban">EG340002018101810001000012735</span>
+                  <button type="button" class="btn-card-copy copy-btn" data-copy="EG340002018101810001000012735" title="نسخ الآيبان">
+                    <i class="fa-regular fa-copy"></i> نسخ الآيبان
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: شنط مواد غذائية -->
+          <div class="donor-account-card">
+            <div class="donor-card-header">
+              <div class="donor-card-icon food-boxes">
+                <i class="fa-solid fa-box-open"></i>
+              </div>
+              <div class="donor-card-head-content">
+                <span class="donor-card-badge badge-food-boxes"><i class="fa-solid fa-circle-check"></i> شنط غذائية وتكافل</span>
+                <h3 class="donor-card-title">شنط مواد غذائية</h3>
+                <p class="donor-card-desc">بنك مصر - فرع الثورة (بالجنيه المصري)</p>
+              </div>
+            </div>
+            <div class="donor-card-fields">
+              <div class="field-group">
+                <span class="field-label"><i class="fa-solid fa-hashtag"></i> رقم الحساب البنكي:</span>
+                <div class="field-value-row">
+                  <span class="field-number" style="color: var(--primary); font-weight: 800;">1600001000013660</span>
+                  <button type="button" class="btn-card-copy copy-btn" data-copy="1600001000013660" title="نسخ رقم الحساب">
+                    <i class="fa-regular fa-copy"></i> نسخ الرقم
+                  </button>
+                </div>
+              </div>
+              <div class="field-group">
+                <span class="field-label"><i class="fa-solid fa-globe"></i> رقم الآيبان الدولي (IBAN):</span>
+                <div class="field-value-row">
+                  <span class="field-number iban">EG660002016001600001000013660</span>
+                  <button type="button" class="btn-card-copy copy-btn" data-copy="EG660002016001600001000013660" title="نسخ الآيبان">
+                    <i class="fa-regular fa-copy"></i> نسخ الآيبان
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: صك الأضحية -->
+          <div class="donor-account-card">
+            <div class="donor-card-header">
+              <div class="donor-card-icon sacrifices">
+                <i class="fa-solid fa-cow"></i>
+              </div>
+              <div class="donor-card-head-content">
+                <span class="donor-card-badge badge-sacrifices"><i class="fa-solid fa-circle-check"></i> صكوك ولحوم الأضاحي</span>
+                <h3 class="donor-card-title">صك الأضحية</h3>
+                <p class="donor-card-desc">بنك مصر - فرع الثورة (بالجنيه المصري)</p>
+              </div>
+            </div>
+            <div class="donor-card-fields">
+              <div class="field-group">
+                <span class="field-label"><i class="fa-solid fa-hashtag"></i> رقم الحساب البنكي:</span>
+                <div class="field-value-row">
+                  <span class="field-number" style="color: var(--primary); font-weight: 800;">1600001000013671</span>
+                  <button type="button" class="btn-card-copy copy-btn" data-copy="1600001000013671" title="نسخ رقم الحساب">
+                    <i class="fa-regular fa-copy"></i> نسخ الرقم
+                  </button>
+                </div>
+              </div>
+              <div class="field-group">
+                <span class="field-label"><i class="fa-solid fa-globe"></i> رقم الآيبان الدولي (IBAN):</span>
+                <div class="field-value-row">
+                  <span class="field-number iban">EG660002016001600001000013671</span>
+                  <button type="button" class="btn-card-copy copy-btn" data-copy="EG660002016001600001000013671" title="نسخ الآيبان">
+                    <i class="fa-regular fa-copy"></i> نسخ الآيبان
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5: تجهيز عرائس -->
+          <div class="donor-account-card">
+            <div class="donor-card-header">
+              <div class="donor-card-icon brides">
+                <i class="fa-solid fa-ring"></i>
+              </div>
+              <div class="donor-card-head-content">
+                <span class="donor-card-badge badge-brides"><i class="fa-solid fa-circle-check"></i> تجهيز الفتيات العرائس</span>
+                <h3 class="donor-card-title">تجهيز عرائس</h3>
+                <p class="donor-card-desc">بنك مصر - فرع الثورة (بالجنيه المصري)</p>
+              </div>
+            </div>
+            <div class="donor-card-fields">
+              <div class="field-group">
+                <span class="field-label"><i class="fa-solid fa-hashtag"></i> رقم الحساب البنكي:</span>
+                <div class="field-value-row">
+                  <span class="field-number" style="color: var(--primary); font-weight: 800;">1600001000013693</span>
+                  <button type="button" class="btn-card-copy copy-btn" data-copy="1600001000013693" title="نسخ رقم الحساب">
+                    <i class="fa-regular fa-copy"></i> نسخ الرقم
+                  </button>
+                </div>
+              </div>
+              <div class="field-group">
+                <span class="field-label"><i class="fa-solid fa-globe"></i> رقم الآيبان الدولي (IBAN):</span>
+                <div class="field-value-row">
+                  <span class="field-number iban">EG660002016001600001000013693</span>
+                  <button type="button" class="btn-card-copy copy-btn" data-copy="EG660002016001600001000013693" title="نسخ الآيبان">
+                    <i class="fa-regular fa-copy"></i> نسخ الآيبان
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6: اطعام وجبات ساخنة -->
           <div class="donor-account-card">
             <div class="donor-card-header">
               <div class="donor-card-icon meals">
@@ -244,7 +554,7 @@
             </div>
           </div>
 
-          <!-- Card 2: جلسة غسيل كلوي -->
+          <!-- Card 7: جلسة غسيل كلوي -->
           <div class="donor-account-card">
             <div class="donor-card-header">
               <div class="donor-card-icon medical">
