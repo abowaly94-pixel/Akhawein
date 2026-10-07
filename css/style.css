@@ -6513,6 +6513,12 @@ img, svg, video, iframe {
   border: 1px solid #bfdbfe;
 }
 
+.donor-card-icon.boxes {
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
 .donor-card-head-content {
   flex: 1;
 }
@@ -6536,6 +6542,20 @@ img, svg, video, iframe {
 .donor-card-badge.badge-medical {
   background: #eff6ff;
   color: #2563eb;
+}
+
+.donor-card-badge.badge-boxes {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+.donor-card-badge.badge-primary-main {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  color: #92400e;
+  border: 1px solid #fcd34d;
+  font-weight: 800;
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.15);
 }
 
 .donor-card-title {
