@@ -5347,33 +5347,76 @@ img, svg, video, iframe {
   }
 
   /* Main Navigation Header */
+  .main-header {
+    overflow-x: clip !important;
+  }
   .nav-wrapper {
     padding: 0.45rem 0 !important;
-    gap: 0.75rem !important;
+    gap: 0.5rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+  .brand-identity {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    overflow: hidden !important;
   }
   .logo-link {
     gap: 0.55rem !important;
+    min-width: 0 !important;
+    display: flex !important;
+    align-items: center !important;
   }
   .logo-img {
-    height: 44px !important;
+    height: 42px !important;
+    flex-shrink: 0 !important;
+  }
+  .logo-text-box {
+    min-width: 0 !important;
+    overflow: hidden !important;
   }
   .logo-title {
-    font-size: 1.15rem !important;
+    font-size: 1.12rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
   .logo-subtitle {
     font-size: 0.68rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  .header-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.45rem !important;
+    flex-shrink: 0 !important;
+  }
+  .header-donate-btn {
+    padding: 0.48rem 0.95rem !important;
+    font-size: 0.85rem !important;
+    flex-shrink: 0 !important;
   }
   .eagle-badge {
-    height: 38px !important;
+    height: 36px !important;
+    flex-shrink: 0 !important;
   }
   .mobile-toggle-btn {
-    font-size: 1.4rem !important;
-    padding: 0.4rem !important;
-    min-width: 44px !important;
-    min-height: 44px !important;
+    font-size: 1.3rem !important;
+    padding: 0 !important;
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    flex-shrink: 0 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    border-radius: 10px !important;
   }
 
   /* Mobile Drawer */
@@ -5656,21 +5699,37 @@ img, svg, video, iframe {
     font-size: 1.55rem !important;
   }
 
-  /* Compact Header */
+  /* Compact Header for Smartphones */
   .nav-wrapper {
-    gap: 0.45rem !important;
+    gap: 0.35rem !important;
   }
   .logo-img {
     height: 38px !important;
   }
   .logo-title {
-    font-size: 1.05rem !important;
+    font-size: 1.02rem !important;
   }
   .logo-subtitle {
-    font-size: 0.65rem !important;
+    font-size: 0.62rem !important;
   }
   .eagle-badge {
-    height: 32px !important;
+    display: none !important; /* Hide eagle badge on phones to prevent crowding & overflow */
+  }
+  .header-actions {
+    gap: 0.4rem !important;
+  }
+  .header-donate-btn {
+    padding: 0.42rem 0.72rem !important;
+    font-size: 0.8rem !important;
+    border-radius: var(--radius-full) !important;
+  }
+  .mobile-toggle-btn {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    font-size: 1.25rem !important;
+    flex-shrink: 0 !important;
   }
 
   /* Hero Section */
@@ -5763,6 +5822,18 @@ img, svg, video, iframe {
   }
   .eagle-badge {
     display: none !important; /* Hide eagle badge on tiny screens to avoid header wrap */
+  }
+  .header-donate-btn {
+    padding: 0.38rem 0.55rem !important;
+    font-size: 0.74rem !important;
+    gap: 0.3rem !important;
+  }
+  .mobile-toggle-btn {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    font-size: 1.15rem !important;
   }
   .stats-grid {
     grid-template-columns: repeat(2, 1fr) !important;

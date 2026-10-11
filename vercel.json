@@ -2,14 +2,52 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
-  "functions": {
-    "index.js": {
-      "includeFiles": "**"
-    },
-    "server.js": {
-      "includeFiles": "**"
-    }
-  },
+  "rewrites": [
+    { "source": "/البروتوكولات", "destination": "/protocols.html" },
+    { "source": "/بروتوكولات", "destination": "/protocols.html" },
+    { "source": "/protocols", "destination": "/protocols.html" },
+    { "source": "/الفروع", "destination": "/branches.html" },
+    { "source": "/فروع", "destination": "/branches.html" },
+    { "source": "/branches", "destination": "/branches.html" },
+    { "source": "/عن-الجمعية", "destination": "/about.html" },
+    { "source": "/عن_الجمعية", "destination": "/about.html" },
+    { "source": "/عن-الجمعيه", "destination": "/about.html" },
+    { "source": "/عن_الجمعيه", "destination": "/about.html" },
+    { "source": "/عن", "destination": "/about.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/الأنشطة", "destination": "/activities.html" },
+    { "source": "/الانشطة", "destination": "/activities.html" },
+    { "source": "/أنشطة", "destination": "/activities.html" },
+    { "source": "/انشطة", "destination": "/activities.html" },
+    { "source": "/ميادين-العمل", "destination": "/activities.html" },
+    { "source": "/activities", "destination": "/activities.html" },
+    { "source": "/حالات-التبرع", "destination": "/causes.html" },
+    { "source": "/حالات_التبرع", "destination": "/causes.html" },
+    { "source": "/حالات", "destination": "/causes.html" },
+    { "source": "/causes", "destination": "/causes.html" },
+    { "source": "/وسائل-التبرع", "destination": "/donations.html" },
+    { "source": "/وسائل_التبرع", "destination": "/donations.html" },
+    { "source": "/تبرع-الآن", "destination": "/donations.html" },
+    { "source": "/تبرع_الآن", "destination": "/donations.html" },
+    { "source": "/تبرع", "destination": "/donations.html" },
+    { "source": "/donations", "destination": "/donations.html" },
+    { "source": "/المركز-الإعلامي", "destination": "/gallery.html" },
+    { "source": "/المركز-الاعلامي", "destination": "/gallery.html" },
+    { "source": "/المعرض", "destination": "/gallery.html" },
+    { "source": "/معرض-الصور", "destination": "/gallery.html" },
+    { "source": "/gallery", "destination": "/gallery.html" },
+    { "source": "/شهادات-التقدير", "destination": "/certificates.html" },
+    { "source": "/شهادات", "destination": "/certificates.html" },
+    { "source": "/الشهادات", "destination": "/certificates.html" },
+    { "source": "/certificates", "destination": "/certificates.html" },
+    { "source": "/تواصل-معنا", "destination": "/contact.html" },
+    { "source": "/تواصل", "destination": "/contact.html" },
+    { "source": "/اتصل-بنا", "destination": "/contact.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/الرئيسية", "destination": "/index.html" },
+    { "source": "/الرئيسيه", "destination": "/index.html" },
+    { "source": "/home", "destination": "/index.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -33,11 +71,11 @@
       ]
     },
     {
-      "source": "/(css|js|images)/(.*)",
+      "source": "/(css|js)/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
+          "value": "public, max-age=0, must-revalidate"
         }
       ]
     }
