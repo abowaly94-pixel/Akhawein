@@ -6875,37 +6875,15 @@ img, svg, video, iframe {
 }
 
 .bank-official-table tbody tr {
-  transition: background-color 0.2s ease;
+  transition: background-color 0.15s ease;
 }
 
-.bank-official-table tbody tr:nth-child(even) td {
-  background-color: #fafbfc;
+.bank-official-table tbody tr td {
+  background-color: #ffffff !important;
 }
 
 .bank-official-table tbody tr:hover td {
-  background-color: #f0fdf4 !important;
-}
-
-/* Primary Account Highlighting */
-.primary-account-row td {
-  background-color: #fffdf5 !important;
-  border-bottom: 2px solid #fde68a !important;
-}
-
-.primary-account-row:hover td {
-  background-color: #fef9c3 !important;
-}
-
-.branch-pill.branch-primary {
-  background: rgba(213, 123, 30, 0.12);
-  color: #b45309;
-  border: 1px solid rgba(213, 123, 30, 0.25);
-  font-weight: 800;
-}
-
-.table-num-wrap.table-num-primary {
-  background: #fffdf5;
-  border: 1.5px solid #fde68a;
+  background-color: #f8fafc !important;
 }
 
 .donor-account-card.primary-card {
