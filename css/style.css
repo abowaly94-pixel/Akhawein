@@ -6974,75 +6974,55 @@ img, svg, video, iframe {
 /* Unified Assistance & Deposit Notice Card                                  */
 /* -------------------------------------------------------------------------- */
 .deposit-assistance-card {
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 1.5rem 1.75rem;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 1.25rem;
+  gap: 1rem;
   margin-top: 1rem;
 }
 
 .assistance-info {
   display: flex;
   align-items: center;
-  gap: 1rem;
   flex: 1;
-  min-width: 280px;
-}
-
-.assistance-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: #ecfdf5;
-  color: #10b981;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  flex-shrink: 0;
-  border: 1px solid #a7f3d0;
+  min-width: 260px;
 }
 
 .assistance-text h4 {
-  font-size: 1.05rem;
-  font-weight: 800;
-  color: #0b3b4f;
-  margin: 0 0 0.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 0.3rem;
 }
 
 .assistance-text p {
-  font-size: 0.88rem;
-  color: #64748b;
+  font-size: 0.9rem;
+  color: #4b5563;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .btn-assistance-whatsapp {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+  display: inline-block;
   background: #25d366;
   color: #ffffff;
-  font-weight: 700;
-  font-size: 0.92rem;
-  padding: 0.7rem 1.35rem;
-  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
   text-decoration: none;
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+  transition: background-color 0.2s ease;
   white-space: nowrap;
 }
 
 .btn-assistance-whatsapp:hover {
   background: #1eb856;
   color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
 }
 
 .acc-num-code {

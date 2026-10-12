@@ -1,4 +1,13 @@
 # Vercel Deployment Ignore List
+
+# Local dev server only (must NOT be deployed — otherwise Vercel turns the
+# whole site into a serverless function and static css/js return 404)
+index.js
+server.js
+package.json
+package.json.local
+*.bak
+
 *.psd
 .git
 .vscode/
