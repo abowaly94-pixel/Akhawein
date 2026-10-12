@@ -256,6 +256,31 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-2px);
 }
 
+/* Secondary brand button — companion to .btn-primary (same orange family, lighter weight) */
+.btn-outline {
+  background: var(--primary-subtle);
+  color: var(--primary-dark);
+  border: 1.5px solid var(--primary);
+  box-shadow: 0 2px 8px rgba(213, 123, 30, 0.12);
+}
+
+.btn-outline i {
+  color: var(--primary);
+  transition: color var(--transition-fast);
+}
+
+.btn-outline:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(213, 123, 30, 0.3);
+}
+
+.btn-outline:hover i {
+  color: #fff;
+}
+
 .btn-sm {
   padding: 0.4rem 0.95rem;
   font-size: 0.85rem;
