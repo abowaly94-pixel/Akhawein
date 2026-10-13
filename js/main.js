@@ -592,6 +592,30 @@ function initHeroSlider() {
   if (sliderContainer) {
     sliderContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
     sliderContainer.addEventListener('mouseleave', () => startTimer());
+
+    // Mobile touch swipe gestures (optimized for RTL Arabic)
+    let touchStartX = 0;
+    let touchStartY = 0;
+    sliderContainer.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    sliderContainer.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].screenX;
+      const touchEndY = e.changedTouches[0].screenY;
+      const diffX = touchEndX - touchStartX;
+      const diffY = touchEndY - touchStartY;
+      // Only trigger if horizontal swipe is dominant and exceeds threshold
+      if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX < 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+        resetTimer();
+      }
+    }, { passive: true });
   }
 
   showSlide(0);
