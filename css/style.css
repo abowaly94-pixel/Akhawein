@@ -7837,4 +7837,164 @@ img, svg, video, iframe {
   color: #1e293b;
 }
 
+/* ==========================================================================
+   مجلس إدارة جمعية أخوين الخيرية - Board of Directors Cards Section
+   Clean, Compact & Authentic Institutional Directory
+   ========================================================================== */
+.board-section {
+  padding: 4rem 0 4.5rem;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  scroll-margin-top: 85px;
+}
+
+.board-header-wrap {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+}
+
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.15rem;
+}
+
+/* 4 Executive Officers in Row 1: Span 3 columns each (4 x 3 = 12 cols) */
+.board-grid .board-card:nth-child(1),
+.board-grid .board-card:nth-child(2),
+.board-grid .board-card:nth-child(3),
+.board-grid .board-card:nth-child(4) {
+  grid-column: span 3;
+}
+
+/* 3 Board Members in Row 2: Span 4 columns each (3 x 4 = 12 cols) */
+.board-grid .board-card:nth-child(5),
+.board-grid .board-card:nth-child(6),
+.board-grid .board-card:nth-child(7) {
+  grid-column: span 4;
+}
+
+/* Compact Card */
+.board-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1.15rem 1.25rem 1.15rem 1.35rem;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Accent on the side: centered half-circle/pill in footer color */
+.board-card::before {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 42px;
+  background: #18181c;
+  border-radius: 6px 0 0 6px;
+  transition: height 0.25s ease, background 0.2s ease;
+}
+
+.board-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.07);
+  border-color: #cbd5e1;
+}
+
+.board-card:hover::before {
+  height: 60px;
+  background: #09090b;
+}
+
+.board-card-body {
+  margin-bottom: 0.85rem;
+}
+
+.board-card-name {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 0.4rem;
+  line-height: 1.3;
+}
+
+.board-card-role {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #475569;
+  background: #f8fafc;
+  padding: 0.2rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.board-card-job {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f1f5f9;
+  font-size: 0.84rem;
+}
+
+.board-card-job .job-label {
+  color: #64748b;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.board-card-job .job-val {
+  color: #1e293b;
+  font-weight: 700;
+  text-align: left;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .board-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .board-grid .board-card:nth-child(n) {
+    grid-column: span 1;
+  }
+  .board-grid .board-card:nth-child(7) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .board-section {
+    padding: 3rem 0 3.5rem;
+  }
+  .board-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+  .board-grid .board-card:nth-child(7) {
+    grid-column: auto;
+  }
+  .board-card {
+    padding: 1rem 1.15rem;
+  }
+  .board-card-name {
+    font-size: 1.1rem;
+  }
+}
+
+
+
 
