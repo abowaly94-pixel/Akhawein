@@ -298,52 +298,100 @@
       <div class="home-causes-grid" data-aos="fade-up" data-aos-delay="100">
         
         <!-- Card 1 (Right): اطعام وجبات ساخنة -->
-        <div class="home-cause-card" style="background: #ffffff; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <div class="home-cause-card" onclick="openCauseModal('hot-meals')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCauseModal('hot-meals');}" role="button" tabindex="0" data-cause-id="hot-meals" style="background: #ffffff; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" title="انقر لعرض تفاصيل إطعام وجبات ساخنة والتبرع">
           <div style="position: relative; overflow: hidden; height: 260px;">
-            <img src="images/hot-meals.jpg" alt="اطعام وجبات ساخنة" style="width: 100%; height: 100%; object-fit: cover; display: block; border-bottom: 3.5px solid #d57b1e;">
+            <img src="images/hot-meals.jpg" alt="اطعام وجبات ساخنة" style="width: 100%; height: 100%; object-fit: cover; display: block; border-bottom: 3.5px solid #d57b1e; transition: transform 0.5s ease;">
+            <span class="cause-badge" style="position: absolute; top: 14px; right: 14px; background: rgba(11, 59, 79, 0.9); color: #fff; padding: 0.35rem 0.85rem; border-radius: 9999px; font-size: 0.82rem; font-weight: 700; backdrop-filter: blur(4px); box-shadow: 0 4px 10px rgba(0,0,0,0.15);">إطعام طعام</span>
           </div>
           <div style="padding: 1.75rem 1.5rem 1.5rem; display: flex; flex-direction: column; flex: 1;">
-            <h3 style="font-size: 1.35rem; font-weight: 800; color: #0b3b4f; margin-bottom: 0.85rem; text-align: center;"><a href="causes.html" style="color: inherit; text-decoration: none;">اطعام وجبات ساخنة</a></h3>
+            <h3 style="font-size: 1.35rem; font-weight: 800; color: #0b3b4f; margin-bottom: 0.85rem; text-align: center;"><a href="javascript:void(0)" onclick="openCauseModal('hot-meals')" style="color: inherit; text-decoration: none;">اطعام وجبات ساخنة</a></h3>
             <p style="color: #64748b; font-size: 0.95rem; line-height: 1.75; text-align: center; margin-bottom: 1.5rem; min-height: 52px;">قال تعالي: وَيُطْعِمُونَ الطَّعَامَ عَلَى حُبِّهِ مِسْكِينًا وَ يَتِيمًا وَ أَسِيرًا</p>
             <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid #f1f5f9;">
-              <div style="height: 5px; background-color: #f1f5f9; border-radius: 4px; overflow: hidden; margin-bottom: 0.5rem;">
-                <div style="width: 0%; height: 100%; background: #d57b1e;"></div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.45rem;">
+                <span style="color: #64748b;">نسبة الإنجاز</span>
+                <span style="color: #d57b1e;">52%</span>
               </div>
-              <div style="text-align: left; font-size: 0.88rem; font-weight: 700; color: #d57b1e;">0%</div>
+              <div style="height: 6px; background-color: #f1f5f9; border-radius: 4px; overflow: hidden; margin-bottom: 0.6rem;">
+                <div style="width: 52%; height: 100%; background: linear-gradient(90deg, #fcb429, #d57b1e); border-radius: 4px;"></div>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: #64748b;">
+                <span>تم جمع: <strong style="color: #0b3b4f;">524,000 ج.م</strong></span>
+                <span>المستهدف: <strong style="color: #0b3b4f;">1,008,000 ج.م</strong></span>
+              </div>
+            </div>
+            <div style="margin-top: 1.15rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button type="button" class="btn btn-secondary" onclick="event.stopPropagation(); openCauseModal('hot-meals')" style="flex: 1; min-width: 120px; font-size: 0.88rem; font-weight: 700; cursor: pointer; padding: 0.6rem 0.75rem; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; background: #f8fafc; border: 1px solid #e2e8f0; color: #0b3b4f;">
+                <i class="fa-solid fa-circle-info" style="color: #d57b1e;"></i> تفاصيل الحالة
+              </button>
+              <a href="donations.html#banque-misr" class="btn btn-primary" onclick="event.stopPropagation();" style="flex: 1; min-width: 120px; font-size: 0.88rem; font-weight: 700; padding: 0.6rem 0.75rem; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; background: #d57b1e; color: #fff; text-decoration: none;">
+                <i class="fa-solid fa-building-columns"></i> حساب التبرع
+              </a>
             </div>
           </div>
         </div>
 
         <!-- Card 2 (Middle): شنطة مواد غذائية -->
-        <div class="home-cause-card" style="background: #ffffff; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <div class="home-cause-card" onclick="openCauseModal('food-package')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCauseModal('food-package');}" role="button" tabindex="0" data-cause-id="food-package" style="background: #ffffff; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" title="انقر لعرض تفاصيل شنطة مواد غذائية والتبرع">
           <div style="position: relative; overflow: hidden; height: 260px;">
-            <img src="https://www.akhawein.org/wp-content/uploads/2022/08/WhatsApp-Image-2024-06-24-at-9.35.19-PM-580x435.jpeg" alt="شنطة مواد غذائية" style="width: 100%; height: 100%; object-fit: cover; display: block; border-bottom: 3.5px solid #d57b1e;">
+            <img src="https://www.akhawein.org/wp-content/uploads/2022/08/WhatsApp-Image-2024-06-24-at-9.35.19-PM-580x435.jpeg" alt="شنطة مواد غذائية" style="width: 100%; height: 100%; object-fit: cover; display: block; border-bottom: 3.5px solid #d57b1e; transition: transform 0.5s ease;">
+            <span class="cause-badge" style="position: absolute; top: 14px; right: 14px; background: rgba(11, 59, 79, 0.9); color: #fff; padding: 0.35rem 0.85rem; border-radius: 9999px; font-size: 0.82rem; font-weight: 700; backdrop-filter: blur(4px); box-shadow: 0 4px 10px rgba(0,0,0,0.15);">شنطة رد الجميل</span>
           </div>
           <div style="padding: 1.75rem 1.5rem 1.5rem; display: flex; flex-direction: column; flex: 1;">
-            <h3 style="font-size: 1.35rem; font-weight: 800; color: #0b3b4f; margin-bottom: 0.85rem; text-align: center;"><a href="causes.html" style="color: inherit; text-decoration: none;">شنطة مواد غذائية</a></h3>
+            <h3 style="font-size: 1.35rem; font-weight: 800; color: #0b3b4f; margin-bottom: 0.85rem; text-align: center;"><a href="javascript:void(0)" onclick="openCauseModal('food-package')" style="color: inherit; text-decoration: none;">شنطة مواد غذائية</a></h3>
             <p style="color: #64748b; font-size: 0.95rem; line-height: 1.75; text-align: center; margin-bottom: 1.5rem; min-height: 52px;">توفر اخوين شنطة رد الجميل من اجل تحسين جودة حياة</p>
             <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid #f1f5f9;">
-              <div style="height: 5px; background-color: #f1f5f9; border-radius: 4px; overflow: hidden; margin-bottom: 0.5rem;">
-                <div style="width: 0%; height: 100%; background: #d57b1e;"></div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.45rem;">
+                <span style="color: #64748b;">نسبة الإنجاز</span>
+                <span style="color: #d57b1e;">40%</span>
               </div>
-              <div style="text-align: left; font-size: 0.88rem; font-weight: 700; color: #d57b1e;">0%</div>
+              <div style="height: 6px; background-color: #f1f5f9; border-radius: 4px; overflow: hidden; margin-bottom: 0.6rem;">
+                <div style="width: 40%; height: 100%; background: linear-gradient(90deg, #fcb429, #d57b1e); border-radius: 4px;"></div>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: #64748b;">
+                <span>تم جمع: <strong style="color: #0b3b4f;">432,000 ج.م</strong></span>
+                <span>المستهدف: <strong style="color: #0b3b4f;">1,080,000 ج.م</strong></span>
+              </div>
+            </div>
+            <div style="margin-top: 1.15rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button type="button" class="btn btn-secondary" onclick="event.stopPropagation(); openCauseModal('food-package')" style="flex: 1; min-width: 120px; font-size: 0.88rem; font-weight: 700; cursor: pointer; padding: 0.6rem 0.75rem; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; background: #f8fafc; border: 1px solid #e2e8f0; color: #0b3b4f;">
+                <i class="fa-solid fa-circle-info" style="color: #d57b1e;"></i> تفاصيل الحالة
+              </button>
+              <a href="donations.html#banque-misr" class="btn btn-primary" onclick="event.stopPropagation();" style="flex: 1; min-width: 120px; font-size: 0.88rem; font-weight: 700; padding: 0.6rem 0.75rem; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; background: #d57b1e; color: #fff; text-decoration: none;">
+                <i class="fa-solid fa-building-columns"></i> حساب التبرع
+              </a>
             </div>
           </div>
         </div>
 
         <!-- Card 3 (Left): نفسك في ايه / أمنية -->
-        <div class="home-cause-card" style="background: #ffffff; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <div class="home-cause-card" onclick="openCauseModal('cancer-children')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCauseModal('cancer-children');}" role="button" tabindex="0" data-cause-id="cancer-children" style="background: #ffffff; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" title="انقر لعرض تفاصيل أمنية أطفال الأورام والتبرع">
           <div style="position: relative; overflow: hidden; height: 260px;">
-            <img src="images/omneya-girl.jpg" alt="نفسك في ايه / أمنية" style="width: 100%; height: 100%; object-fit: cover; display: block; border-bottom: 3.5px solid #d57b1e;">
+            <img src="images/omneya-girl.jpg" alt="نفسك في ايه / أمنية" style="width: 100%; height: 100%; object-fit: cover; display: block; border-bottom: 3.5px solid #d57b1e; transition: transform 0.5s ease;">
+            <span class="cause-badge" style="position: absolute; top: 14px; right: 14px; background: rgba(11, 59, 79, 0.9); color: #fff; padding: 0.35rem 0.85rem; border-radius: 9999px; font-size: 0.82rem; font-weight: 700; backdrop-filter: blur(4px); box-shadow: 0 4px 10px rgba(0,0,0,0.15);">أمل وشفاء</span>
           </div>
           <div style="padding: 1.75rem 1.5rem 1.5rem; display: flex; flex-direction: column; flex: 1;">
-            <h3 style="font-size: 1.35rem; font-weight: 800; color: #0b3b4f; margin-bottom: 0.85rem; text-align: center;"><a href="causes.html" style="color: inherit; text-decoration: none;">نفسك في ايه / أمنية</a></h3>
+            <h3 style="font-size: 1.35rem; font-weight: 800; color: #0b3b4f; margin-bottom: 0.85rem; text-align: center;"><a href="javascript:void(0)" onclick="openCauseModal('cancer-children')" style="color: inherit; text-decoration: none;">نفسك في ايه / أمنية</a></h3>
             <p style="color: #64748b; font-size: 0.95rem; line-height: 1.75; text-align: center; margin-bottom: 1.5rem; min-height: 52px;">تهتم أخوين ب اطفال مرضى الأورام والحالات المتأخرة والمهددة حياتهم بالموت</p>
             <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid #f1f5f9;">
-              <div style="height: 5px; background-color: #f1f5f9; border-radius: 4px; overflow: hidden; margin-bottom: 0.5rem;">
-                <div style="width: 0.4%; min-width: 4px; height: 100%; background: #d57b1e;"></div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.45rem;">
+                <span style="color: #64748b;">نسبة الإنجاز</span>
+                <span style="color: #d57b1e;">80%</span>
               </div>
-              <div style="text-align: left; font-size: 0.88rem; font-weight: 700; color: #d57b1e;">0.4%</div>
+              <div style="height: 6px; background-color: #f1f5f9; border-radius: 4px; overflow: hidden; margin-bottom: 0.6rem;">
+                <div style="width: 80%; height: 100%; background: linear-gradient(90deg, #fcb429, #d57b1e); border-radius: 4px;"></div>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: #64748b;">
+                <span>تم جمع: <strong style="color: #0b3b4f;">8,000 ج.م</strong></span>
+                <span>المستهدف: <strong style="color: #0b3b4f;">10,000 ج.م</strong></span>
+              </div>
+            </div>
+            <div style="margin-top: 1.15rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button type="button" class="btn btn-secondary" onclick="event.stopPropagation(); openCauseModal('cancer-children')" style="flex: 1; min-width: 120px; font-size: 0.88rem; font-weight: 700; cursor: pointer; padding: 0.6rem 0.75rem; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; background: #f8fafc; border: 1px solid #e2e8f0; color: #0b3b4f;">
+                <i class="fa-solid fa-circle-info" style="color: #d57b1e;"></i> تفاصيل الحالة
+              </button>
+              <a href="donations.html#banque-misr" class="btn btn-primary" onclick="event.stopPropagation();" style="flex: 1; min-width: 120px; font-size: 0.88rem; font-weight: 700; padding: 0.6rem 0.75rem; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; background: #d57b1e; color: #fff; text-decoration: none;">
+                <i class="fa-solid fa-building-columns"></i> حساب التبرع
+              </a>
             </div>
           </div>
         </div>
@@ -993,6 +1041,163 @@
     </div>
   </div>
 
+  <!-- ======================================================================== -->
+  <!-- Interactive Cause Details Modal (نافذة تفاصيل الحالة المنبثقة الفخمة)      -->
+  <!-- ======================================================================== -->
+  <div class="cause-modal-overlay" id="causeModalOverlay" onclick="if(event.target === this) closeCauseModal()" aria-hidden="true">
+    <div class="cause-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="causeModalTitle">
+      
+      <!-- Modal Header -->
+      <div class="cause-modal-header">
+        <div class="cause-modal-badges">
+          <span class="cause-modal-badge" id="causeModalBadge"><i class="fa-solid fa-tag"></i> <span id="causeModalBadgeText">عفاف وستر</span></span>
+          <span class="cause-modal-status-badge"><i class="fa-solid fa-circle-check"></i> حالة معتمدة ومفتوحة للتبرع</span>
+        </div>
+        <button type="button" class="cause-modal-close-btn" onclick="closeCauseModal()" aria-label="إغلاق تفاصيل الحالة" title="إغلاق (Esc)">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body (Scrollable) -->
+      <div class="cause-modal-body" id="causeModalBody">
+        
+        <!-- Hero Banner with Image & Title -->
+        <div class="cause-modal-hero">
+          <img src="" id="causeModalHeroImg" alt="" class="cause-modal-hero-img">
+          <div class="cause-modal-hero-overlay">
+            <h2 class="cause-modal-title" id="causeModalTitle">اسم الحالة</h2>
+            <div id="causeModalCategoryPill" style="display: inline-flex; align-items: center; gap: 0.4rem; color: #f8fafc; font-size: 0.88rem; font-weight: 600;">
+              <i class="fa-solid fa-hand-holding-heart" style="color: var(--accent);"></i>
+              <span id="causeModalSubtitle">مشروع إنساني معتمد لدى جمعية أخوين الخيرية</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metrics Dashboard -->
+        <div class="cause-modal-metrics">
+          <div class="cause-modal-stats-grid">
+            <div class="cause-modal-stat-box">
+              <span class="stat-label">تم جمع حتى الآن</span>
+              <span class="stat-val" id="causeModalRaised">0 ج.م</span>
+            </div>
+            <div class="cause-modal-stat-box highlight">
+              <span class="stat-label">المستهدف المطلوب</span>
+              <span class="stat-val" id="causeModalGoal">0 ج.م</span>
+            </div>
+            <div class="cause-modal-stat-box">
+              <span class="stat-label">نسبة الإنجاز</span>
+              <span class="stat-val" id="causeModalPercent" style="color: #059669;">0%</span>
+            </div>
+            <div class="cause-modal-stat-box">
+              <span class="stat-label">المتبقي للاكتمال</span>
+              <span class="stat-val" id="causeModalRemaining">0 ج.م</span>
+            </div>
+          </div>
+          <div class="cause-modal-progress-wrap">
+            <div class="cause-modal-progress-bar">
+              <div class="cause-modal-progress-fill" id="causeModalProgressBar" style="width: 0%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Narrative Story & Program Details -->
+        <div class="cause-modal-section">
+          <h4 class="cause-modal-section-title">
+            <i class="fa-solid fa-file-lines"></i>
+            تفاصيل الحالة والبرنامج الإنساني
+          </h4>
+          <div class="cause-modal-description" id="causeModalDesc">
+            <!-- Dynamic Text Content -->
+          </div>
+          <div class="cause-modal-verse-card" id="causeModalVerse" style="display: none;">
+            <!-- Quranic verse or Hadith if present -->
+          </div>
+        </div>
+
+        <!-- Shares & Donation Packages -->
+        <div class="cause-modal-section" id="causeModalSharesSection">
+          <h4 class="cause-modal-section-title">
+            <i class="fa-solid fa-hand-holding-dollar"></i>
+            أسهم وباقات المساهمة والتبرع المتاحة
+          </h4>
+          <div class="cause-modal-shares-grid" id="causeModalSharesGrid">
+            <!-- Dynamic Share Cards -->
+          </div>
+        </div>
+
+        <!-- Beneficiaries Target Groups -->
+        <div class="cause-modal-section" id="causeModalBeneficiariesSection">
+          <h4 class="cause-modal-section-title">
+            <i class="fa-solid fa-users"></i>
+            الفئات المستفيدة والمستهدفة
+          </h4>
+          <div class="cause-modal-chips-wrap" id="causeModalChips">
+            <!-- Dynamic Chips -->
+          </div>
+        </div>
+
+        <!-- Dedicated Official Bank Account Box -->
+        <div class="cause-modal-bank-box">
+          <div class="cause-modal-bank-header">
+            <div class="cause-modal-bank-brand">
+              <img src="images/banque-misr-logo.png" onerror="this.src='https://www.akhawein.org/wp-content/uploads/2024/03/bmp-logo.png'" alt="بنك مصر" class="cause-modal-bank-logo">
+              <div>
+                <h5 class="cause-modal-bank-title" id="causeModalBankTitle">حساب بنك مصر الرسمي المعتمد</h5>
+                <span class="cause-modal-bank-branch" id="causeModalBankBranch">فرع صلاح سالم / فرع الثورة</span>
+              </div>
+            </div>
+            <span style="font-size: 0.8rem; background: rgba(255,255,255,0.12); padding: 0.35rem 0.75rem; border-radius: 9999px; font-weight: 600;">
+              <i class="fa-solid fa-shield-halved" style="color: var(--accent);"></i> حساب معتمد
+            </span>
+          </div>
+
+          <div class="cause-modal-acc-display">
+            <div>
+              <div style="font-size: 0.8rem; color: rgba(255,255,255,0.7); margin-bottom: 0.2rem;">رقم الحساب المخصص للحالة:</div>
+              <div class="cause-modal-acc-num" id="causeModalAccNum">1810001000033972</div>
+            </div>
+            <button type="button" class="cause-modal-acc-copy-btn" id="causeModalCopyBtn" onclick="copyCurrentCauseAccount()">
+              <i class="fa-regular fa-copy"></i>
+              <span>نسخ رقم الحساب</span>
+            </button>
+          </div>
+
+          <div class="cause-modal-iban-wrap" id="causeModalIbanWrap">
+            <span>رقم الآيبان الدولي (IBAN):</span>
+            <span class="cause-modal-iban-code" id="causeModalIban">EG020002018101810001000033972</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer Controls -->
+      <div class="cause-modal-footer">
+        <div class="cause-modal-nav-btns">
+          <button type="button" class="cause-modal-nav-btn" onclick="navigateCauseModal(-1)" title="الحالة السابقة">
+            <i class="fa-solid fa-chevron-right"></i>
+            <span>السابقة</span>
+          </button>
+          <button type="button" class="cause-modal-nav-btn" onclick="navigateCauseModal(1)" title="الحالة التالية">
+            <span>التالية</span>
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+        </div>
+
+        <div class="cause-modal-cta-btns">
+          <button type="button" class="cause-modal-share-btn" onclick="shareCurrentCause()" title="مشاركة رابط الحالة">
+            <i class="fa-solid fa-share-nodes"></i>
+            <span>مشاركة</span>
+          </button>
+          <a href="#" id="causeModalWhatsAppBtn" target="_blank" rel="noopener noreferrer" class="cause-modal-whatsapp-btn" title="تواصل عبر واتساب للاستفسار والتبرع">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>استفسار وتبرع عبر واتساب</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- External Animation Libraries -->
   <!-- AOS (Animate on Scroll) -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -1000,6 +1205,6 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
   
   <!-- Custom JavaScript -->
-  <script src="js/main.js?v=4.2.0"></script>
+  <script src="js/main.js?v=4.3.0"></script>
 </body>
 </html>
