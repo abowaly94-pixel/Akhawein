@@ -67,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDonationTabs();
   initDonationViewSwitcher();
   initFloatingDonateExpand();
+  initCauseDetailsModal();
 });
 
 /* -------------------------------------------------------------------------- */
@@ -1924,4 +1925,683 @@ window.filterBranches = filterBranches;
 function initFloatingDonateExpand() {
   // Pure static circular button without expansion
 }
+
+/* -------------------------------------------------------------------------- */
+/* 27. Interactive Cause Details Modal Controller & Authentic Cases Data       */
+/* -------------------------------------------------------------------------- */
+const ALL_CAUSES_DATA = {
+  'orphans-elderly': {
+    id: 'orphans-elderly',
+    title: 'كفالة الأيتام وكبار السن',
+    category: 'أجر مستمر',
+    badgeClass: 'badge-orphans',
+    img: 'https://www.akhawein.org/wp-content/uploads/2024/08/2151565289.jpg',
+    raised: '12,240 ج.م',
+    goal: '18,000 ج.م',
+    goalType: 'المستهدف الشهري',
+    percent: 68,
+    remaining: '5,760 ج.م',
+    description: `تولي جمعية أخوين اهتماماً بالغاً بالطفل اليتيم من إقامة وكفالة شهرية وغذاء ورعاية طبية ونفسية شاملة بدار أخوين للأيتام، وتحث أهل الخير على دعم الطفل اليتيم نظراً لاحتياج هؤلاء الأيتام إلى المؤازرة والدعم والعمل على دمجهم الكامل في المجتمع.
+
+كما تولي الجمعية اهتماماً كبيراً بكبار السن والمسنين غير القادرين من خلال دار «حكاية حياة» لكبار السن لتوفير مأوى كريم ورعاية صحية وغذائية ونفسية تليق بكرامتهم وإنسانيتهم.`,
+    verse: 'قال رسول الله ﷺ: «أنا وكافل اليتيم في الجنة هكذا» وأشار بالسبابة والوسطى وفرج بينهما شيئاً.',
+    shares: [
+      { name: 'سهم كفالة طفل يتيم', amount: '300 ج.م', desc: 'مساهمة شهرية تشمل الغذاء والرعاية والتعليم والملبس' },
+      { name: 'سهم كفالة مسن', amount: '300 ج.م', desc: 'رعاية صحية وتغذية متكاملة بدار حكاية حياة' },
+      { name: 'كفالة كاملة لطفل يتيم شهرياً', amount: '1,200 ج.م', desc: 'تغطية شاملة لكافة احتياجات الطفل ومصاريف إقامته' },
+      { name: 'كفالة كاملة لمسن شهرياً', amount: '1,500 ج.م', desc: 'إقامة وإعاشة وعلاج كامل لكبار السن' }
+    ],
+    beneficiaries: ['الأطفال الأيتام', 'المسنون وكبار السن', 'دار أخوين للأيتام', 'دار حكاية حياة'],
+    bankTitle: 'حساب جمعية أخوين فرع صلاح سالم (الحساب الأساسي)',
+    bankBranch: 'فرع صلاح سالم - بنك مصر',
+    accountNumber: '1810001000033972',
+    iban: 'EG020002018101810001000033972',
+    officialUrl: 'https://www.akhawein.org/donations/كفالة-الايتام-كبار-السن/'
+  },
+  'brides': {
+    id: 'brides',
+    title: 'تجهيز العرائس اليتيمات',
+    category: 'عفاف وستر',
+    img: 'https://www.akhawein.org/wp-content/uploads/2022/08/f100a1c2-8e10-4eaf-a9f2-778d05e11195.jpeg',
+    raised: '3,240,000 ج.م',
+    goal: '7,200,000 ج.م',
+    goalType: 'المستهدف العام',
+    percent: 45,
+    remaining: '3,960,000 ج.م',
+    description: `تكافل المجتمع مع الفتيات اليتيمات لتزويجهن وتجهيزهن بالأجهزة الكهربائية والأساسيات المنزلية ليبدأن حياة اجتماعية كريمة ومستقرة، نشاط مستمر طوال العام لستر بناتنا ورسم البسمة على وجوههن.
+
+يُمنح كل فتاة يتيمة مبلغ مالي ومشتريات عينية بقيمة 20,000 جنيه (أجهزة كهربائية أساسية كالغسالة والبوتاجاز والثلاجة والمفروشات).
+
+شروط الاستحقاق المعتمدة:
+• أن يكون معقود قرانها (مكتوب كتابها) رسمياً ولم يتم الزفاف بعد.
+• ألا يكون قد سبق لها الزواج.
+• إثبات البحث الميداني لحالة اليتم وعدم القدرة.
+• نرسل دعوة خاصة للمتبرعين لحضور حفل الزفاف ومشاركة العروس فرحتها.`,
+    verse: 'قال رسول الله ﷺ: «من استطاع منكم الباءة فليتزوج فإنه أغض للبصر وأحصن للفرج»، وإعانة العاجز عن النكاح من أعظم أبواب الصدقة والعفاف.',
+    shares: [
+      { name: 'سهم المشاركة في تجهيز عروسة', amount: '2,000 ج.م', desc: 'مساهمة لشراء الأجهزة الكهربائية والمفروشات' },
+      { name: 'جهاز كامل لعروسة يتيمة', amount: '20,000 ج.م', desc: 'تجهيز كامل بالأجهزة الكهربائية والأساسيات' },
+      { name: 'سهم مساهمة مبارك', amount: '500 ج.م', desc: 'سهم رمزي للمشاركة في ستر وعفاف فتاة يتيمة' },
+      { name: 'سهم جهاز كهربائي رئيسي', amount: '5,000 ج.م', desc: 'مساهمة لتوفير جهاز من الأجهزة الأساسية (غسالة/ثلاجة)' }
+    ],
+    beneficiaries: ['الفتيات اليتيمات', 'بنات دار الرعاية اللاحقة', 'المقبلات على الزواج من الأسر المتعففة'],
+    bankTitle: 'حساب تجهيز عرائس - فرع الثورة',
+    bankBranch: 'فرع الثورة - بنك مصر',
+    accountNumber: '1600001000013693',
+    iban: 'EG660002016001600001000013693',
+    officialUrl: 'https://www.akhawein.org/donations/تجهيز-العرائيس-2/'
+  },
+  'hot-meals': {
+    id: 'hot-meals',
+    title: 'إطعام وجبات ساخنة يومية',
+    category: 'إطعام طعام',
+    img: 'images/hot-meals.jpg',
+    raised: '524,000 ج.م',
+    goal: '1,008,000 ج.م',
+    goalType: 'المستهدف السنوي',
+    percent: 52,
+    remaining: '484,000 ج.م',
+    description: `برنامج إطعام مستمر على مدار العام لتلبية احتياجات الفقراء والأسر المحتاجة وعمال اليومية والمسنين في مختلف المحافظات، ويلعب دوراً حيوياً في تحسين جودة حياة الأشخاص الأكثر احتياجاً.
+
+تقوم جمعية أخوين من خلال مطابخ مجهزة يديرها شركاؤنا في النجاح بتجهيز وتوزيع وجبات طازجة متكاملة القيمة الغذائية يومياً ومجاناً.
+
+مكونات الوجبة الطازجة:
+(أرز أو مكرونة + فراخ أو لحمة أو كفتة أو كبدة + خضار طازج مطهي + خبز بلدي).
+
+تفاصيل ومحددات التبرع:
+40 وجبة يومياً × 30 يوماً × 12 شهراً × 70 جنيهاً تكلفة الوجبة.`,
+    verse: 'قال تعالى: {وَيُطْعِمُونَ الطَّعَامَ عَلَىٰ حُبِّهِ مِسْكِينًا وَيَتِيمًا وَأَسِيرًا * إِنَّمَا نُطْعِمُكُمْ لِوَجْهِ اللَّهِ لَا نُرِيدُ مِنكُمْ جَزَاءً وَلَا شُكُورًا} [الإنسان: 8-9]',
+    shares: [
+      { name: 'ثمن وجبة ساخنة طازجة', amount: '70 ج.م', desc: 'وجبة بروتين متكاملة مع خضار ونشويات وخبز' },
+      { name: 'مساهمة في مطابخ الخير', amount: '500 ج.م', desc: 'سهم مساهمة في تكاليف طهي وتوزيع الوجبات' },
+      { name: 'إطعام 10 أفراد', amount: '700 ج.م', desc: 'وجبات ساخنة لعشرة مستحقين أو أسرتين' },
+      { name: 'كفالة إطعام يوم كامل (40 وجبة)', amount: '2,800 ج.م', desc: 'تمويل يوم إطعام كامل لمطبخ الخير' }
+    ],
+    beneficiaries: ['المرأة المعيلة', 'الأيتام', 'كبار السن', 'حالات العجز والإعاقة', 'الطلبة الوافدون', 'عابرو السبيل'],
+    bankTitle: 'حساب إطعام وجبات ساخنة - فرع الثورة',
+    bankBranch: 'فرع الثورة - بنك مصر',
+    accountNumber: '1600001000013658',
+    iban: 'EG660002016001600001000013658',
+    officialUrl: 'https://www.akhawein.org/donations/اطعام-وجبات-ساخنة-2/'
+  },
+  'food-package': {
+    id: 'food-package',
+    title: 'شنطة مواد غذائية للأسر (شنطة رد الجميل)',
+    category: 'شنطة رد الجميل',
+    img: 'https://www.akhawein.org/wp-content/uploads/2022/08/WhatsApp-Image-2024-06-24-at-9.35.19-PM-580x435.jpeg',
+    raised: '432,000 ج.م',
+    goal: '1,080,000 ج.م',
+    goalType: 'المستهدف السنوي',
+    percent: 40,
+    remaining: '648,000 ج.م',
+    description: `توفر جمعية أخوين شنطة «رد الجميل» الشهرية من أجل تحسين جودة حياة الأشخاص والأسر الذين يعانون من صعوبات اقتصادية واجتماعية حادة، بعد إقامة دراسات وأبحاث ميدانية دقيقة على الحالات لإثبات أحقيتها في استلام الشنطة بصفة دورية.
+
+مكونات الشنطة التموينية المتكاملة:
+2 كجم أرز فاخر + 2 كجم مكرونة + 1 كجم سكر + 1/2 كجم فاصوليا + 1/2 كجم فول تدميس + زجاجة زيت طعام نقي + علبة جبنة + صلصة طماطم + ملح طعام.
+
+تفاصيل وخطة التبرع السنوية:
+200 شنطة شهرياً × 12 شهراً × 450 جنيهاً تكلفة الشنطة.`,
+    verse: 'قال رسول الله ﷺ: «أحب الناس إلى الله أنفعهم للناس، وأحب الأعمال إلى الله سرور تدخله على مسلم، أو تكشف عنه كربة، أو تقضي عنه ديناً، أو تطرد عنه جوعاً».',
+    shares: [
+      { name: 'كرتونة مواد غذائية متكاملة', amount: '450 ج.م', desc: 'تكفي احتياجات أسرة متعففة من السلع الأساسية شهرياً' },
+      { name: 'سهم شنطة رد الجميل', amount: '200 ج.م', desc: 'مساهمة جزئية في توفير السلع التموينية' },
+      { name: 'كفالة 5 كراتين تموينية', amount: '2,250 ج.م', desc: 'دعم 5 أسر مستحقة بكراتين السلع الأساسية' },
+      { name: 'كفالة أسرة لعام كامل (12 كرتونة)', amount: '5,400 ج.م', desc: 'تأمين الغذاء الشهري لأسرة طوال العام' }
+    ],
+    beneficiaries: ['المرأة المعيلة والأرامل', 'كبار السن', 'ذوو الاحتياجات الخاصة', 'الأسر الأكثر احتياجاً بالقرى'],
+    bankTitle: 'حساب شنط مواد غذائية - فرع الثورة',
+    bankBranch: 'فرع الثورة - بنك مصر',
+    accountNumber: '1600001000013660',
+    iban: 'EG660002016001600001000013660',
+    officialUrl: 'https://www.akhawein.org/donations/شنطة-مواد-غذائية-2/'
+  },
+  'cancer-children': {
+    id: 'cancer-children',
+    title: 'أمنية لأطفال الأورام (نفسك فى إيه)',
+    category: 'أمل وشفاء',
+    img: 'images/omneya-girl.jpg',
+    raised: '8,000 ج.م',
+    goal: '10,000 ج.م',
+    goalType: 'المستهدف التقديري',
+    percent: 80,
+    remaining: '2,000 ج.م',
+    description: `«نفسك فى إيه؟».. جملة صغيرة وبسيطة لكن لها مفعول السحر على نفوس وقلوب أطفالنا الأبطال مرضى الأورام والسرطان والحالات المتأخرة والمهددة حياتهم بالخطر.
+
+تهتم جمعية أخوين برفع الروح المعنوية لهؤلاء الأطفال ومساندتهم في رحلة العلاج والتعافي الطويلة من خلال تحقيق أمانيهم في الحياة، وإدخال السرور على قلوبهم وقلوب أسرهم.
+
+شعارنا الدائم في هذه المبادرة: «لا يأس مع الحياة.. ونسأل الله أن يقدرنا على تحقيق أحلامهم».`,
+    verse: 'قال رسول الله ﷺ: «من أدخل على أهل بيت من المسلمين سروراً لم يرض الله له ثواباً دون الجنة».',
+    shares: [
+      { name: 'سهم تحقيق أمنية طفل', amount: '250 ج.م', desc: 'مساهمة في شراء الهدايا وتحقيق أمنيات أبطال الأورام' },
+      { name: 'تحقيق أمنية كاملة لطفل', amount: '1,500 ج.م', desc: 'شراء الهدية المرغوبة وإدخال الفرحة على قلبه' },
+      { name: 'دعم نفسي وترفيهي للمرضى', amount: '500 ج.م', desc: 'تنظيم فعاليات ترفيهية داخل مستشفيات الأورام' }
+    ],
+    beneficiaries: ['أطفال مرضى السرطان والأورام', 'الحالات الحرجة والمتأخرة', 'أسر الأطفال المرضى'],
+    bankTitle: 'حساب جمعية أخوين فرع صلاح سالم (الحساب الأساسي)',
+    bankBranch: 'فرع صلاح سالم - بنك مصر',
+    accountNumber: '1810001000033972',
+    iban: 'EG020002018101810001000033972',
+    officialUrl: 'https://www.akhawein.org/donations/نفسك-فى-ايه-أمنية/'
+  },
+  'dialysis': {
+    id: 'dialysis',
+    title: 'جلسات غسيل كلوي وفلاتر (إنقاذ حياة)',
+    category: 'إنقاذ حياة',
+    img: 'https://www.akhawein.org/wp-content/uploads/2024/04/6f8fde6c-d275-447b-8afe-fc4f3a7cbf04.jpeg',
+    raised: '7,142,400 ج.م',
+    goal: '11,520,000 ج.م',
+    goalType: 'المستهدف الطبي السنوي',
+    percent: 62,
+    remaining: '4,377,600 ج.م',
+    description: `مرض الفشل الكلوي يحتل المرتبة الخامسة في أسباب الوفاة في مصر. وبمساعدتكم الكريمة تقدم جمعية أخوين الدعم لمرضى الفشل الكلوي غير القادرين من خلال توفير جلسات الغسيل الكلوي وشراء الفلاتر والأدوية المصاحبة لإنقاذ حياتهم.
+
+المريض الواحد يحتاج إلى 12 جلسة غسيل كلوي شهرياً (3 جلسات أسبوعياً لا يمكن تأخيرها).
+تكلفة الجلسة الواحدة مع الفلتر والمستلزمات: 800 جنيه.
+
+تفاصيل التبرع والمستهدف السنوي:
+800 ج / جلسة × 12 جلسة شهرياً = 9,600 ج شهرياً للمريض الواحد.
+تكلفة المريض سنوياً: 115,200 جنيه.
+المستهدف: كفالة 100 مريض مستهدف + جلسات طارئة = 11,520,000 ج.م.`,
+    verse: 'قال تعالى: {وَمَنْ أَحْيَاهَا فَكَأَنَّمَا أَحْيَا النَّاسَ جَمِيعًا} [المائدة: 32]. وتوفير جلسة الغسيل الكلوي لمريض غير قادر هو إحياء حقيقي للنفس وإنقاذ مباشر لحياته.',
+    shares: [
+      { name: 'سهم جلسة غسيل كلوي', amount: '200 ج.م', desc: 'مساهمة في شراء الفلاتر ومحاليل الغسيل الكلوي' },
+      { name: 'تكلفة جلسة غسيل كلوي كاملة', amount: '800 ج.م', desc: 'تغطية جلسة علاج كاملة لمريض غير قادر' },
+      { name: 'كفالة مريض لمدة شهر (12 جلسة)', amount: '9,600 ج.م', desc: 'إنقاذ حياة مريض شهرياً بكامل جلساته وأدويته' },
+      { name: 'فلتر دم ومستلزمات تعقيم', amount: '350 ج.م', desc: 'تأمين فلتر الغسيل ومستهلكات الجلسة' }
+    ],
+    beneficiaries: ['مرضى الفشل الكلوي غير القادرين', 'الحالات الطارئة بمستشفيات الكلى', 'كبار السن المصابون بالقصور الكلوي'],
+    bankTitle: 'حساب جلسة غسيل كلوي - فرع الثورة',
+    bankBranch: 'فرع الثورة - بنك مصر',
+    accountNumber: '1600001000013682',
+    iban: 'EG660002016001600001000013682',
+    officialUrl: 'https://www.akhawein.org/donations/جلسة-غسيل-كلوى/'
+  },
+  'prosthetics': {
+    id: 'prosthetics',
+    title: 'أجهزة تعويضية لذوي الهمم (تمكين وقدرة)',
+    category: 'تمكين وقدرة',
+    img: 'https://www.akhawein.org/wp-content/uploads/2024/03/9d994cb0-d9fe-4fe2-8e9c-567eb41a3e93.jpg',
+    raised: '7,500 ج.م',
+    goal: '10,000 ج.م',
+    goalType: 'المستهدف التقديري',
+    percent: 75,
+    remaining: '2,500 ج.م',
+    description: `تعتبر الأطراف الصناعية والأجهزة التعويضية مشروعاً تنموياً وإنسانياً متكاملاً للشخص ذوي الإعاقة؛ من أجل رفع الروح المعنوية، والاعتماد على النفس، واستعادة القدرة على العمل والإنتاج وإعالة أسرته.
+
+محاور المشروع:
+• توفير أطراف صناعية علوية وسفلية حديثة وتأهيل حركي.
+• توفير الكراسي الكهربائية المتحركة والعادية لمرضى ضمور المخ واليمنيين والشلل ذوي الاحتياجات الخاصة.
+• توفير سماعات طبية رقمية لضعاف السمع لمساعدتهم في الاندماج والتعليم.`,
+    verse: 'قال رسول الله ﷺ: «المؤمن للمؤمن كالبنيان يشد بعضه بعضاً» وشبك بين أصابعه.',
+    shares: [
+      { name: 'سهم جهاز تعويضي', amount: '500 ج.م', desc: 'مساهمة في شراء الأطراف والأجهزة المساعدة' },
+      { name: 'كرسي متحرك طبي قياسي', amount: '3,500 ج.م', desc: 'توفير وسيلة حركة كريمة لشخص من ذوي الإعاقة' },
+      { name: 'سماعة أذن طبية رقمية', amount: '4,000 ج.م', desc: 'تمكين طفل أو طالب ضعيف السمع من متابعة دراسته' },
+      { name: 'طرف صناعي تعويضي حديث', amount: '12,000 ج.م', desc: 'تركيب طرف صناعي متطور يعيد الشخص للعمل والإنتاج' }
+    ],
+    beneficiaries: ['ذوو الهمم والقدرات الخاصة', 'مرضى ضمور المخ والشلل', 'ضعاف السمع وبتر الأطراف'],
+    bankTitle: 'حساب جمعية أخوين فرع صلاح سالم (الحساب الأساسي)',
+    bankBranch: 'فرع صلاح سالم - بنك مصر',
+    accountNumber: '1810001000033972',
+    iban: 'EG020002018101810001000033972',
+    officialUrl: 'https://www.akhawein.org/donations/ذوى-الهمم-اجهزة-تعويضية/'
+  },
+  'debt-relief': {
+    id: 'debt-relief',
+    title: 'فك كرب الغارمين وحالات عاجلة (فك كرب)',
+    category: 'فك كرب',
+    img: 'https://www.akhawein.org/wp-content/uploads/2024/04/d9114b7d-84f0-4d76-b56b-901444ee9076.jpeg',
+    raised: '8,800 ج.م',
+    goal: '10,000 ج.م',
+    goalType: 'المستهدف التقديري',
+    percent: 88,
+    remaining: '1,200 ج.م',
+    description: `S.O.S (Save Our Souls) - أنقذوا أرواحنا:
+
+1. عمليات جراحية عاجلة: بعض الحالات المرضية لابد من التدخل الجراحي الفوري لإنقاذ حياة الإنسان، وإن لم تتم تكون النتيجة فقدان حياته.
+2. سداد ديون المرضى: تقوم أخوين بسداد ديون المرضى التي تراكمت عليهم بسبب مصاريف العلاج وتوقف الدخل أثناء فترة المرض.
+3. فك كرب الغارمين: مشروع خيري يهدف إلى مساعدة الغارمين وسداد ديونهم الناتجة عن ظروف مالية قهرية لحمايتهم من الحبس وتشتت أسرهم، وفق الالتزام بالمعايير والإجراءات القانونية الدقيقة.`,
+    verse: 'قال رسول الله ﷺ: «مَن نَفَّسَ عن مُؤْمِنٍ كُرْبَةً مِن كُرَبِ الدُّنْيَا، نَفَّسَ اللَّهُ عنْه كُرْبَةً مِن كُرَبِ يَومِ القِيَامَةِ، وَمَن يَسَّرَ علَى مُعْسِرٍ، يَسَّرَ اللَّهُ عليه في الدُّنْيَا وَالآخِرَةِ».',
+    shares: [
+      { name: 'سهم فك كرب وتفريج هم', amount: '500 ج.م', desc: 'سهم مساهمة في سداد الديون والعمليات الحرجة' },
+      { name: 'مساهمة عملية جراحية طارئة', amount: '2,500 ج.م', desc: 'إنقاذ حياة مريض يحتاج لتدخل جراحي فوري' },
+      { name: 'سداد دين غارم / غارمة', amount: '5,000 ج.م', desc: 'إخلاء سبيل غارم وحماية أسرته من التشرد' }
+    ],
+    beneficiaries: ['الغارمات والغارمون المهددون بالحبس', 'مرضى العمليات الجراحية الطارئة', 'الأسر المعوزة في كرب شديد'],
+    bankTitle: 'حساب جمعية أخوين فرع صلاح سالم (الحساب الأساسي)',
+    bankBranch: 'فرع صلاح سالم - بنك مصر',
+    accountNumber: '1810001000033972',
+    iban: 'EG020002018101810001000033972',
+    officialUrl: 'https://www.akhawein.org/donations/حالات-انسانية-عاجلة-فك-كرب/'
+  },
+  'winter-warmth': {
+    id: 'winter-warmth',
+    title: 'حملة دفا (بطانية ولحاف شتوي)',
+    category: 'دفء وستر',
+    img: 'https://www.akhawein.org/wp-content/uploads/2022/08/Untitled-1-1.png',
+    raised: '420,000 ج.م',
+    goal: '1,200,000 ج.م',
+    goalType: 'المستهدف الموسمي',
+    percent: 35,
+    remaining: '780,000 ج.م',
+    description: `«البرد أساس كل علّة.. هل ترضى أن يكون طفلك بدون غطاء في عز البرد؟»
+
+احمِ أسرة من البرد وشارك معنا في حملة «دفا» السنوية لتوزيع البطاطين والألحفة الشتوية وبناء وترميم الأسقف للأسر الأكثر احتياجاً في قرى ونجوع مصر قبل موجات الصقيع.
+
+أسعار المساهمة:
+• بطانية شتوية ثقيلة فاخرة: 275 جنيهاً.
+• لحاف فايبر شتوي دافئ: 325 جنيهاً.
+• سهم بطانية + لحاف: 600 جنيه.
+
+خطة التوزيع:
+500 أسرة شهرياً × 600 ج (سهم بطانية + لحاف) × 4 شهور الشتاء = 1,200,000 جنيه.`,
+    verse: 'عن النبي ﷺ قال: «أيما مسلم كسا مسلماً ثوباً على عري كساه الله من خضر الجنة، وأيما مسلم أطعم مسلماً على جوع أطعمه الله من ثمار الجنة».',
+    shares: [
+      { name: 'بطانية شتوية فاخرة ثقيلة', amount: '275 ج.م', desc: 'بطانية حرارية راقية لحماية طفل أو مسن من البرد' },
+      { name: 'لحاف فايبر شتوي دافئ', amount: '325 ج.م', desc: 'لحاف فايبر عالي الجودة للتدفئة الشاملة' },
+      { name: 'سهم بطانية + لحاف', amount: '600 ج.م', desc: 'تغطية كاملة لاحتياج سرير أو أسرة شتاءً' },
+      { name: 'سهم بناء وترميم سقف منزل', amount: '2,500 ج.م', desc: 'حماية منزل أسرة من مياه الأمطار والسيول' }
+    ],
+    beneficiaries: ['الأسر في بيوت بلا أسقف', 'الأطفال والمسنون في القرى والنجوع', 'المناطق النائية الأكثر برودة'],
+    bankTitle: 'حساب جمعية أخوين فرع صلاح سالم (الحساب الأساسي)',
+    bankBranch: 'فرع صلاح سالم - بنك مصر',
+    accountNumber: '1810001000033972',
+    iban: 'EG020002018101810001000033972',
+    officialUrl: 'https://www.akhawein.org/donations/دفا-بطانية-لحاف/'
+  },
+  'sacrifices': {
+    id: 'sacrifices',
+    title: 'صكوك الأضاحي (الأضاحي الشرعية)',
+    category: 'نسك وبر',
+    img: 'https://www.akhawein.org/wp-content/uploads/2024/04/c1886a76-dde0-47d4-a09a-e43688f74117.jpeg',
+    raised: '0 ج.م',
+    goal: '10,000 ج.م',
+    goalType: 'المستهدف الموسمي',
+    percent: 0,
+    remaining: '10,000 ج.م',
+    description: `قامت جمعية أخوين بإتاحة الفرصة لكل فئات الشعب لكي تساهم في الأضحية وفق الضوابط والأسس الشرعية المعتمدة (سُبع 1/7 من العجل البلدي أو أكثر).
+
+يتم استلام النصيب الشرعي للمضحي (9 كجم من اللحم البلدي الصافي المشفي) خلال أيام عيد الأضحى المبارك، والاستلام بأولوية الحجز والذبح الشرعي.
+
+وتتولى الجمعية ذبح وتشفية وتوزيع باقي الحصص على الأسر المستحقة والأيتام في القرى الأكثر احتياجاً تحت إشراف بيطري وشرعي كامل.`,
+    verse: 'قال تعالى: {لَن يَنَالَ اللَّهَ لُحُومُهَا وَلَا دِمَاؤُهَا وَلَٰكِن يَنَالُهُ التَّقْوَىٰ مِنكُمْ} [الحج: 37].',
+    shares: [
+      { name: 'سُبع صك أضحية بقري بلدي', amount: 'حسب تسعير الموسم', desc: 'حصة شرعية تشمل 9 كجم للمضحي والباقي يوزع على الفقراء' },
+      { name: 'سهم لحوم أضاحي وصدقات', amount: '500 ج.م', desc: 'مساهمة مفتوحة لتوزيع اللحوم على غير القادرين' },
+      { name: 'كفالة توزيع أضحية كاملة', amount: 'حسب تسعير الموسم', desc: 'ذبح وتوزيع عجل بلدي كامل باسم المتبرع' }
+    ],
+    beneficiaries: ['الأسر الأشد احتياجاً بالقرى والنجوع', 'الأيتام والأرامل المتعففون', 'المضحون الراغبون في الثواب الشرعي'],
+    bankTitle: 'حساب صك الأضحية - فرع الثورة',
+    bankBranch: 'فرع الثورة - بنك مصر',
+    accountNumber: '1600001000013671',
+    iban: 'EG660002016001600001000013671',
+    officialUrl: 'https://www.akhawein.org/donations/صكوك-الاضاحى/'
+  },
+  'gaza-relief': {
+    id: 'gaza-relief',
+    title: 'إغاثة إنسانية عاجلة (أهالينا في قطاع غزة)',
+    category: 'إغاثة ونصرة',
+    img: 'https://www.akhawein.org/wp-content/uploads/2022/08/donate-1.jpg',
+    raised: '8,500 ج.م',
+    goal: '10,000 ج.م',
+    goalType: 'المستهدف الإغاثي',
+    percent: 85,
+    remaining: '1,500 ج.م',
+    description: `تطلق جمعية أخوين الخيرية حملة إغاثة إنسانية عاجلة لمساندة أهالينا المنكوبين في قطاع غزة لتوفير احتياجاتهم الضرورية من الغذاء والدواء والإيواء الطارئ.
+
+سعر كرتونة المواد الغذائية العاجلة لدعم أسرة مكونة من 5 أفراد لمدة أسبوع: 400 جنيه.
+مبلغ التبرع متاح بـ 10 جنيهات ومضاعفاتها.
+
+تبرع بزكاتك أو صدقتك أو صدقتك الجارية لنصرة إخواننا والتخفيف من معاناتهم الإنسانية الأليمة.`,
+    verse: 'قال رسول الله ﷺ: «مثل المؤمنين في توادهم وتراحمهم وتعاطفهم مثل الجسد إذا اشتكى منه عضو تداعى له سائر الجسد بالسهر والحمى».',
+    shares: [
+      { name: 'كرتونة إغاثة غذائية لأسرة (5 أفراد)', amount: '400 ج.م', desc: 'تأمين الغذاء الضروري لأسرة لمدة أسبوع' },
+      { name: 'سهم إغاثة طبية وإسعافات', amount: '250 ج.م', desc: 'مساهمة في توفير الأدوية والمستهلكات الطبية' },
+      { name: 'سهم التضامن المفتوح', amount: '100 ج.م', desc: 'مساهمة إنسانية عاجلة لنصرة إخواننا' }
+    ],
+    beneficiaries: ['أهالي قطاع غزة والنازحون', 'الجرحى والمرضى', 'الأسر التي فقدت المأوى'],
+    bankTitle: 'حساب جمعية أخوين فرع صلاح سالم (الحساب الأساسي)',
+    bankBranch: 'فرع صلاح سالم - بنك مصر',
+    accountNumber: '1810001000033972',
+    iban: 'EG020002018101810001000033972',
+    officialUrl: 'https://www.akhawein.org/donations/اغاثة-عاجلة/'
+  },
+  'animal-welfare': {
+    id: 'animal-welfare',
+    title: 'الرأفة والرفق بالحيوان',
+    category: 'رحمة ورفق',
+    img: 'https://www.akhawein.org/wp-content/uploads/2024/04/0ff8dd16-2aac-47a3-9554-054175903c1f.jpeg',
+    raised: '0 ج.م',
+    goal: '10,000 ج.م',
+    goalType: 'المستهدف التقديري',
+    percent: 0,
+    remaining: '10,000 ج.م',
+    description: `هدف جمعية أخوين نشر الرحمة في القلوب والتوعية المجتمعية الشاملة بالرفق بالحيوان وتغيير الأفكار السلبية وتقليل القسوة التي انتشرت ضد الحيوانات الضعيفة والمشردة.
+
+يشمل البرنامج تقديم الرعاية البيطرية للحيوانات المصابة، وتوفير نقاط إطعام وسقيا دورية، استجابةً للتعاليم الدينية والقيم الإنسانية السامية التي جعلت الإحسان إلى الحيوان سبباً لمغفرة الذنوب ودخول الجنة.`,
+    verse: 'قال رسول الله ﷺ: «بينما رجل يمشي بطريق اشتد عليه العطش، فوجد بئراً فنزل فيها فشرب ثم خرج، فإذا كلب يلهث يأكل الثرى من العطش... فسقاه فشكر الله له فغفر له»، قالوا: يا رسول الله وإن لنا في البهائم لأجراً؟ قال: «في كل ذات كبد رطبة أجر».',
+    shares: [
+      { name: 'سهم رعاية بيطرية وإطعام', amount: '150 ج.م', desc: 'توفير الغذاء والعلاج لحيوان مشرد أو مصاب' },
+      { name: 'سهم التوعية المجتمعية', amount: '300 ج.م', desc: 'دعم برامج التوعية المدرسية بالرفق بالحيوان' },
+      { name: 'نقطة سقيا وإطعام دائمة', amount: '500 ج.م', desc: 'تجهيز أوعية سقيا وطعام آمنة للحيوانات المشردة' }
+    ],
+    beneficiaries: ['الحيوانات المشردة والمصابة', 'المجتمع والبيئة العامة'],
+    bankTitle: 'حساب جمعية أخوين فرع صلاح سالم (الحساب الأساسي)',
+    bankBranch: 'فرع صلاح سالم - بنك مصر',
+    accountNumber: '1810001000033972',
+    iban: 'EG020002018101810001000033972',
+    officialUrl: 'https://www.akhawein.org/donations/الرأفة-بالحيوك/'
+  }
+};
+
+let currentCauseId = null;
+const CAUSE_KEYS = Object.keys(ALL_CAUSES_DATA);
+
+function openCauseModal(causeId) {
+  const cause = ALL_CAUSES_DATA[causeId];
+  if (!cause) {
+    console.warn('Cause not found:', causeId);
+    return;
+  }
+
+  currentCauseId = causeId;
+  const overlay = document.getElementById('causeModalOverlay');
+  if (!overlay) return;
+
+  // Set Text & Media
+  const badgeText = document.getElementById('causeModalBadgeText');
+  if (badgeText) badgeText.textContent = cause.category;
+
+  const title = document.getElementById('causeModalTitle');
+  if (title) title.textContent = cause.title;
+
+  const heroImg = document.getElementById('causeModalHeroImg');
+  if (heroImg) {
+    heroImg.src = cause.img;
+    heroImg.alt = cause.title;
+  }
+
+  const raised = document.getElementById('causeModalRaised');
+  if (raised) raised.textContent = cause.raised;
+
+  const goal = document.getElementById('causeModalGoal');
+  if (goal) goal.textContent = cause.goal;
+
+  const percent = document.getElementById('causeModalPercent');
+  if (percent) percent.textContent = `${cause.percent}%`;
+
+  const remaining = document.getElementById('causeModalRemaining');
+  if (remaining) remaining.textContent = cause.remaining;
+
+  const progressBar = document.getElementById('causeModalProgressBar');
+  if (progressBar) {
+    progressBar.style.width = '0%';
+    setTimeout(() => {
+      progressBar.style.width = `${Math.min(100, Math.max(0, cause.percent))}%`;
+    }, 150);
+  }
+
+  const desc = document.getElementById('causeModalDesc');
+  if (desc) desc.textContent = cause.description;
+
+  const verseCard = document.getElementById('causeModalVerse');
+  if (verseCard) {
+    if (cause.verse) {
+      verseCard.innerHTML = `<i class="fa-solid fa-quote-right" style="margin-left: 0.5rem; color: var(--primary);"></i> ${cause.verse}`;
+      verseCard.style.display = 'block';
+    } else {
+      verseCard.style.display = 'none';
+    }
+  }
+
+  // Render Shares
+  const sharesGrid = document.getElementById('causeModalSharesGrid');
+  const sharesSection = document.getElementById('causeModalSharesSection');
+  if (sharesGrid && sharesSection) {
+    if (cause.shares && cause.shares.length) {
+      sharesGrid.innerHTML = cause.shares.map(s => `
+        <div class="cause-modal-share-card" onclick="selectCauseShare('${s.name}', '${s.amount}')" title="انقر للتبرع بهذا السهم">
+          <div class="cause-modal-share-header">
+            <span class="cause-modal-share-title">${s.name}</span>
+            <span class="cause-modal-share-price">${s.amount}</span>
+          </div>
+          <p class="cause-modal-share-desc">${s.desc}</p>
+          <div style="font-size: 0.8rem; color: var(--primary); font-weight: 700; display: flex; align-items: center; gap: 0.35rem;">
+            <i class="fa-solid fa-heart"></i> اختر للتبرع
+          </div>
+        </div>
+      `).join('');
+      sharesSection.style.display = 'block';
+    } else {
+      sharesSection.style.display = 'none';
+    }
+  }
+
+  // Render Beneficiaries
+  const chipsWrap = document.getElementById('causeModalChips');
+  const beneficiariesSection = document.getElementById('causeModalBeneficiariesSection');
+  if (chipsWrap && beneficiariesSection) {
+    if (cause.beneficiaries && cause.beneficiaries.length) {
+      chipsWrap.innerHTML = cause.beneficiaries.map(b => `
+        <span class="cause-modal-chip"><i class="fa-solid fa-circle-check"></i> ${b}</span>
+      `).join('');
+      beneficiariesSection.style.display = 'block';
+    } else {
+      beneficiariesSection.style.display = 'none';
+    }
+  }
+
+  // Bank Misr Details
+  const bankTitle = document.getElementById('causeModalBankTitle');
+  if (bankTitle) bankTitle.textContent = cause.bankTitle;
+
+  const bankBranch = document.getElementById('causeModalBankBranch');
+  if (bankBranch) bankBranch.textContent = cause.bankBranch;
+
+  const accNum = document.getElementById('causeModalAccNum');
+  if (accNum) accNum.textContent = cause.accountNumber;
+
+  const iban = document.getElementById('causeModalIban');
+  if (iban) iban.textContent = cause.iban;
+
+  // WhatsApp Link
+  const waBtn = document.getElementById('causeModalWhatsAppBtn');
+  if (waBtn) {
+    const waText = encodeURIComponent(`السلام عليكم ورحمة الله، أود الاستفسار والتبرع لمشروع: "${cause.title}" عبر جمعية أخوين الخيرية.`);
+    waBtn.href = `https://wa.me/201281769685?text=${waText}`;
+  }
+
+  // Show Modal
+  overlay.classList.add('active');
+  overlay.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+
+  // Reset scroll of body
+  const modalBody = document.getElementById('causeModalBody');
+  if (modalBody) modalBody.scrollTop = 0;
+
+  // Reset copy button state
+  const copyBtn = document.getElementById('causeModalCopyBtn');
+  if (copyBtn) {
+    copyBtn.classList.remove('copied');
+    copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> <span>نسخ رقم الحساب</span>';
+  }
+
+  // Update URL hash smoothly
+  if (history.replaceState) {
+    history.replaceState(null, null, `#case-${causeId}`);
+  }
+}
+
+function closeCauseModal() {
+  const overlay = document.getElementById('causeModalOverlay');
+  if (overlay) {
+    overlay.classList.remove('active');
+    overlay.setAttribute('aria-hidden', 'true');
+  }
+  document.body.style.overflow = '';
+  currentCauseId = null;
+
+  if (window.location.hash.startsWith('#case-') && history.replaceState) {
+    history.replaceState(null, null, window.location.pathname + window.location.search);
+  }
+}
+
+function navigateCauseModal(direction) {
+  if (!currentCauseId) return;
+  const currentIndex = CAUSE_KEYS.indexOf(currentCauseId);
+  if (currentIndex === -1) return;
+
+  let nextIndex = currentIndex + direction;
+  if (nextIndex < 0) nextIndex = CAUSE_KEYS.length - 1;
+  if (nextIndex >= CAUSE_KEYS.length) nextIndex = 0;
+
+  openCauseModal(CAUSE_KEYS[nextIndex]);
+}
+
+let causeModalCopyTimeout = null;
+
+function copyCurrentCauseAccount() {
+  if (!currentCauseId) return;
+  const cause = ALL_CAUSES_DATA[currentCauseId];
+  if (!cause || !cause.accountNumber) return;
+
+  const copyBtn = document.getElementById('causeModalCopyBtn');
+  const accNumEl = document.getElementById('causeModalAccNum');
+
+  function triggerCopySuccess() {
+    // 1. Direct Visual Button Transformation
+    if (copyBtn) {
+      copyBtn.classList.add('copied');
+      copyBtn.innerHTML = '<i class="fa-solid fa-circle-check"></i> <span>تم النسخ بنجاح! ✓</span>';
+    }
+
+    // 2. Pulse & Glow the Account Number
+    if (accNumEl) {
+      accNumEl.classList.remove('copied-flash');
+      void accNumEl.offsetWidth; // Force CSS reflow
+      accNumEl.classList.add('copied-flash');
+    }
+
+    // 3. Floating Glassmorphism Toast Banner
+    showToast(`✓ تم نسخ رقم حساب "${cause.title}" بنجاح: ${cause.accountNumber}`);
+
+    // 4. Confetti Explosion from the Button Center
+    if (typeof confetti === 'function' && copyBtn) {
+      const rect = copyBtn.getBoundingClientRect();
+      const originX = (rect.left + rect.width / 2) / window.innerWidth;
+      const originY = (rect.top + rect.height / 2) / window.innerHeight;
+      confetti({
+        particleCount: 45,
+        spread: 65,
+        origin: { x: originX, y: originY },
+        colors: ['#10b981', '#34d399', '#fcb429', '#d57b1e', '#ffffff']
+      });
+    }
+
+    // 5. Smooth Reset after 2.8s
+    if (causeModalCopyTimeout) clearTimeout(causeModalCopyTimeout);
+    causeModalCopyTimeout = setTimeout(() => {
+      if (copyBtn) {
+        copyBtn.classList.remove('copied');
+        copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> <span>نسخ رقم الحساب</span>';
+      }
+      if (accNumEl) {
+        accNumEl.classList.remove('copied-flash');
+      }
+    }, 2800);
+  }
+
+  // Modern clipboard writeText with seamless execCommand fallback
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(cause.accountNumber)
+      .then(triggerCopySuccess)
+      .catch(() => {
+        fallbackCopyText(cause.accountNumber);
+        triggerCopySuccess();
+      });
+  } else {
+    fallbackCopyText(cause.accountNumber);
+    triggerCopySuccess();
+  }
+}
+
+function fallbackCopyText(text) {
+  const textArea = document.createElement('textarea');
+  textArea.value = text;
+  textArea.style.position = 'fixed';
+  textArea.style.top = '-9999px';
+  textArea.style.left = '-9999px';
+  textArea.setAttribute('readonly', '');
+  document.body.appendChild(textArea);
+  textArea.select();
+  try {
+    document.execCommand('copy');
+  } catch (e) {
+    console.warn('Fallback copy command failed', e);
+  }
+  document.body.removeChild(textArea);
+}
+
+function selectCauseShare(shareName, amount) {
+  const cause = ALL_CAUSES_DATA[currentCauseId];
+  if (!cause) return;
+
+  const waText = encodeURIComponent(`السلام عليكم ورحمة الله، أود التبرع لـ "${cause.title}" - سهم: "${shareName}" بقيمة (${amount}). كيف يمكنني إتمام التبرع؟`);
+  window.open(`https://wa.me/201281769685?text=${waText}`, '_blank');
+}
+
+function shareCurrentCause() {
+  if (!currentCauseId) return;
+  const cause = ALL_CAUSES_DATA[currentCauseId];
+  if (!cause) return;
+
+  const shareUrl = `${window.location.origin}${window.location.pathname}#case-${currentCauseId}`;
+  if (navigator.share) {
+    navigator.share({
+      title: `${cause.title} | جمعية أخوين الخيرية`,
+      text: `ساهم معنا في دعم ${cause.title} لدى جمعية أخوين الخيرية:`,
+      url: shareUrl
+    }).catch(() => {});
+  } else {
+    navigator.clipboard.writeText(shareUrl).then(() => {
+      showToast(`تم نسخ رابط حالة "${cause.title}" بنجاح!`);
+    });
+  }
+}
+
+function initCauseDetailsModal() {
+  // Check URL Hash on Load
+  const hash = window.location.hash;
+  if (hash) {
+    const cleanId = hash.replace(/^#case-|^#/, '');
+    if (ALL_CAUSES_DATA[cleanId]) {
+      setTimeout(() => openCauseModal(cleanId), 300);
+    }
+  }
+
+  // Keyboard navigation & escape listener
+  document.addEventListener('keydown', (e) => {
+    const overlay = document.getElementById('causeModalOverlay');
+    if (!overlay || !overlay.classList.contains('active')) return;
+
+    if (e.key === 'Escape') {
+      closeCauseModal();
+    } else if (e.key === 'ArrowLeft') {
+      navigateCauseModal(1); // RTL next
+    } else if (e.key === 'ArrowRight') {
+      navigateCauseModal(-1); // RTL previous
+    }
+  });
+}
+
+// Expose globally for HTML onclick handlers
+window.ALL_CAUSES_DATA = ALL_CAUSES_DATA;
+window.openCauseModal = openCauseModal;
+window.closeCauseModal = closeCauseModal;
+window.navigateCauseModal = navigateCauseModal;
+window.copyCurrentCauseAccount = copyCurrentCauseAccount;
+window.selectCauseShare = selectCauseShare;
+window.shareCurrentCause = shareCurrentCause;
+window.initCauseDetailsModal = initCauseDetailsModal;
 
