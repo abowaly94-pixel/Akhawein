@@ -20,6 +20,19 @@
   
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css?v=4.2.5">
+  <!-- Bilingual localization (AR / EN) -->
+  <link rel="stylesheet" href="css/i18n.css?v=1.9">
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('akhawein_lang') === 'en') {
+          document.documentElement.lang = 'en';
+          document.documentElement.dir = 'ltr';
+          document.documentElement.classList.add('lang-en');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <!-- Nuxt-style Top Scroll Progress Bar -->
@@ -1206,5 +1219,8 @@
   
   <!-- Custom JavaScript -->
   <script src="js/main.js?v=4.3.0"></script>
+  <!-- English localization dictionary + engine -->
+  <script src="js/i18n-data.js?v=1.9"></script>
+  <script src="js/i18n.js?v=1.9"></script>
 </body>
 </html>

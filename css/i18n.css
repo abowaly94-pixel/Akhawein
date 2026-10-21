@@ -1,0 +1,384 @@
+/* ==========================================================================
+   Akhawein Charity – Language Switch (Bilingual AR / EN)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Language switch button
+   -------------------------------------------------------------------------- */
+.lang-switch-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.52rem 0.95rem;
+  border-radius: var(--radius-full, 9999px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.84rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.lang-switch-btn i {
+  font-size: 0.9rem;
+  color: var(--accent, #fcb429);
+  transition: transform 0.3s ease;
+}
+
+.lang-switch-btn:hover,
+.lang-switch-btn:focus-visible {
+  background: rgba(213, 123, 30, 0.22);
+  border-color: var(--accent, #fcb429);
+  color: var(--accent, #fcb429);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.lang-switch-btn:hover i,
+.lang-switch-btn:focus-visible i {
+  transform: rotate(180deg);
+}
+
+.lang-switch-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* Drawer variant (light background) */
+.lang-switch-btn-drawer {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  color: #0b3b4f;
+  margin-inline-end: auto;
+  margin-inline-start: 0;
+}
+
+.lang-switch-btn-drawer i {
+  color: #d57b1e;
+}
+
+.lang-switch-btn-drawer:hover,
+.lang-switch-btn-drawer:focus-visible {
+  background: #fff7ed;
+  border-color: #d57b1e;
+  color: #b86211;
+}
+
+/* Fallback button on pages without the standard header */
+.lang-switch-btn-floating {
+  position: fixed;
+  top: 14px;
+  inset-inline-start: 14px;
+  z-index: 6000;
+  background: #0b3b4f;
+  border-color: #d57b1e;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 480px) {
+  .header-actions .lang-switch-btn {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+  }
+  .header-actions .lang-switch-btn .lang-switch-label {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. English (LTR) document direction & typography
+   -------------------------------------------------------------------------- */
+html[dir="ltr"] {
+  direction: ltr;
+}
+
+html[dir="ltr"] body {
+  direction: ltr;
+  font-family: "Segoe UI", Tahoma, Verdana, Arial, sans-serif;
+}
+
+html[dir="ltr"] h1,
+html[dir="ltr"] h2,
+html[dir="ltr"] h3,
+html[dir="ltr"] h4,
+html[dir="ltr"] h5,
+html[dir="ltr"] h6,
+html[dir="ltr"] .hero-title,
+html[dir="ltr"] .section-title,
+html[dir="ltr"] .logo-title,
+html[dir="ltr"] .footer-title,
+html[dir="ltr"] .cause-modal-title {
+  font-family: "Segoe UI", Tahoma, Verdana, Arial, sans-serif;
+  letter-spacing: -0.2px;
+}
+
+html[dir="ltr"] .hero-title,
+html[dir="ltr"] .section-title {
+  line-height: 1.25;
+}
+
+/* Hero copy should start from the left in English */
+html[dir="ltr"] .hero-content {
+  padding-right: 0;
+  padding-left: clamp(1rem, 2.5vw, 2.5rem);
+  text-align: left;
+}
+
+html[dir="ltr"] .hero-overlay {
+  background: linear-gradient(to right, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.82) 48%, rgba(15, 23, 42, 0.32) 100%),
+              radial-gradient(circle at 15% 15%, rgba(213, 123, 30, 0.22) 0%, transparent 60%);
+}
+
+html[dir="ltr"] .slider-nav-prev {
+  right: auto;
+  left: 25px;
+}
+
+html[dir="ltr"] .slider-nav-next {
+  left: auto;
+  right: 25px;
+}
+
+html[dir="ltr"] .slider-nav-btn i,
+html[dir="ltr"] .cert-lightbox-nav-btn i,
+html[dir="ltr"] .media-lightbox-nav-btn i,
+html[dir="ltr"] .cause-modal-nav-btn i {
+  transform: rotate(180deg);
+}
+
+html[dir="ltr"] .cert-lightbox-nav-btn.prev-btn,
+html[dir="ltr"] .media-lightbox-nav-btn.prev-btn {
+  right: auto;
+  left: 2rem;
+}
+
+html[dir="ltr"] .cert-lightbox-nav-btn.next-btn,
+html[dir="ltr"] .media-lightbox-nav-btn.next-btn {
+  left: auto;
+  right: 2rem;
+}
+
+html[dir="ltr"] .btn-more-programs i.fa-arrow-left,
+html[dir="ltr"] a.btn i.fa-arrow-left {
+  transform: rotate(180deg);
+}
+
+html[dir="ltr"] .nav-dropdown {
+  right: auto;
+  left: 0;
+}
+
+html[dir="ltr"] .dropdown-link:hover {
+  padding-right: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+html[dir="ltr"] .mobile-nav-drawer {
+  right: auto;
+  left: 0;
+  transform: translateX(-105%);
+  box-shadow: 10px 0 35px rgba(0, 0, 0, 0.4);
+}
+
+html[dir="ltr"] .mobile-nav-drawer.active {
+  transform: translateX(0);
+}
+
+html[dir="ltr"] .drawer-close-btn:hover {
+  transform: rotate(-90deg);
+}
+
+/* Badges pinned to a physical corner */
+html[dir="ltr"] .cause-badge {
+  right: auto !important;
+  left: 14px !important;
+}
+
+html[dir="ltr"] .cert-badge-ribbon {
+  right: auto;
+  left: 12px;
+}
+
+/* Text alignment corrections */
+html[dir="ltr"] .experience-badge .experience-text {
+  text-align: left !important;
+}
+
+html[dir="ltr"] .bank-official-table {
+  direction: ltr;
+  text-align: left;
+}
+
+html[dir="ltr"] .card_box .elementor-image-box-description {
+  text-align: left;
+}
+
+html[dir="ltr"] .cause-modal-dialog {
+  direction: ltr;
+  text-align: left;
+}
+
+html[dir="ltr"] .toast {
+  direction: ltr;
+}
+
+html[dir="ltr"] .cause-modal-verso,
+html[dir="ltr"] .cause-modal-verse-card {
+  text-align: left;
+}
+
+html[dir="ltr"] .footer-contact-item,
+html[dir="ltr"] .footer-links a,
+html[dir="ltr"] .footer-desc {
+  text-align: left;
+}
+
+/* Slightly tighter letter spacing for Arabic brand text when switching back */
+html[dir="rtl"] .lang-switch-btn {
+  letter-spacing: 0;
+}
+
+@media (max-width: 1400px) {
+  html[dir="ltr"] .hero-content {
+    padding-right: 0 !important;
+    padding-left: 3rem !important;
+  }
+  html[dir="ltr"] .slider-nav-prev {
+    right: auto !important;
+    left: 18px !important;
+  }
+  html[dir="ltr"] .slider-nav-next {
+    left: auto !important;
+    right: 18px !important;
+  }
+}
+
+@media (max-width: 992px) {
+  html[dir="ltr"] .hero-content {
+    padding-right: 0 !important;
+    padding-left: 1.25rem !important;
+  }
+  html[dir="ltr"] .slider-nav-prev {
+    right: auto !important;
+    left: 14px !important;
+  }
+  html[dir="ltr"] .slider-nav-next {
+    left: auto !important;
+    right: 14px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  html[dir="ltr"] .cert-lightbox-nav-btn.prev-btn,
+  html[dir="ltr"] .media-lightbox-nav-btn.prev-btn {
+    right: auto;
+    left: 0.75rem;
+  }
+  html[dir="ltr"] .cert-lightbox-nav-btn.next-btn,
+  html[dir="ltr"] .media-lightbox-nav-btn.next-btn {
+    left: auto;
+    right: 0.75rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. English header fitting
+   English labels are longer than the Arabic ones, so the desktop menu can
+   overflow into the logo and the action buttons. Keep it compact, with
+   smaller icons, and fall back to the drawer on narrower desktops.
+   -------------------------------------------------------------------------- */
+@media (max-width: 1500px) {
+  html.lang-en .nav-menu {
+    display: none !important;
+  }
+
+  html.lang-en .header-actions .mobile-toggle-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  html.lang-en .header-actions .lang-switch-btn {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+  }
+
+  html.lang-en .header-actions .lang-switch-btn .lang-switch-label {
+    display: none;
+  }
+}
+
+@media (min-width: 1501px) {
+  html.lang-en .nav-wrapper {
+    gap: 0.75rem;
+  }
+
+  html.lang-en .nav-menu {
+    gap: 0.04rem;
+    margin-inline: 0.1rem;
+  }
+
+  html.lang-en .nav-link {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.22rem;
+    gap: 0.2rem;
+    letter-spacing: -0.4px;
+  }
+
+  /* Smaller header icons to free horizontal space */
+  html.lang-en .logo-img {
+    height: 36px;
+  }
+
+  html.lang-en .logo-title {
+    font-size: 0.86rem;
+  }
+
+  html.lang-en .logo-subtitle {
+    font-size: 0.55rem;
+  }
+
+  /* Decorative eagle: fixed box stops a failed remote image/alt text
+     from stretching the header. */
+  html.lang-en .eagle-badge {
+    height: 30px;
+    width: 30px;
+    max-width: 30px;
+    object-fit: contain;
+    overflow: hidden;
+    font-size: 0;
+    color: transparent;
+  }
+
+  html.lang-en .header-actions {
+    gap: 0.45rem;
+  }
+
+  html.lang-en .header-actions .lang-switch-btn {
+    gap: 0.3rem;
+    padding: 0.42rem 0.5rem;
+    font-size: 0.72rem;
+  }
+
+  html.lang-en .header-actions .lang-switch-btn i {
+    font-size: 0.8rem;
+  }
+
+  html.lang-en .header-donate-btn {
+    gap: 0.35rem;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  html.lang-en .header-donate-btn i {
+    font-size: 0.8rem;
+  }
+}
