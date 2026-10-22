@@ -2605,3 +2605,73 @@ window.selectCauseShare = selectCauseShare;
 window.shareCurrentCause = shareCurrentCause;
 window.initCauseDetailsModal = initCauseDetailsModal;
 
+
+/* -------------------------------------------------------------------------- */
+/* Smooth Page Transitions (tab-to-tab navigation polish)                      */
+/* --------------------------------------------------------------------------- */
+/* - Modern Chromium (126+): native cross-document View Transition cross-fade
+   via the CSS `@view-transition` rule, so navigation morphs instead of flashing.
+   - Other browsers: quick fade-out on internal link click, fade-in on arrival.
+   - Direct visits (first entry, refresh) are never faded.
+   --------------------------------------------------------------------------- */
+(function () {
+  'use strict';
+  const html = document.documentElement;
+  const hasNativeVT = typeof document.startViewTransition === 'function';
+  const FLAG = 'akhaweinPageExit';
+
+  function sameDocument(href) {
+    try {
+      const url = new URL(href, location.href);
+      return url.origin + url.pathname === location.origin + location.pathname && !url.hash;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function isInternalPageLink(href) {
+    if (!href) return false;
+    if (href.startsWith('#')) return false;
+    if (/^(mailto:|tel:|javascript:|https?:)/i.test(href)) return false;
+    return href.endsWith('.html') || href.startsWith('./') || href.startsWith('../') || href.includes('.html#') || href.includes('.html?');
+  }
+
+  // Fade-out just before leaving (non-native browsers only)
+  if (!hasNativeVT) {
+    document.addEventListener('click', (event) => {
+      if (event.defaultPrevented || event.button !== 0 ||
+          event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const link = event.target.closest && event.target.closest('a[href]');
+      if (!link || link.target === '_blank' || link.hasAttribute('download')) return;
+      const href = link.getAttribute('href');
+      if (!isInternalPageLink(href) || sameDocument(href)) return;
+      try {
+        sessionStorage.setItem(FLAG, '1');
+      } catch (error) { /* storage unavailable */ }
+      html.classList.add('page-exit');
+      // Safety: if navigation is cancelled (slow link, popup blocked), restore the page.
+      setTimeout(() => html.classList.remove('page-exit'), 700);
+    }, true);
+  }
+
+  // Fade-in on arrival, but only when coming from an internal navigation
+  try {
+    const comingFromNav = sessionStorage.getItem(FLAG) === '1';
+    sessionStorage.removeItem(FLAG);
+    if (comingFromNav && !hasNativeVT) {
+      html.classList.add('page-enter');
+      // Reveal on the next paint frames so the fade-in is visible
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          html.classList.add('page-enter-ready');
+        });
+      });
+    }
+  } catch (error) { /* storage unavailable */ }
+
+  // BFCache restore: never keep a faded state
+  window.addEventListener('pageshow', () => {
+    html.classList.remove('page-exit');
+    html.classList.add('page-enter-ready');
+  });
+})();
