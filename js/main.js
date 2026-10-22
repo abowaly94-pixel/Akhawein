@@ -2635,8 +2635,13 @@ window.initCauseDetailsModal = initCauseDetailsModal;
     return href.endsWith('.html') || href.startsWith('./') || href.startsWith('../') || href.includes('.html#') || href.includes('.html?');
   }
 
+  // Native View Transitions (with prerender) handle Chromium's cross-fade;
+  // the JS fades below are the fallback for browsers without the API.
+  const hasNativeVT = typeof document.startViewTransition === 'function';
+
   // Fade-out just before leaving
-  document.addEventListener('click', (event) => {
+  if (!hasNativeVT) {
+    document.addEventListener('click', (event) => {
     if (event.defaultPrevented || event.button !== 0 ||
         event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const link = event.target.closest && event.target.closest('a[href]');
@@ -2649,7 +2654,8 @@ window.initCauseDetailsModal = initCauseDetailsModal;
     html.classList.add('page-exit');
     // Safety: if navigation is cancelled (slow link, popup blocked), restore the page.
     setTimeout(() => html.classList.remove('page-exit'), 700);
-  }, true);
+    }, true);
+  }
 
   // Fade-in on arrival, but only when coming from an internal navigation.
   // English arrivals stay hidden (`lang-loading`) until the localization
