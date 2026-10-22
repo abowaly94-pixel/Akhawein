@@ -450,8 +450,17 @@
   /* ------------------------------------------------------------------ */
   /* Bootstrap                                                           */
   /* ------------------------------------------------------------------ */
+  function hideBrokenEagles() {
+    Array.prototype.forEach.call(document.querySelectorAll('img.eagle-badge'), function (img) {
+      var hide = function () { img.style.display = 'none'; };
+      if (img.complete && img.naturalWidth === 0) hide();
+      img.addEventListener('error', hide);
+    });
+  }
+
   function init() {
     injectLanguageButtons();
+    hideBrokenEagles();
 
     var saved = null;
     try {

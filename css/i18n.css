@@ -289,17 +289,19 @@ html[dir="rtl"] .lang-switch-btn {
 }
 
 /* --------------------------------------------------------------------------
-   3. English header fitting
-   English labels are longer than the Arabic ones, so the desktop menu can
-   overflow into the logo and the action buttons. Keep it compact, with
-   smaller icons, and fall back to the drawer on narrower desktops.
+   3. Responsive header fitting
+   Both Arabic and English menus can overflow into the brand and the action
+   buttons on desktop widths. Above 1400px keep a compact single-line menu
+   (smaller icons and tighter spacing); at 1400px and below switch to the
+   drawer so nothing ever overlaps. English needs extra tightening because
+   its labels are longer than the Arabic ones.
    -------------------------------------------------------------------------- */
-@media (max-width: 1500px) {
-  html.lang-en .nav-menu {
+@media (max-width: 1400px) {
+  .nav-menu {
     display: none !important;
   }
 
-  html.lang-en .header-actions .mobile-toggle-btn {
+  .header-actions .mobile-toggle-btn {
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
@@ -316,11 +318,61 @@ html[dir="rtl"] .lang-switch-btn {
   }
 }
 
-@media (min-width: 1501px) {
-  html.lang-en .nav-wrapper {
+@media (min-width: 1401px) {
+  .nav-wrapper {
     gap: 0.75rem;
   }
 
+  .nav-menu {
+    gap: 0.08rem;
+    margin-inline: 0.15rem;
+  }
+
+  .nav-link {
+    font-size: 0.82rem;
+    padding: 0.42rem 0.42rem;
+  }
+
+  /* Smaller header icons free horizontal space for the menu */
+  .logo-img {
+    height: 42px;
+  }
+
+  .logo-title {
+    font-size: 1rem;
+  }
+
+  .logo-subtitle {
+    font-size: 0.62rem;
+  }
+
+  /* Decorative eagle: a fixed box stops a failed remote image/alt text
+     from stretching the header. */
+  .eagle-badge {
+    height: 32px;
+    width: 32px;
+    max-width: 32px;
+    object-fit: contain;
+    overflow: hidden;
+    font-size: 0;
+    color: transparent;
+  }
+
+  .header-actions {
+    gap: 0.6rem;
+  }
+
+  .header-donate-btn {
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .header-donate-btn i {
+    font-size: 0.82rem;
+  }
+
+  /* English labels are longer: tighten a little further */
   html.lang-en .nav-menu {
     gap: 0.04rem;
     margin-inline: 0.1rem;
@@ -333,7 +385,6 @@ html[dir="rtl"] .lang-switch-btn {
     letter-spacing: -0.4px;
   }
 
-  /* Smaller header icons to free horizontal space */
   html.lang-en .logo-img {
     height: 36px;
   }
@@ -344,18 +395,6 @@ html[dir="rtl"] .lang-switch-btn {
 
   html.lang-en .logo-subtitle {
     font-size: 0.55rem;
-  }
-
-  /* Decorative eagle: fixed box stops a failed remote image/alt text
-     from stretching the header. */
-  html.lang-en .eagle-badge {
-    height: 30px;
-    width: 30px;
-    max-width: 30px;
-    object-fit: contain;
-    overflow: hidden;
-    font-size: 0;
-    color: transparent;
   }
 
   html.lang-en .header-actions {
