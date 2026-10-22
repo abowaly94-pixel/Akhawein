@@ -441,7 +441,7 @@ html.lang-loading body {
 }
 
 html.lang-reveal body {
-  animation: i18nLangReveal 0.28s ease-out both;
+  animation: i18nLangReveal 0.35s ease-out both;
 }
 
 @keyframes i18nLangReveal {

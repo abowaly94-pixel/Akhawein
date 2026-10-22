@@ -2617,7 +2617,6 @@ window.initCauseDetailsModal = initCauseDetailsModal;
 (function () {
   'use strict';
   const html = document.documentElement;
-  const hasNativeVT = typeof document.startViewTransition === 'function';
   const FLAG = 'akhaweinPageExit';
 
   function sameDocument(href) {
@@ -2636,29 +2635,29 @@ window.initCauseDetailsModal = initCauseDetailsModal;
     return href.endsWith('.html') || href.startsWith('./') || href.startsWith('../') || href.includes('.html#') || href.includes('.html?');
   }
 
-  // Fade-out just before leaving (non-native browsers only)
-  if (!hasNativeVT) {
-    document.addEventListener('click', (event) => {
-      if (event.defaultPrevented || event.button !== 0 ||
-          event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      const link = event.target.closest && event.target.closest('a[href]');
-      if (!link || link.target === '_blank' || link.hasAttribute('download')) return;
-      const href = link.getAttribute('href');
-      if (!isInternalPageLink(href) || sameDocument(href)) return;
-      try {
-        sessionStorage.setItem(FLAG, '1');
-      } catch (error) { /* storage unavailable */ }
-      html.classList.add('page-exit');
-      // Safety: if navigation is cancelled (slow link, popup blocked), restore the page.
-      setTimeout(() => html.classList.remove('page-exit'), 700);
-    }, true);
-  }
+  // Fade-out just before leaving
+  document.addEventListener('click', (event) => {
+    if (event.defaultPrevented || event.button !== 0 ||
+        event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = event.target.closest && event.target.closest('a[href]');
+    if (!link || link.target === '_blank' || link.hasAttribute('download')) return;
+    const href = link.getAttribute('href');
+    if (!isInternalPageLink(href) || sameDocument(href)) return;
+    try {
+      sessionStorage.setItem(FLAG, '1');
+    } catch (error) { /* storage unavailable */ }
+    html.classList.add('page-exit');
+    // Safety: if navigation is cancelled (slow link, popup blocked), restore the page.
+    setTimeout(() => html.classList.remove('page-exit'), 700);
+  }, true);
 
-  // Fade-in on arrival, but only when coming from an internal navigation
+  // Fade-in on arrival, but only when coming from an internal navigation.
+  // English arrivals stay hidden (`lang-loading`) until the localization
+  // engine finishes translating; their own `lang-reveal` fade takes over.
   try {
     const comingFromNav = sessionStorage.getItem(FLAG) === '1';
     sessionStorage.removeItem(FLAG);
-    if (comingFromNav && !hasNativeVT) {
+    if (comingFromNav && !html.classList.contains('lang-loading')) {
       html.classList.add('page-enter');
       // Reveal on the next paint frames so the fade-in is visible
       requestAnimationFrame(() => {

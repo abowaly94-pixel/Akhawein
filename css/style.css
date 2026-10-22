@@ -8699,15 +8699,14 @@ img, svg, video, iframe {
 /* ==========================================================================
    Page transitions (tab navigation polish)
    --------------------------------------------------------------------------
-   - Modern Chromium (126+): native cross-document View Transition cross-fade
-     so navigating between pages morphs smoothly instead of flashing.
-   - Other browsers: quick JS-driven fade-out on internal link click and a
-     fade-in on arrival (classes added by js/main.js). Direct visits and
-     refreshes are never faded.
+   Unified JS-driven transitions (js/main.js):
+   - a quick fade-out on internal link click,
+   - a fade-in on arrival (only when coming from an internal navigation).
+   Direct visits and refreshes are never faded.
+   Note: the native cross-document `@view-transition` rule was deliberately NOT
+   used because it cross-fades into the not-yet-translated (hidden) page in
+   English mode, which produces a visible blank flash.
    ========================================================================== */
-@view-transition {
-  navigation: auto;
-}
 
 html.page-exit body {
   opacity: 0;
