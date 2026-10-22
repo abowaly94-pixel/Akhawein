@@ -421,3 +421,40 @@ html[dir="rtl"] .lang-switch-btn {
     font-size: 0.8rem;
   }
 }
+
+/* ==============================================================================
+   4. Anti-flash language bootstrap
+   ------------------------------------------------------------------------------
+   Pages load with Arabic HTML. When the visitor's saved language is English we
+   hide the body until the localization engine finishes translating, so no
+   wrong-language flash ("Arabic text -> English") is painted while navigating.
+   The inline bootstrap in <head> adds `lang-loading`; i18n.js replaces it with
+   `lang-reveal` right after translation completes. Safety timeouts in the
+   inline bootstrap guarantee the page is never left hidden.
+   ============================================================================== */
+html.lang-loading {
+  background-color: var(--bg-main, #f8fafc);
+}
+
+html.lang-loading body {
+  visibility: hidden;
+}
+
+html.lang-reveal body {
+  animation: i18nLangReveal 0.28s ease-out both;
+}
+
+@keyframes i18nLangReveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.lang-reveal body {
+    animation: none;
+  }
+}

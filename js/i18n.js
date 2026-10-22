@@ -409,6 +409,17 @@
   /* ------------------------------------------------------------------ */
   /* Apply language                                                      */
   /* ------------------------------------------------------------------ */
+  /**
+   * Remove the anti-flash hiding state (added by the inline bootstrap when the
+   * saved language is English) and reveal the fully-translated page.
+   */
+  function revealTranslatedPage() {
+    var html = document.documentElement;
+    if (!html.classList.contains('lang-loading') && !html.classList.contains('lang-reveal')) return;
+    html.classList.remove('lang-loading');
+    html.classList.add('lang-reveal');
+  }
+
   function setLanguage(nextLang, options) {
     nextLang = nextLang === 'en' ? 'en' : 'ar';
     var silent = options && options.silent;
@@ -433,9 +444,12 @@
         if (translatedTitle) document.title = translatedTitle;
       }
       startObserver();
+      // Fully translated: reveal the (previously hidden) page in one fade
+      revealTranslatedPage();
     } else {
       stopObserver();
       restoreAll();
+      revealTranslatedPage();
     }
 
     updateLanguageButtons();
@@ -471,7 +485,25 @@
       setLanguage('en', { silent: true });
     } else {
       updateLanguageButtons();
+      // The page was never hidden (Arabic bootstrap) — just mark it ready.
+      revealTranslatedPage();
     }
+
+    // BFCache restore (back/forward): re-apply the saved language so a cached
+    // page never stays in the wrong language.
+    window.addEventListener('pageshow', function (event) {
+      if (!event || !event.persisted) return;
+      var stored = null;
+      try {
+        stored = localStorage.getItem(STORAGE_KEY);
+      } catch (error) { /* private mode */ }
+      var wanted = stored === 'en' ? 'en' : 'ar';
+      if (wanted !== lang) {
+        setLanguage(wanted, { silent: true });
+      } else {
+        revealTranslatedPage();
+      }
+    });
 
     // Keep tabs in sync
     window.addEventListener('storage', function (event) {
