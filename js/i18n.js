@@ -426,6 +426,8 @@
     if (nextLang === 'en') {
       if (originalTitle == null) originalTitle = document.title;
       if (document.body) walk(document.body);
+      // Head metadata (meta description, Open Graph tags…) lives outside <body>.
+      if (document.head) walk(document.head);
       if (originalTitle) {
         var translatedTitle = translateTitle(originalTitle);
         if (translatedTitle) document.title = translatedTitle;
