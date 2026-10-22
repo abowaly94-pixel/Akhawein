@@ -319,31 +319,48 @@ html[dir="rtl"] .lang-switch-btn {
 }
 
 @media (min-width: 1401px) {
+  /* Everything scales fluidly with the viewport width so the single-line
+     menu keeps its proportions on every desktop size (the header container
+     itself is widened in style.css to give the menu room). */
   .nav-wrapper {
-    gap: 0.75rem;
+    gap: 0.7vw;
   }
 
   .nav-menu {
-    gap: 0.08rem;
-    margin-inline: 0.15rem;
+    gap: clamp(0.2rem, 0.36vw, 0.55rem);
+    margin-inline: 0.2vw;
   }
 
   .nav-link {
-    font-size: 0.82rem;
-    padding: 0.42rem 0.42rem;
+    font-size: clamp(0.84rem, 0.6vw + 0.18rem, 1.02rem);
+    padding: 0.45rem clamp(0.28rem, 0.35vw, 0.55rem);
   }
 
-  /* Smaller header icons free horizontal space for the menu */
+  /* English: same rhythm and near-same size as Arabic. The labels are longer,
+     so its size curve is tuned to stay on one line from 1401px upward. */
+  html.lang-en .nav-menu {
+    gap: clamp(0.15rem, 0.32vw, 0.5rem);
+    margin-inline: 0.15vw;
+  }
+
+  html.lang-en .nav-link {
+    font-size: clamp(0.78rem, 0.72vw + 0.12rem, 0.95rem);
+    padding: 0.45rem clamp(0.24rem, 0.28vw, 0.42rem);
+    gap: 0.25rem;
+    letter-spacing: -0.1px;
+  }
+
+  /* Compact brand and actions leave the wide labels the room they need */
   .logo-img {
-    height: 42px;
+    height: 40px;
   }
 
   .logo-title {
-    font-size: 1rem;
+    font-size: 0.98rem;
   }
 
   .logo-subtitle {
-    font-size: 0.62rem;
+    font-size: 0.6rem;
   }
 
   /* Decorative eagle: a fixed box stops a failed remote image/alt text
@@ -364,25 +381,12 @@ html[dir="rtl"] .lang-switch-btn {
 
   .header-donate-btn {
     gap: 0.4rem;
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
-  }
-
-  .header-donate-btn i {
+    padding: 0.45rem 0.9rem;
     font-size: 0.82rem;
   }
 
-  /* English labels are longer: tighten a little further */
-  html.lang-en .nav-menu {
-    gap: 0.04rem;
-    margin-inline: 0.1rem;
-  }
-
-  html.lang-en .nav-link {
-    font-size: 0.7rem;
-    padding: 0.4rem 0.22rem;
-    gap: 0.2rem;
-    letter-spacing: -0.4px;
+  .header-donate-btn i {
+    font-size: 0.8rem;
   }
 
   html.lang-en .logo-img {
@@ -390,11 +394,11 @@ html[dir="rtl"] .lang-switch-btn {
   }
 
   html.lang-en .logo-title {
-    font-size: 0.86rem;
+    font-size: 0.88rem;
   }
 
   html.lang-en .logo-subtitle {
-    font-size: 0.55rem;
+    font-size: 0.56rem;
   }
 
   html.lang-en .header-actions {
