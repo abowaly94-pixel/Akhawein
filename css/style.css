@@ -2258,7 +2258,7 @@ textarea.form-control {
   content: '';
   position: absolute;
   bottom: 0;
-  right: 0;
+  inset-inline-start: 0;
   width: 42px;
   height: 3px;
   background: linear-gradient(90deg, var(--primary), var(--accent));
