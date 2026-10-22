@@ -357,20 +357,41 @@
   /* ------------------------------------------------------------------ */
   /* Language switch button                                              */
   /* ------------------------------------------------------------------ */
-  function buildLanguageButton(extraClass) {
-    var button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'lang-switch-btn' + (extraClass ? ' ' + extraClass : '');
+  function bindLanguageButton(button) {
+    if (button.dataset.i18nBound === '1') return;
+    button.dataset.i18nBound = '1';
     button.setAttribute('data-i18n-ignore', '');
     button.addEventListener('click', function () {
       setLanguage(lang === 'en' ? 'ar' : 'en');
     });
+  }
+
+  function buildLanguageButton(extraClass) {
+    var button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'lang-switch-btn' + (extraClass ? ' ' + extraClass : '');
+    // Fill the label immediately so the button never changes size after being
+    // inserted (no layout shift while/after the header paints).
+    button.innerHTML = '<i class="fa-solid fa-globe" aria-hidden="true"></i>' +
+      '<span class="lang-switch-label">' + (lang === 'en' ? 'العربية' : 'English') + '</span>';
+    bindLanguageButton(button);
     return button;
   }
 
   function injectLanguageButtons() {
+    // Static buttons already exist in the HTML: just bind them (no injection,
+    // no layout shift). Only create buttons for pages without the markup.
+    var existing = document.querySelectorAll('.lang-switch-btn');
+    var hasHeaderButton = false;
+    Array.prototype.forEach.call(existing, function (button) {
+      if (!button.classList.contains('lang-switch-btn-drawer') && !button.classList.contains('lang-switch-floating')) {
+        hasHeaderButton = true;
+      }
+      bindLanguageButton(button);
+    });
+
     var actions = document.querySelector('.header-actions');
-    if (actions && !actions.querySelector('.lang-switch-btn')) {
+    if (actions && !hasHeaderButton && !actions.querySelector('.lang-switch-btn')) {
       var button = buildLanguageButton();
       var donateBtn = actions.querySelector('.header-donate-btn');
       if (donateBtn) actions.insertBefore(button, donateBtn);

@@ -73,6 +73,9 @@ html {
   overflow-x: clip;
   max-width: 100vw;
   -webkit-text-size-adjust: 100%;
+  /* Reserve the scrollbar gutter on every page so navigating between short
+     and long pages never shifts the layout / header nav horizontally. */
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -489,7 +492,7 @@ h1, h2, h3, h4, h5, h6 {
   content: '';
   position: absolute;
   bottom: 0;
-  right: 0;
+  inset-inline-start: 0;
   width: 0;
   height: 3px;
   background: linear-gradient(90deg, var(--primary), var(--accent));
