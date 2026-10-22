@@ -8699,23 +8699,19 @@ img, svg, video, iframe {
 /* ==========================================================================
    Page transitions (tab navigation polish)
    --------------------------------------------------------------------------
-   Combined with Speculation Rules prerendering (each page's <head>):
-   Chromium prepares the destination page fully (already translated) on
-   hover, so tab activation is instant and cross-faded by the native
-   `@view-transition` rule below. The `pagereveal` guard in every page skips
-   the transition when a destination page is still untranslated (rare
-   no-prerender English arrival), preventing any blank flash.
+   Chromium: Speculation Rules prerendering (each page's <head>) prepares the
+   destination page fully — loaded AND already translated — so clicking a tab
+   activates it instantly. No cross-fade is used: the native cross-document
+   `@view-transition` rule was deliberately dropped because combining it with
+   prerendering produces blank white frames in Chromium (crbug: view
+   transitions + prerendered activations).
+   The `pagereveal` guard in every page stays as an extra safety net: it skips
+   any residual transition when a destination page is still untranslated.
 
-   Fallback JS fades (js/main.js) only run in browsers without native
-   View Transitions:
-   - a quick fade-out on internal link click,
-   - a fade-in on arrival (only when coming from an internal navigation).
-   Direct visits and refreshes are never faded.
+   Other browsers (Safari/Firefox, no prerender): JS-driven fades
+   (js/main.js) — a quick fade-out on internal link click and a fade-in on
+   arrival. Direct visits and refreshes are never faded.
    ========================================================================== */
-
-@view-transition {
-  navigation: auto;
-}
 
 html.page-exit body {
   opacity: 0;

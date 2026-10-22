@@ -2609,11 +2609,12 @@ window.initCauseDetailsModal = initCauseDetailsModal;
 /* -------------------------------------------------------------------------- */
 /* Smooth Page Transitions (tab-to-tab navigation polish)                      */
 /* --------------------------------------------------------------------------- */
-/* - Modern Chromium (126+): native cross-document View Transition cross-fade
-   via the CSS `@view-transition` rule, so navigation morphs instead of flashing.
+/* - Chromium: Speculation Rules prerendering prepares the destination page
+     (loaded + translated) on hover, so activation is an instant swap with
+     zero blank frames. No View Transitions are used (they render blank
+     frames when combined with prerendering).
    - Other browsers: quick fade-out on internal link click, fade-in on arrival.
-   - Direct visits (first entry, refresh) are never faded.
-   --------------------------------------------------------------------------- */
+   - Direct visits (first entry, refresh) are never faded. */
 (function () {
   'use strict';
   const html = document.documentElement;
@@ -2635,14 +2636,9 @@ window.initCauseDetailsModal = initCauseDetailsModal;
     return href.endsWith('.html') || href.startsWith('./') || href.startsWith('../') || href.includes('.html#') || href.includes('.html?');
   }
 
-  // Native View Transitions (with prerender) handle Chromium's cross-fade;
-  // the JS fades below are the fallback for browsers without the API.
-  const hasNativeVT = typeof document.startViewTransition === 'function';
-
   // Fade-out just before leaving
-  if (!hasNativeVT) {
-    document.addEventListener('click', (event) => {
-    if (event.defaultPrevented || event.button !== 0 ||
+  document.addEventListener('click', (event) => {
+  if (event.defaultPrevented || event.button !== 0 ||
         event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const link = event.target.closest && event.target.closest('a[href]');
     if (!link || link.target === '_blank' || link.hasAttribute('download')) return;
@@ -2654,8 +2650,7 @@ window.initCauseDetailsModal = initCauseDetailsModal;
     html.classList.add('page-exit');
     // Safety: if navigation is cancelled (slow link, popup blocked), restore the page.
     setTimeout(() => html.classList.remove('page-exit'), 700);
-    }, true);
-  }
+  }, true);
 
   // Fade-in on arrival, but only when coming from an internal navigation.
   // English arrivals stay hidden (`lang-loading`) until the localization

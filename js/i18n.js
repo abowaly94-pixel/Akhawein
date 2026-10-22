@@ -511,15 +511,21 @@
     }
 
     // BFCache restore (back/forward): re-apply the saved language so a cached
-    // page never stays in the wrong language.
+    // page never stays in the wrong language. Also act as a safety net for
+    // prerendered activations: if the page is somehow still hidden
+    // (`lang-loading`) when it becomes visible, reveal it right away.
     window.addEventListener('pageshow', function (event) {
-      if (!event || !event.persisted) return;
+      var stillLoading = document.documentElement.classList.contains('lang-loading');
+      if (!event || (!event.persisted && !stillLoading)) return;
       var stored = null;
       try {
         stored = localStorage.getItem(STORAGE_KEY);
       } catch (error) { /* private mode */ }
       var wanted = stored === 'en' ? 'en' : 'ar';
-      if (wanted !== lang) {
+      if (stillLoading) {
+        // Forced reveal: never allow a hidden page to stay on screen.
+        revealTranslatedPage();
+      } else if (wanted !== lang) {
         setLanguage(wanted, { silent: true });
       } else {
         revealTranslatedPage();
